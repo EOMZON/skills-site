@@ -11,6 +11,14 @@ const registryRoot = process.env.SKILLS_REGISTRY_ROOT
 const registryContentRoot = path.join(registryRoot, "content");
 const distRoot = path.join(root, "dist");
 const stylesSrc = path.join(root, "src", "site.css");
+const faviconSrc = path.join(root, "src", "favicon.svg");
+const sceneGuidesPath = path.join(registryContentRoot, "scene-guides.json");
+const sceneStatusLabel = {
+  live: "Live",
+  "coming-next": "Coming Next",
+  "sanitized-later": "Sanitized Later",
+  "private-only": "Private Only"
+};
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
@@ -33,8 +41,40 @@ function escapeHtml(text) {
     .replace(/"/g, "&quot;");
 }
 
+function stripRuntimeFields(manifest) {
+  const { _markdown, sceneTitle, ...publicManifest } = manifest;
+  return publicManifest;
+}
+
+function previewText(items, limit = 2) {
+  if (!Array.isArray(items) || items.length === 0) return "—";
+  return items
+    .slice(0, limit)
+    .map((item) => escapeHtml(item))
+    .join(" · ");
+}
+
+function previewInputs(inputs, limit = 2) {
+  if (!Array.isArray(inputs) || inputs.length === 0) return "—";
+  return inputs
+    .slice(0, limit)
+    .map((input) => `<code>${escapeHtml(input.name)}</code>`)
+    .join(" · ");
+}
+
+function skillSort(a, b, scenesById) {
+  const ao = scenesById.get(a.scene)?.order || Number.MAX_SAFE_INTEGER;
+  const bo = scenesById.get(b.scene)?.order || Number.MAX_SAFE_INTEGER;
+  if (ao !== bo) return ao - bo;
+  return a.title.localeCompare(b.title, "zh-Hans-CN");
+}
+
+function stripFrontMatter(markdown) {
+  return markdown.replace(/^---\n[\s\S]*?\n---\n?/, "");
+}
+
 function markdownToHtml(markdown) {
-  const lines = markdown.replace(/\r\n/g, "\n").split("\n");
+  const lines = stripFrontMatter(markdown).replace(/\r\n/g, "\n").split("\n");
   const chunks = [];
   let inList = false;
   let inCode = false;
@@ -78,10 +118,6 @@ function markdownToHtml(markdown) {
       continue;
     }
 
-    if (/^---\s*$/.test(line) && chunks.length === 0 && paragraph.length === 0) {
-      continue;
-    }
-
     if (/^#\s+/.test(line)) {
       flushParagraph();
       closeList();
@@ -119,7 +155,7 @@ function markdownToHtml(markdown) {
       continue;
     }
 
-    if (!/^---/.test(line)) paragraph.push(line.trim());
+    paragraph.push(line.trim());
   }
 
   flushParagraph();
@@ -139,6 +175,7 @@ function layout({ title, description, body, canonicalPath }) {
     <meta name="description" content="${escapeHtml(description)}" />
     <title>${escapeHtml(title)}</title>
     <link rel="canonical" href="${escapeHtml(canonical)}" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/site.css" />
   </head>
   <body>
@@ -148,14 +185,15 @@ function layout({ title, description, body, canonicalPath }) {
           <a class="brand" href="/index.html"><strong>Skills</strong><span>Registry</span></a>
           <nav class="nav">
             <a href="/index.html">Home</a>
-            <a href="/llms.txt">llms.txt</a>
             <a href="/data/registry.json">registry.json</a>
+            <a href="/data/scenes.json">scenes.json</a>
+            <a href="/llms.txt">llms.txt</a>
           </nav>
         </div>
       </header>
       ${body}
       <footer class="footer">
-        <div>Skills Site · scenario-first registry renderer · data source: <code>skills-registry</code></div>
+        <div>Skills Site · scenario-first registry renderer · source of truth: <code>skills-registry</code></div>
       </footer>
     </div>
   </body>
@@ -163,34 +201,61 @@ function layout({ title, description, body, canonicalPath }) {
 `;
 }
 
-function renderSceneGrid(scenes, sceneCounts) {
-  return `<div class="scene-grid">
-${scenes
-  .map(
-    (scene, index) => `<a class="scene-card" href="/scenes/${scene.id}/index.html">
-  <div class="scene-index">${String(index + 1).padStart(2, "0")}</div>
-  <div>
-    <h3 class="scene-title">${escapeHtml(scene.title)}</h3>
-    <p class="scene-desc">${escapeHtml(scene.summary)}</p>
+function renderSceneGrid(sceneEntries) {
+  return `<div class="scene-directory">
+${sceneEntries
+  .map(({ scene, skills, guide }) => {
+    const status = guide?.status || (skills.length ? "live" : "coming-next");
+    const starter = (guide?.starter_ids || [])
+      .map((id) => skills.find((skill) => skill.id === id))
+      .filter(Boolean)
+      .map((item) => `<a href="/skills/${item.id}/index.html">${escapeHtml(item.title)}</a>`)
+      .join(" · ");
+    const taskItems = (guide?.core_tasks || [scene.summary]).slice(0, 3);
+    return `<article class="scene-entry">
+  <div class="scene-head">
+    <div class="scene-meta-row">
+      <span class="status-pill status-${status}">${escapeHtml(sceneStatusLabel[status] || status)}</span>
+      <span class="count-pill">${skills.length} skills</span>
+    </div>
+    <h3 class="scene-entry-title"><a href="/scenes/${scene.id}/index.html">${escapeHtml(scene.title)}</a></h3>
+    <p class="scene-entry-summary">${escapeHtml(scene.summary)}</p>
   </div>
-  <div class="scene-count">${sceneCounts.get(scene.id) || 0} skills</div>
-</a>`
-  )
+  <div class="scene-tasks">
+    <p class="scene-label">Core Tasks</p>
+    <ul class="compact-list">
+      ${taskItems.map((task) => `<li>${escapeHtml(task)}</li>`).join("")}
+    </ul>
+  </div>
+  <div class="scene-starters">
+    <p class="scene-label">Start With</p>
+    <div class="scene-links">${starter || '<span class="muted">No public starter yet</span>'}</div>
+  </div>
+</article>`;
+  })
   .join("\n")}
 </div>`;
 }
 
-function renderSkillRows(skills) {
+function renderSkillTable(skills) {
   return `<div class="skill-table">
+  <div class="skill-head">
+    <div>Skill</div>
+    <div>作用</div>
+    <div>输入</div>
+    <div>产出</div>
+    <div>Invoke</div>
+  </div>
 ${skills
   .map(
     (skill) => `<div class="skill-row">
   <div>
     <h3 class="skill-name"><a href="/skills/${skill.id}/index.html">${escapeHtml(skill.title)}</a></h3>
-    <div class="skill-meta">${escapeHtml(skill.sceneTitle || skill.scene)}</div>
+    <div class="skill-meta">${escapeHtml((skill.use_when && skill.use_when[0]) || skill.sceneTitle || "")}</div>
   </div>
   <div class="skill-copy">${escapeHtml(skill.summary)}</div>
-  <div class="skill-return">${escapeHtml((skill.returns && skill.returns[0]) || (skill.use_when && skill.use_when[0]) || "")}</div>
+  <div class="skill-io">${previewInputs(skill.inputs)}</div>
+  <div class="skill-io">${previewText(skill.returns)}</div>
   <div><span class="skill-invoke">${escapeHtml(skill.invoke)}</span></div>
 </div>`
   )
@@ -198,15 +263,138 @@ ${skills
 </div>`;
 }
 
-function buildHome({ registry, scenesById, manifests, stats }) {
-  const featuredIds = ["best-minds", "frontend-design", "vercel-deploy"];
-  const featured = manifests
-    .filter((manifest) => featuredIds.includes(manifest.id))
-    .map((manifest) => ({ ...manifest, sceneTitle: scenesById.get(manifest.scene)?.title || manifest.scene }));
+function renderEndpointList(links) {
+  return `<div class="endpoint-list">
+${links
+  .map(
+    (link) => `<a class="endpoint-card" href="${escapeHtml(link.href)}">
+  <div class="endpoint-name">${escapeHtml(link.name)}</div>
+  <div class="endpoint-desc">${escapeHtml(link.description)}</div>
+</a>`
+  )
+  .join("\n")}
+</div>`;
+}
 
-  const scenes = [...scenesById.values()].sort((a, b) => a.order - b.order);
-  const sceneCounts = new Map();
-  for (const item of manifests) sceneCounts.set(item.scene, (sceneCounts.get(item.scene) || 0) + 1);
+function renderGuideBlock(guide, manifestsById) {
+  if (!guide) return "";
+  const starter = (guide.starter_ids || [])
+    .map((id) => manifestsById.get(id))
+    .filter(Boolean)
+    .map((item) => `<a href="/skills/${item.id}/index.html">${escapeHtml(item.title)}</a>`)
+    .join(" · ");
+  const chains = (guide.chains || [])
+    .map((chain) =>
+      chain
+        .map((id) => manifestsById.get(id))
+        .filter(Boolean)
+        .map((item) => `<a href="/skills/${item.id}/index.html">${escapeHtml(item.title)}</a>`)
+        .join(" → ")
+    )
+    .filter(Boolean);
+
+  return `<div class="scene-guide">
+    ${
+      guide.core_tasks?.length
+        ? `<div class="guide-line"><span>Core Tasks</span>${guide.core_tasks
+            .slice(0, 3)
+            .map((task) => escapeHtml(task))
+            .join(" · ")}</div>`
+        : ""
+    }
+    ${starter ? `<div class="guide-line"><span>Starter</span>${starter}</div>` : ""}
+    ${chains.length ? `<div class="guide-line"><span>Chain</span>${chains[0]}</div>` : ""}
+  </div>`;
+}
+
+function renderCoverage(sceneEntries, manifestsById) {
+  return `<div class="scene-blocks">
+${sceneEntries
+  .map(
+    ({ scene, skills, guide }) => `<section class="scene-block">
+  <div class="scene-block-head">
+    <div>
+      <p class="section-kicker">Scene</p>
+      <h3 class="scene-block-title"><a href="/scenes/${scene.id}/index.html">${escapeHtml(scene.title)}</a></h3>
+    </div>
+    <div class="scene-block-summary">${escapeHtml(scene.summary)}</div>
+  </div>
+  ${renderGuideBlock(guide, manifestsById)}
+  ${renderSkillTable(skills)}
+</section>`
+  )
+  .join("\n")}
+</div>`;
+}
+
+function renderSideList(values) {
+  return `<div class="side-list">${values.map((value) => `<div>${value}</div>`).join("")}</div>`;
+}
+
+function renderDetailInputs(inputs) {
+  if (!Array.isArray(inputs) || inputs.length === 0) return renderSideList(["—"]);
+  return renderSideList(
+    inputs.map(
+      (input) =>
+        `<code>${escapeHtml(input.name)}</code> ${escapeHtml(input.description)}${input.required ? " (required)" : ""}`
+    )
+  );
+}
+
+function collectSceneEntries(scenesDoc, manifests, sceneGuidesById, scenesById) {
+  return scenesDoc.scenes
+    .map((scene) => ({
+      scene,
+      guide: sceneGuidesById.get(scene.id) || null,
+      skills: manifests
+        .filter((manifest) => manifest.scene === scene.id)
+        .sort((a, b) => skillSort(a, b, scenesById))
+    }));
+}
+
+function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifestsById, stats }) {
+  const sceneEntries = collectSceneEntries(scenesDoc, manifests, sceneGuidesById, scenesById);
+  const activeSceneEntries = sceneEntries.filter((entry) => entry.skills.length > 0);
+  const differentiators = [
+    {
+      label: "Executable systems",
+      body: "不是 prompt 片段。很多 skill 会直接落到报告、页面、脚本、部署或可复查产物。"
+    },
+    {
+      label: "Scenario-first",
+      body: "先按要完成的事情分组，再在 scene 里看可调用的 skill，而不是先按工具名找。"
+    },
+    {
+      label: "Private to public",
+      body: "私有作者源先沉淀，再导出公开 manifest 与脱敏说明，展示层和内容层解耦。"
+    },
+    {
+      label: "Agent-readable",
+      body: "人看页面，AI 读 JSON 和 llms.txt。每个 skill 都有稳定的 machine entry point。"
+    }
+  ];
+  const agentLinks = [
+    {
+      name: "registry.json",
+      href: "/data/registry.json",
+      description: "所有公开 skills 的轻量索引。"
+    },
+    {
+      name: "scene-guides.json",
+      href: "/data/scene-guides.json",
+      description: "scene 级别的 core tasks、starter 与 chain 提示。"
+    },
+    {
+      name: "skills.ndjson",
+      href: "/data/skills.ndjson",
+      description: "每行一个 manifest，适合 agent 批量抓取。"
+    },
+    {
+      name: "llms-full.txt",
+      href: "/llms-full.txt",
+      description: "扩展版文本契约，补足 inputs、returns 和 dependencies。"
+    }
+  ];
 
   return layout({
     title: "Skills Registry",
@@ -216,55 +404,67 @@ function buildHome({ registry, scenesById, manifests, stats }) {
   <section class="hero">
     <div>
       <p class="hero-kicker">Scenario-First Skill Registry</p>
-      <h1 class="hero-title">Find the right skill for the job.</h1>
-      <p class="hero-copy">This site is a pure presentation layer over a machine-readable registry. People browse by scene. Agents read structured manifests. The public object model stays simple: only <code>skill</code>.</p>
+      <h1 class="hero-title">先按场景进入，再选 skill。</h1>
+      <p class="hero-copy">首页先回答能做什么、从哪里起手、会拿到什么产出。公开层只保留可复用调用契约，私有作者源继续留在上游，不把展示层做成又一面大卡片墙。</p>
     </div>
     <div class="hero-notes">
-      <div class="hero-note"><strong>Executable systems</strong>These are not prompt snippets. Many skills are built around real outputs, pipelines, and delivery.</div>
-      <div class="hero-note"><strong>Scenario-first</strong>Scenes answer what you are trying to do, not which tool happens to be underneath.</div>
-      <div class="hero-note"><strong>Agent-readable</strong>Every skill can expose a public manifest and a longform Markdown page.</div>
+      ${differentiators
+        .map(
+          (item) => `<div class="hero-note"><strong>${escapeHtml(item.label)}</strong>${escapeHtml(item.body)}</div>`
+        )
+        .join("\n")}
     </div>
   </section>
 
   <section class="stats-strip">
     <div class="stat"><span class="stat-value">${stats.totalSkills}</span><span class="stat-label">Public Skills</span></div>
-    <div class="stat"><span class="stat-value">${stats.totalScenes}</span><span class="stat-label">Scenes</span></div>
-    <div class="stat"><span class="stat-value">${stats.publicCount}</span><span class="stat-label">Public Now</span></div>
-    <div class="stat"><span class="stat-value">${stats.sanitizedCount}</span><span class="stat-label">Sanitized Layer</span></div>
+    <div class="stat"><span class="stat-value">${stats.liveScenes}</span><span class="stat-label">Live Scenes</span></div>
+    <div class="stat"><span class="stat-value">${stats.definedScenes}</span><span class="stat-label">Defined Scenes</span></div>
+    <div class="stat"><span class="stat-value">${stats.starterChains}</span><span class="stat-label">Starter Chains</span></div>
   </section>
 
   <section class="section">
     <div class="section-header">
       <div>
         <p class="section-kicker">Scenes</p>
-        <h2 class="section-title">Browse by application scenario</h2>
+        <h2 class="section-title">先看你要完成什么</h2>
       </div>
-      <div class="section-summary">The public taxonomy stays deliberately narrow. Tools and platform words belong in keywords and dependencies, not in the top navigation.</div>
+      <div class="section-summary">每个 scene 都直接暴露当前开放状态、核心任务和起手 skill。未公开完成的 scene 也保留在首页，作为真实路线图而不是被隐藏的空白。</div>
     </div>
-    ${renderSceneGrid(scenes, sceneCounts)}
+    ${renderSceneGrid(sceneEntries)}
   </section>
 
   <section class="section">
     <div class="section-header">
       <div>
-        <p class="section-kicker">Start Now</p>
-        <h2 class="section-title">Core public skills</h2>
+        <p class="section-kicker">Coverage</p>
+        <h2 class="section-title">按场景展开的公开 skills</h2>
       </div>
-      <div class="section-summary">A tighter first screen: fewer entries, clearer purpose, stronger return signal.</div>
+      <div class="section-summary">这里专注看当前已经 live 的技能索引。每一行同时暴露作用、输入、产出与调用方式，而不是只放一段摘要文案。</div>
     </div>
-    ${renderSkillRows(featured)}
+    ${renderCoverage(activeSceneEntries, manifestsById)}
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <div>
+        <p class="section-kicker">For Agents</p>
+        <h2 class="section-title">机器入口保持稳定</h2>
+      </div>
+      <div class="section-summary">展示层给人看，数据层给 agent 读。这里暴露的是最稳定的入口，不要求 agent 从 HTML 里猜结构。</div>
+    </div>
+    ${renderEndpointList(agentLinks)}
   </section>
 </main>`
   });
 }
 
-function buildScenePage(scene, skills, scenesById) {
-  const normalized = skills
-    .map((skill) => ({
-      ...skill,
-      sceneTitle: scenesById.get(skill.scene)?.title || skill.scene
-    }))
-    .sort((a, b) => a.title.localeCompare(b.title, "zh-Hans-CN"));
+function buildScenePage(scene, skills, scenesById, guide, manifestsById) {
+  const normalized = skills.sort((a, b) => skillSort(a, b, scenesById));
+  const status = guide?.status || (normalized.length ? "live" : "coming-next");
+  const body = normalized.length
+    ? `${renderGuideBlock(guide, manifestsById)}${renderSkillTable(normalized)}`
+    : `<p class="empty-state">这个 scene 已经预留在 taxonomy 中，但目前还没有公开 skills。</p>`;
 
   return layout({
     title: `${scene.title} · Skills`,
@@ -273,8 +473,12 @@ function buildScenePage(scene, skills, scenesById) {
     body: `<main class="page">
   <section class="page-head">
     <p class="meta-kicker">Scene</p>
-    <h1 class="page-title">${escapeHtml(scene.title)}</h1>
+    <div class="page-meta-row">
+      <h1 class="page-title">${escapeHtml(scene.title)}</h1>
+      <span class="status-pill status-${status}">${escapeHtml(sceneStatusLabel[status] || status)}</span>
+    </div>
     <p class="page-subtitle">${escapeHtml(scene.summary)}</p>
+    <div class="page-count">${normalized.length} public skills</div>
   </section>
   <section class="section">
     <div class="section-header">
@@ -282,18 +486,39 @@ function buildScenePage(scene, skills, scenesById) {
         <p class="section-kicker">Index</p>
         <h2 class="section-title">${normalized.length} public skills</h2>
       </div>
-      <div class="section-summary">Scene-first listing. Tool names are kept in skill metadata, not used as public top-level categories.</div>
+      <div class="section-summary">场景页回答三件事: 常见任务是什么、从哪里起手、现在有哪些公开 skill 可以直接用。</div>
     </div>
-    ${renderSkillRows(normalized)}
+    ${body}
   </section>
 </main>`
   });
 }
 
-function buildDetailPage(manifest, markdown, scenesById) {
+function buildDetailPage(manifest, markdown, scenesById, manifestsById) {
   const sceneTitle = scenesById.get(manifest.scene)?.title || manifest.scene;
   const tags = manifest.keywords || [];
   const prose = markdownToHtml(markdown);
+  const related = (manifest.related_ids || [])
+    .map((id) => manifestsById.get(id))
+    .filter(Boolean);
+  const dependencyLines = [`Scene: ${escapeHtml(sceneTitle)}`];
+
+  if (manifest.dependencies?.bins?.length) {
+    dependencyLines.push(`Bins: ${manifest.dependencies.bins.map((bin) => `<code>${escapeHtml(bin)}</code>`).join(" · ")}`);
+  }
+  if (manifest.dependencies?.services?.length) {
+    dependencyLines.push(
+      `Services: ${manifest.dependencies.services.map((service) => escapeHtml(service)).join(" · ")}`
+    );
+  }
+  if (manifest.dependencies?.stateful) {
+    dependencyLines.push("Stateful workflow");
+  } else {
+    dependencyLines.push("Stateless workflow");
+  }
+  if (!manifest.dependencies?.bins?.length && !manifest.dependencies?.services?.length) {
+    dependencyLines.push("No special runtime");
+  }
 
   return layout({
     title: `${manifest.title} · Skills`,
@@ -315,24 +540,61 @@ function buildDetailPage(manifest, markdown, scenesById) {
         <div><span class="skill-invoke">${escapeHtml(manifest.invoke)}</span></div>
       </div>
       <div class="side-card">
-        <p class="side-label">Use When</p>
-        <div class="skill-copy">${manifest.use_when.map((item) => `<div>${escapeHtml(item)}</div>`).join("")}</div>
-      </div>
-      <div class="side-card">
-        <p class="side-label">Avoid When</p>
-        <div class="skill-copy">${manifest.avoid_when.map((item) => `<div>${escapeHtml(item)}</div>`).join("")}</div>
+        <p class="side-label">Inputs</p>
+        ${renderDetailInputs(manifest.inputs)}
       </div>
       <div class="side-card">
         <p class="side-label">Returns</p>
-        <div class="skill-copy">${manifest.returns.map((item) => `<div>${escapeHtml(item)}</div>`).join("")}</div>
+        ${renderSideList((manifest.returns || []).map((item) => escapeHtml(item)))}
+      </div>
+      <div class="side-card">
+        <p class="side-label">Use When</p>
+        ${renderSideList((manifest.use_when || []).map((item) => escapeHtml(item)))}
+      </div>
+      <div class="side-card">
+        <p class="side-label">Avoid When</p>
+        ${renderSideList((manifest.avoid_when || []).map((item) => escapeHtml(item)))}
       </div>
       <div class="side-card">
         <p class="side-label">Keywords</p>
-        <div class="skill-tags">${tags.map((tag) => escapeHtml(tag)).join(" · ")}</div>
+        <div class="skill-tags">${tags.map((tag) => escapeHtml(tag)).join(" · ") || "—"}</div>
+      </div>
+      ${
+        dependencyLines.length
+          ? `<div class="side-card">
+        <p class="side-label">Dependencies</p>
+        ${renderSideList(dependencyLines)}
+      </div>`
+          : ""
+      }
+      ${
+        related.length
+          ? `<div class="side-card">
+        <p class="side-label">Related</p>
+        ${renderSideList(
+          related.map(
+            (item) => `<a href="/skills/${item.id}/index.html">${escapeHtml(item.title)}</a>`
+          )
+        )}
+      </div>`
+          : ""
+      }
+      <div class="side-card">
+        <p class="side-label">Contract</p>
+        ${renderSideList([
+          `Visibility: ${escapeHtml(manifest.visibility || "public")}`,
+          `Stability: ${escapeHtml(manifest.stability || "stable")}`,
+          `Updated: ${escapeHtml(manifest.updated_at)}`
+        ])}
       </div>
       <div class="side-card">
-        <p class="side-label">Manifest</p>
-        <div><a href="/data/skills/${manifest.id}.json">JSON</a></div>
+        <p class="side-label">Machine</p>
+        ${renderSideList([
+          `<a href="/data/skills/${manifest.id}.json">manifest.json</a>`,
+          `<a href="/data/scenes/${manifest.scene}.json">scene.json</a>`,
+          `<a href="/data/skills.ndjson">skills.ndjson</a>`,
+          `<a href="/llms-full.txt">llms-full.txt</a>`
+        ])}
       </div>
     </aside>
   </section>
@@ -340,15 +602,28 @@ function buildDetailPage(manifest, markdown, scenesById) {
   });
 }
 
-function buildLlmsTxt(registry, scenesById) {
+function buildLlmsTxt(registry, scenesById, sceneGuidesById) {
   const sceneLines = registry.scenes
     .map((scene) => {
       const full = scenesById.get(scene.id);
-      return `- ${full?.title || scene.id}: /scenes/${scene.id}/index.html`;
+      const guide = sceneGuidesById.get(scene.id);
+      const status = guide?.status || (scene.count > 0 ? "live" : "coming-next");
+      const starters = (guide?.starter_ids || []).join(", ") || "none yet";
+      return `- ${full?.title || scene.id} (${scene.id}) [${sceneStatusLabel[status] || status}, ${scene.count} skills]
+  paths: /scenes/${scene.id}/index.html | /data/scenes/${scene.id}.json
+  starters: ${starters}`;
     })
     .join("\n");
   const skillLines = registry.skills
-    .map((skill) => `- ${skill.title}: /skills/${skill.id}/index.html | /data/skills/${skill.id}.json`)
+    .map(
+      (skill) => `- ${skill.title} (${skill.id})
+  invoke: ${skill.invoke}
+  scene: ${skill.scene}
+  summary: ${skill.summary}
+  visibility: ${skill.visibility || "public"}
+  stability: ${skill.stability || "stable"}
+  paths: /skills/${skill.id}/index.html | /data/skills/${skill.id}.json`
+    )
     .join("\n");
 
   return `# Skills Registry
@@ -358,7 +633,11 @@ Public, scenario-first skill registry.
 ## Canonical machine-readable entry points
 
 - /data/registry.json
+- /data/scenes.json
+- /data/scene-guides.json
+- /data/skills.ndjson
 - /data/skills/<id>.json
+- /data/scenes/<scene>.json
 
 ## Scenes
 
@@ -370,53 +649,163 @@ ${skillLines}
 `;
 }
 
+function buildLlmsFullTxt(manifests, scenesById) {
+  return `# Skills Registry Full Contract
+
+${manifests
+  .map((manifest) => {
+    const sceneTitle = scenesById.get(manifest.scene)?.title || manifest.scene;
+    return `## ${manifest.title}
+id: ${manifest.id}
+invoke: ${manifest.invoke}
+scene: ${sceneTitle} (${manifest.scene})
+summary: ${manifest.summary}
+visibility: ${manifest.visibility || "public"}
+stability: ${manifest.stability || "stable"}
+stateful: ${manifest.dependencies?.stateful ? "true" : "false"}
+inputs: ${(manifest.inputs || [])
+      .map((input) => `${input.name}${input.required ? " (required)" : ""}: ${input.description}`)
+      .join(" | ") || "none"}
+returns: ${(manifest.returns || []).join(" | ") || "none"}
+bins: ${(manifest.dependencies?.bins || []).join(", ") || "none"}
+services: ${(manifest.dependencies?.services || []).join(", ") || "none"}
+json: /data/skills/${manifest.id}.json`;
+  })
+  .join("\n\n")}
+`;
+}
+
 function main() {
   ensureDir(distRoot);
   fs.copyFileSync(stylesSrc, path.join(distRoot, "site.css"));
+  if (fs.existsSync(faviconSrc)) {
+    fs.copyFileSync(faviconSrc, path.join(distRoot, "favicon.svg"));
+  }
 
   const scenesDoc = readJson(path.join(registryContentRoot, "scenes.json"));
   const registry = readJson(path.join(registryContentRoot, "registry.json"));
+  const sceneGuides = fs.existsSync(sceneGuidesPath) ? readJson(sceneGuidesPath) : { scenes: [] };
   const scenesById = new Map(scenesDoc.scenes.map((scene) => [scene.id, scene]));
+  const sceneGuidesById = new Map((sceneGuides.scenes || []).map((guide) => [guide.id, guide]));
 
   const manifests = registry.skills.map((skill) => {
     const manifestPath = path.join(registryRoot, skill.manifest_path);
     const skillMdPath = path.join(registryRoot, skill.skill_md_path);
+    const manifest = readJson(manifestPath);
     return {
-      ...readJson(manifestPath),
+      ...manifest,
+      sceneTitle: scenesById.get(manifest.scene)?.title || manifest.scene,
       _markdown: fs.readFileSync(skillMdPath, "utf8")
     };
   });
 
+  const manifestsById = new Map(manifests.map((manifest) => [manifest.id, manifest]));
+  const activeSceneEntries = collectSceneEntries(scenesDoc, manifests, sceneGuidesById, scenesById);
   const stats = {
     totalSkills: manifests.length,
-    totalScenes: scenesDoc.scenes.length,
-    publicCount: manifests.filter((item) => item.visibility === "public").length,
-    sanitizedCount: manifests.filter((item) => item.visibility === "sanitized").length
+    liveScenes: activeSceneEntries.filter((entry) => entry.skills.length > 0).length,
+    definedScenes: scenesDoc.scenes.length,
+    starterChains: (sceneGuides.scenes || []).reduce((sum, guide) => sum + (guide.chains?.length || 0), 0)
   };
 
-  writeFile(path.join(distRoot, "index.html"), buildHome({ registry, scenesById, manifests, stats }));
+  writeFile(
+    path.join(distRoot, "index.html"),
+    buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifestsById, stats })
+  );
 
   for (const scene of scenesDoc.scenes) {
     const sceneSkills = manifests.filter((manifest) => manifest.scene === scene.id);
     writeFile(
       path.join(distRoot, "scenes", scene.id, "index.html"),
-      buildScenePage(scene, sceneSkills, scenesById)
+      buildScenePage(scene, sceneSkills, scenesById, sceneGuidesById.get(scene.id) || null, manifestsById)
     );
   }
 
   for (const manifest of manifests) {
     writeFile(
       path.join(distRoot, "skills", manifest.id, "index.html"),
-      buildDetailPage(manifest, manifest._markdown, scenesById)
+      buildDetailPage(manifest, manifest._markdown, scenesById, manifestsById)
     );
     writeFile(
       path.join(distRoot, "data", "skills", `${manifest.id}.json`),
-      JSON.stringify(manifest, null, 2) + "\n"
+      JSON.stringify(stripRuntimeFields(manifest), null, 2) + "\n"
+    );
+  }
+
+  const sceneIndex = {
+    schema_version: "1.0.0",
+    generated_at: registry.generated_at,
+    scenes: scenesDoc.scenes.map((scene) => {
+      const sceneSkills = manifests.filter((manifest) => manifest.scene === scene.id);
+      const guide = sceneGuidesById.get(scene.id) || null;
+      return {
+        id: scene.id,
+        title: scene.title,
+          summary: scene.summary,
+          count: sceneSkills.length,
+          status: guide?.status || (sceneSkills.length ? "live" : "coming-next"),
+          detail_path: `/scenes/${scene.id}/index.html`,
+          data_path: `/data/scenes/${scene.id}.json`
+        };
+    })
+  };
+
+  writeFile(path.join(distRoot, "data", "scenes.json"), JSON.stringify(sceneIndex, null, 2) + "\n");
+  writeFile(path.join(distRoot, "data", "scene-guides.json"), JSON.stringify(sceneGuides, null, 2) + "\n");
+  writeFile(
+    path.join(distRoot, "data", "skills.ndjson"),
+    manifests.map((manifest) => JSON.stringify(stripRuntimeFields(manifest))).join("\n") + "\n"
+  );
+
+  for (const scene of scenesDoc.scenes) {
+    const sceneSkills = manifests
+      .filter((manifest) => manifest.scene === scene.id)
+      .sort((a, b) => skillSort(a, b, scenesById))
+      .map((manifest) => {
+        const publicManifest = stripRuntimeFields(manifest);
+        return {
+          id: publicManifest.id,
+          title: publicManifest.title,
+          summary: publicManifest.summary,
+          invoke: publicManifest.invoke,
+          keywords: publicManifest.keywords,
+          visibility: publicManifest.visibility || "public",
+          stability: publicManifest.stability || "stable",
+          updated_at: publicManifest.updated_at,
+          detail_path: `/skills/${publicManifest.id}/index.html`,
+          manifest_path: `/data/skills/${publicManifest.id}.json`
+        };
+      });
+    const guide = sceneGuidesById.get(scene.id) || null;
+
+    writeFile(
+      path.join(distRoot, "data", "scenes", `${scene.id}.json`),
+      JSON.stringify(
+        {
+          schema_version: "1.0.0",
+          id: scene.id,
+          title: scene.title,
+          summary: scene.summary,
+          total_skills: sceneSkills.length,
+          status: guide?.status || "live",
+          guide: guide
+            ? {
+                core_tasks: guide.core_tasks || [],
+                starter_ids: guide.starter_ids || [],
+                chains: guide.chains || []
+              }
+            : null,
+          skills: sceneSkills
+        },
+        null,
+        2
+      ) + "\n"
     );
   }
 
   writeFile(path.join(distRoot, "data", "registry.json"), JSON.stringify(registry, null, 2) + "\n");
-  writeFile(path.join(distRoot, "llms.txt"), buildLlmsTxt(registry, scenesById));
+  writeFile(path.join(distRoot, "llms.txt"), buildLlmsTxt(registry, scenesById, sceneGuidesById));
+  writeFile(path.join(distRoot, "llms-full.txt"), buildLlmsFullTxt(manifests, scenesById));
   console.log(`Built skills-site into ${distRoot}`);
 }
 
