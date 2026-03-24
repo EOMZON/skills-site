@@ -1,13 +1,15 @@
 import fs from "fs";
 import path from "path";
+import { execSync } from "child_process";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const root = path.resolve(__dirname, "..");
-const registryRoot = process.env.SKILLS_REGISTRY_ROOT
-  ? path.resolve(process.env.SKILLS_REGISTRY_ROOT)
-  : path.resolve(root, "..", "skills-registry");
+const localRegistryRoot = path.resolve(root, "..", "skills-registry");
+const remoteRegistryUrl = process.env.SKILLS_REGISTRY_GIT_URL || "https://github.com/EOMZON/skills-registry.git";
+const vendoredRegistryRoot = path.join(root, ".cache", "skills-registry");
+const registryRoot = resolveRegistryRoot();
 const registryContentRoot = path.join(registryRoot, "content");
 const distRoot = path.join(root, "dist");
 const stylesSrc = path.join(root, "src", "site.css");
@@ -31,6 +33,33 @@ function ensureDir(dir) {
 function writeFile(filePath, content) {
   ensureDir(path.dirname(filePath));
   fs.writeFileSync(filePath, content);
+}
+
+function resolveRegistryRoot() {
+  if (process.env.SKILLS_REGISTRY_ROOT) {
+    const explicitRoot = path.resolve(process.env.SKILLS_REGISTRY_ROOT);
+    if (!fs.existsSync(explicitRoot)) {
+      throw new Error(`SKILLS_REGISTRY_ROOT does not exist: ${explicitRoot}`);
+    }
+    return explicitRoot;
+  }
+
+  if (fs.existsSync(localRegistryRoot)) {
+    return localRegistryRoot;
+  }
+
+  ensureDir(path.dirname(vendoredRegistryRoot));
+  if (!fs.existsSync(vendoredRegistryRoot)) {
+    execSync(`git clone --depth=1 ${remoteRegistryUrl} "${vendoredRegistryRoot}"`, {
+      stdio: "inherit"
+    });
+  } else {
+    execSync(`git -C "${vendoredRegistryRoot}" pull --ff-only`, {
+      stdio: "inherit"
+    });
+  }
+
+  return vendoredRegistryRoot;
 }
 
 function escapeHtml(text) {
