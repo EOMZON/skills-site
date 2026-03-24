@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="用 Playwright 验证本地 Web 应用行为，适合交互验收、回归检查、截图取证与 UI 调试。" />
+    <title>Webapp Testing · Skills</title>
+    <link rel="canonical" href="/skills/webapp-testing/index.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/site.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <div class="topbar-inner">
+          <a class="brand" href="/index.html"><strong>Skills</strong><span>Registry</span></a>
+          <nav class="nav">
+            <a href="/index.html">Home</a>
+            <a href="/data/registry.json">registry.json</a>
+            <a href="/data/scenes.json">scenes.json</a>
+            <a href="/llms.txt">llms.txt</a>
+          </nav>
+        </div>
+      </header>
+      <main class="page">
+  <section class="page-head">
+    <p class="meta-kicker">网站与前端</p>
+    <h1 class="page-title">Webapp Testing</h1>
+    <p class="page-subtitle">用 Playwright 验证本地 Web 应用行为，适合交互验收、回归检查、截图取证与 UI 调试。</p>
+  </section>
+  <section class="detail-grid">
+    <article class="detail-main prose">
+      <h1>Webapp Testing</h1>
+<p>在真实浏览器里验证本地 Web 应用，而不是只看源码或猜 UI 状态。</p>
+<h2>Use When</h2>
+<ul>
+<li>需要检查交互流程、按钮行为、表单提交或页面跳转</li>
+<li>需要抓截图、日志或重现问题路径</li>
+<li>需要对上线前页面做最后一轮浏览器验收</li>
+</ul>
+<h2>Input</h2>
+<ul>
+<li><code>app_url_or_path</code>：本地地址、页面入口或启动方式</li>
+<li><code>verification_goal</code>：关键流程、问题现象或验收标准</li>
+</ul>
+<h2>Returns</h2>
+<ul>
+<li>浏览器内的验证结果</li>
+<li>截图、日志和问题证据</li>
+<li>可复跑的 Playwright 操作步骤</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>公开版保留 Playwright 工作方式与黑盒脚本约定</li>
+<li>本地登录态、私有测试环境和个人浏览器状态不包含在公开版内</li>
+</ul>
+    </article>
+    <aside class="detail-side">
+      <div class="side-card">
+        <p class="side-label">Invoke</p>
+        <div><span class="skill-invoke">$webapp-testing</span></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Inputs</p>
+        <div class="side-list"><div><code>app_url_or_path</code> 待验证的本地地址、页面入口或运行方式 (required)</div><div><code>verification_goal</code> 要检查的关键流程、问题现象或验收标准</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Returns</p>
+        <div class="side-list"><div>浏览器内的验证结论</div><div>截图、日志或复现证据</div><div>可复跑的自动化步骤</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Use When</p>
+        <div class="side-list"><div>需要验证本地网页或前端交互</div><div>需要复现 bug、截图取证或查看浏览器日志</div><div>需要在真实浏览器里走一遍关键流程</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Avoid When</p>
+        <div class="side-list"><div>只是阅读静态源码而不需要运行页面</div><div>不是 Web 界面相关问题</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Keywords</p>
+        <div class="skill-tags">playwright · testing · webapp · ui · browser · screenshot · frontend</div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Dependencies</p>
+        <div class="side-list"><div>Scene: 网站与前端</div><div>Bins: <code>playwright</code> · <code>python3</code></div><div>Stateful workflow</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Related</p>
+        <div class="side-list"><div><a href="/skills/frontend-design/index.html">Frontend Design</a></div><div><a href="/skills/vercel-deploy/index.html">Vercel Deploy</a></div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Contract</p>
+        <div class="side-list"><div>Visibility: public</div><div>Stability: stable</div><div>Updated: 2026-03-24</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Machine</p>
+        <div class="side-list"><div><a href="/data/skills/webapp-testing.json">manifest.json</a></div><div><a href="/data/scenes/website-frontend.json">scene.json</a></div><div><a href="/data/skills.ndjson">skills.ndjson</a></div><div><a href="/llms-full.txt">llms-full.txt</a></div></div>
+      </div>
+    </aside>
+  </section>
+</main>
+      <footer class="footer">
+        <div>Skills Site · scenario-first registry renderer · source of truth: <code>skills-registry</code></div>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "id": "design-visual",
+  "title": "设计与视觉",
+  "summary": "适合风格、视觉表达、版式与图像产出。",
+  "total_skills": 2,
+  "status": "live",
+  "guide": {
+    "core_tasks": [
+      "为产物确定一套清晰的视觉主题",
+      "把图像生成过程整理成可复查的报告",
+      "把视觉方向沉淀成可复用的呈现层"
+    ],
+    "starter_ids": [
+      "theme-factory",
+      "img-handdrawn-run-report"
+    ],
+    "chains": [
+      [
+        "theme-factory",
+        "img-handdrawn-run-report",
+        "frontend-design"
+      ]
+    ]
+  },
+  "skills": [
+    {
+      "id": "img-handdrawn-run-report",
+      "title": "Handdrawn Run Report",
+      "summary": "把图片生成结果、Prompt 与参数整理成可打印的 HTML 运行报告，适合归档、复现与展示。",
+      "invoke": "$img-handdrawn-run-report",
+      "keywords": [
+        "image",
+        "report",
+        "html",
+        "prompt",
+        "reproducibility",
+        "archive",
+        "nano-banana"
+      ],
+      "visibility": "public",
+      "stability": "stable",
+      "updated_at": "2026-03-24",
+      "detail_path": "/skills/img-handdrawn-run-report/index.html",
+      "manifest_path": "/data/skills/img-handdrawn-run-report.json"
+    },
+    {
+      "id": "theme-factory",
+      "title": "Theme Factory",
+      "summary": "为 HTML、文档、幻灯或报告选择并应用成体系的视觉主题，而不是零散改样式。",
+      "invoke": "$theme-factory",
+      "keywords": [
+        "theme",
+        "visual-system",
+        "slides",
+        "html",
+        "color",
+        "font",
+        "artifact"
+      ],
+      "visibility": "public",
+      "stability": "stable",
+      "updated_at": "2026-03-24",
+      "detail_path": "/skills/theme-factory/index.html",
+      "manifest_path": "/data/skills/theme-factory.json"
+    }
+  ]
+}

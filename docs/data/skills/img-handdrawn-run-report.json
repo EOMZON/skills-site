@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "id": "img-handdrawn-run-report",
+  "title": "Handdrawn Run Report",
+  "summary": "把图片生成结果、Prompt 与参数整理成可打印的 HTML 运行报告，适合归档、复现与展示。",
+  "scene": "design-visual",
+  "subscenes": [
+    "image-report",
+    "run-archive",
+    "prompt-traceability"
+  ],
+  "keywords": [
+    "image",
+    "report",
+    "html",
+    "prompt",
+    "reproducibility",
+    "archive",
+    "nano-banana"
+  ],
+  "invoke": "$img-handdrawn-run-report",
+  "use_when": [
+    "已经有输出图片和 meta JSON",
+    "需要把生成结果整理成可复查、可分享的 HTML 报告",
+    "需要保存 prompt、参数和复现命令"
+  ],
+  "avoid_when": [
+    "还没有任何图片输出或运行元数据",
+    "只需要单张图片本身，不需要归档或复现"
+  ],
+  "inputs": [
+    {
+      "name": "meta_json",
+      "required": true,
+      "description": "包含 prompt、模型、尺寸和时间等信息的运行元数据"
+    },
+    {
+      "name": "image_files",
+      "required": true,
+      "description": "对应的输出图片路径"
+    }
+  ],
+  "returns": [
+    "可打印的 HTML 运行报告",
+    "嵌入式图片预览与 prompt 记录",
+    "复现命令和审计信息"
+  ],
+  "dependencies": {
+    "bins": [
+      "node"
+    ],
+    "services": [],
+    "stateful": false
+  },
+  "related_ids": [
+    "theme-factory",
+    "frontend-design"
+  ],
+  "stability": "stable",
+  "visibility": "public",
+  "updated_at": "2026-03-24"
+}

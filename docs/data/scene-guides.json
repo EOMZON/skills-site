@@ -1,0 +1,137 @@
+{
+  "schema_version": "1.0.0",
+  "scenes": [
+    {
+      "id": "research-decision",
+      "status": "live",
+      "core_tasks": [
+        "快速拆解一个复杂问题",
+        "比较不同路径并形成判断",
+        "把结论转成下一步行动"
+      ],
+      "starter_ids": [
+        "best-minds"
+      ],
+      "chains": [
+        [
+          "best-minds",
+          "doc-coauthoring"
+        ]
+      ]
+    },
+    {
+      "id": "writing-docs",
+      "status": "live",
+      "core_tasks": [
+        "把散乱背景整理成结构化文档",
+        "围绕受众和目标搭建文档骨架",
+        "在发出去前做一次读者视角检查"
+      ],
+      "starter_ids": [
+        "doc-coauthoring"
+      ],
+      "chains": [
+        [
+          "best-minds",
+          "doc-coauthoring",
+          "theme-factory"
+        ]
+      ]
+    },
+    {
+      "id": "design-visual",
+      "status": "live",
+      "core_tasks": [
+        "为产物确定一套清晰的视觉主题",
+        "把图像生成过程整理成可复查的报告",
+        "把视觉方向沉淀成可复用的呈现层"
+      ],
+      "starter_ids": [
+        "theme-factory",
+        "img-handdrawn-run-report"
+      ],
+      "chains": [
+        [
+          "theme-factory",
+          "img-handdrawn-run-report",
+          "frontend-design"
+        ]
+      ]
+    },
+    {
+      "id": "website-frontend",
+      "status": "live",
+      "core_tasks": [
+        "明确页面风格、结构和叙事顺序",
+        "在真实浏览器里验证交互",
+        "把页面稳定上线"
+      ],
+      "starter_ids": [
+        "frontend-design",
+        "webapp-testing",
+        "vercel-deploy"
+      ],
+      "chains": [
+        [
+          "frontend-design",
+          "webapp-testing",
+          "vercel-deploy"
+        ]
+      ]
+    },
+    {
+      "id": "coding-engineering",
+      "status": "live",
+      "core_tasks": [
+        "设计对 agent 友好的工程接口",
+        "把外部服务组织成 MCP server",
+        "补测试与评估让接口更可用"
+      ],
+      "starter_ids": [
+        "mcp-builder"
+      ],
+      "chains": [
+        [
+          "best-minds",
+          "mcp-builder",
+          "webapp-testing"
+        ]
+      ]
+    },
+    {
+      "id": "automation-shipping",
+      "status": "live",
+      "core_tasks": [
+        "把工程发布成稳定入口",
+        "补域名、分析和上线后的检查",
+        "把交付从一次性动作变成长期可复用流程"
+      ],
+      "starter_ids": [
+        "vercel-deploy"
+      ],
+      "chains": [
+        [
+          "frontend-design",
+          "webapp-testing",
+          "vercel-deploy"
+        ]
+      ]
+    },
+    {
+      "id": "product-project",
+      "status": "coming-next",
+      "core_tasks": [
+        "梳理项目路线和优先级",
+        "组织 backlog、里程碑和推进节奏",
+        "把模糊需求压成可执行的问题"
+      ],
+      "starter_ids": [],
+      "chains": [
+        [
+          "best-minds",
+          "doc-coauthoring"
+        ]
+      ]
+    }
+  ]
+}

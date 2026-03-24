@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "id": "frontend-design",
+  "title": "Frontend Design",
+  "summary": "高质量网页、界面和前端实现 skill，强调风格判断与可上线交付。",
+  "scene": "website-frontend",
+  "subscenes": [
+    "landing-page",
+    "dashboard",
+    "editorial-site"
+  ],
+  "keywords": [
+    "website",
+    "frontend",
+    "ui",
+    "landing-page",
+    "editorial",
+    "dashboard"
+  ],
+  "invoke": "$frontend-design",
+  "use_when": [
+    "需要设计并实现网页或前端界面",
+    "希望页面有清晰的风格方向而不是通用模板感"
+  ],
+  "avoid_when": [
+    "只是讨论抽象设计概念",
+    "不需要任何实际前端交付"
+  ],
+  "inputs": [
+    {
+      "name": "goal",
+      "required": true,
+      "description": "要做什么页面、组件或交互"
+    },
+    {
+      "name": "constraints",
+      "required": false,
+      "description": "技术栈、风格、设备适配、交付范围等约束"
+    }
+  ],
+  "returns": [
+    "设计方向",
+    "页面或组件实现",
+    "验收与优化建议"
+  ],
+  "dependencies": {
+    "bins": [
+      "node"
+    ],
+    "services": [],
+    "stateful": false
+  },
+  "related_ids": [
+    "web-artifacts-builder",
+    "webapp-testing",
+    "vercel-deploy"
+  ],
+  "stability": "core",
+  "visibility": "public",
+  "updated_at": "2026-03-24",
+  "license": "Complete terms in upstream license"
+}

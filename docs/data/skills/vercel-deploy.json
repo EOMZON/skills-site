@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "id": "vercel-deploy",
+  "title": "Vercel Deploy",
+  "summary": "将现有工程发布到 Vercel，并处理分析与域名配置。",
+  "scene": "automation-shipping",
+  "subscenes": [
+    "static-site",
+    "custom-domain"
+  ],
+  "keywords": [
+    "deploy",
+    "vercel",
+    "domain",
+    "analytics",
+    "shipping"
+  ],
+  "invoke": "$vercel-deploy",
+  "use_when": [
+    "需要把工程发布到 Vercel",
+    "需要配置域名、分析或上线检查"
+  ],
+  "avoid_when": [
+    "项目还没有可发布内容",
+    "只是需要本地预览而不是上线"
+  ],
+  "inputs": [
+    {
+      "name": "project_path",
+      "required": true,
+      "description": "待发布项目路径或仓库根目录"
+    },
+    {
+      "name": "domain",
+      "required": false,
+      "description": "可选自定义域名或子域名"
+    }
+  ],
+  "returns": [
+    "部署结果",
+    "线上访问地址",
+    "必要的后续配置建议"
+  ],
+  "dependencies": {
+    "bins": [
+      "vercel",
+      "git"
+    ],
+    "services": [
+      "vercel"
+    ],
+    "stateful": true
+  },
+  "related_ids": [
+    "vercel-ship",
+    "github-repo-bootstrap",
+    "webapp-testing"
+  ],
+  "stability": "stable",
+  "visibility": "public",
+  "updated_at": "2026-03-24",
+  "license": "TBD"
+}

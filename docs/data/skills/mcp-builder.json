@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "id": "mcp-builder",
+  "title": "MCP Builder",
+  "summary": "构建高质量 MCP server 的工程 guide，覆盖工具设计、协议理解、实现、测试与评估。",
+  "scene": "coding-engineering",
+  "subscenes": [
+    "mcp",
+    "api-integration",
+    "server-design"
+  ],
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "server",
+    "tools",
+    "typescript",
+    "python",
+    "integration"
+  ],
+  "invoke": "$mcp-builder",
+  "use_when": [
+    "要把外部 API 或服务接入 LLM 或 agent",
+    "要设计一组可发现、可组合的 MCP tools",
+    "要给 MCP server 补测试和评估"
+  ],
+  "avoid_when": [
+    "只是调用现成 MCP server，不需要自己实现",
+    "问题和协议设计或 API 集成无关"
+  ],
+  "inputs": [
+    {
+      "name": "target_service",
+      "required": true,
+      "description": "要接入的 API、服务或数据源"
+    },
+    {
+      "name": "stack_constraints",
+      "required": false,
+      "description": "语言偏好、运行环境、鉴权限制或部署方式"
+    }
+  ],
+  "returns": [
+    "MCP server 设计原则与实现路线",
+    "tool schema 与错误处理建议",
+    "测试和 evaluation 清单"
+  ],
+  "dependencies": {
+    "bins": [
+      "node",
+      "python3"
+    ],
+    "services": [],
+    "stateful": false
+  },
+  "related_ids": [
+    "best-minds",
+    "webapp-testing"
+  ],
+  "stability": "stable",
+  "visibility": "public",
+  "updated_at": "2026-03-24",
+  "license": "Complete terms in LICENSE.txt"
+}

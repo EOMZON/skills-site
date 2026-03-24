@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "id": "best-minds",
+  "title": "Best Minds",
+  "summary": "世界级专家模拟与研究决策 skill，用于调研、思路梳理和路线规划。",
+  "scene": "research-decision",
+  "subscenes": [
+    "market-research",
+    "decision-support"
+  ],
+  "keywords": [
+    "research",
+    "decision",
+    "analysis",
+    "experts",
+    "best-minds",
+    "调研"
+  ],
+  "invoke": "$best-minds",
+  "use_when": [
+    "需要快速理解一个复杂问题",
+    "需要从顶级专家视角组织分析和建议"
+  ],
+  "avoid_when": [
+    "只需要简单事实而不需要分析",
+    "没有任何问题边界和目标"
+  ],
+  "inputs": [
+    {
+      "name": "question",
+      "required": true,
+      "description": "要研究或回答的核心问题"
+    },
+    {
+      "name": "scope",
+      "required": false,
+      "description": "范围、对象、时间、地域、排除项"
+    }
+  ],
+  "returns": [
+    "结论摘要",
+    "关键发现与证据",
+    "建议与下一步验证"
+  ],
+  "dependencies": {
+    "bins": [],
+    "services": [],
+    "stateful": false
+  },
+  "related_ids": [
+    "planning-with-files",
+    "best-minds-board"
+  ],
+  "stability": "core",
+  "visibility": "public",
+  "updated_at": "2026-03-24",
+  "license": "TBD"
+}

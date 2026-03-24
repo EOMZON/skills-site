@@ -1,0 +1,208 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-03-24T05:27:21.966Z",
+  "total_skills": 8,
+  "scenes": [
+    {
+      "id": "research-decision",
+      "title": "调研与决策",
+      "count": 1
+    },
+    {
+      "id": "writing-docs",
+      "title": "写作与文档",
+      "count": 1
+    },
+    {
+      "id": "design-visual",
+      "title": "设计与视觉",
+      "count": 2
+    },
+    {
+      "id": "website-frontend",
+      "title": "网站与前端",
+      "count": 2
+    },
+    {
+      "id": "coding-engineering",
+      "title": "编程与工程",
+      "count": 1
+    },
+    {
+      "id": "automation-shipping",
+      "title": "自动化与交付",
+      "count": 1
+    },
+    {
+      "id": "product-project",
+      "title": "项目与产品推进",
+      "count": 0
+    }
+  ],
+  "skills": [
+    {
+      "id": "best-minds",
+      "title": "Best Minds",
+      "summary": "世界级专家模拟与研究决策 skill，用于调研、思路梳理和路线规划。",
+      "scene": "research-decision",
+      "keywords": [
+        "research",
+        "decision",
+        "analysis",
+        "experts",
+        "best-minds",
+        "调研"
+      ],
+      "invoke": "$best-minds",
+      "visibility": "public",
+      "stability": "core",
+      "updated_at": "2026-03-24",
+      "manifest_path": "content/skills/best-minds/manifest.json",
+      "skill_md_path": "content/skills/best-minds/SKILL.md"
+    },
+    {
+      "id": "doc-coauthoring",
+      "title": "Doc Co-Authoring",
+      "summary": "结构化文档共创 workflow，适合提案、Spec、PRD、决策文档与长文写作。",
+      "scene": "writing-docs",
+      "keywords": [
+        "writing",
+        "docs",
+        "proposal",
+        "spec",
+        "decision-doc",
+        "coauthoring",
+        "文档"
+      ],
+      "invoke": "$doc-coauthoring",
+      "visibility": "public",
+      "stability": "stable",
+      "updated_at": "2026-03-24",
+      "manifest_path": "content/skills/doc-coauthoring/manifest.json",
+      "skill_md_path": "content/skills/doc-coauthoring/SKILL.md"
+    },
+    {
+      "id": "frontend-design",
+      "title": "Frontend Design",
+      "summary": "高质量网页、界面和前端实现 skill，强调风格判断与可上线交付。",
+      "scene": "website-frontend",
+      "keywords": [
+        "website",
+        "frontend",
+        "ui",
+        "landing-page",
+        "editorial",
+        "dashboard"
+      ],
+      "invoke": "$frontend-design",
+      "visibility": "public",
+      "stability": "core",
+      "updated_at": "2026-03-24",
+      "manifest_path": "content/skills/frontend-design/manifest.json",
+      "skill_md_path": "content/skills/frontend-design/SKILL.md"
+    },
+    {
+      "id": "img-handdrawn-run-report",
+      "title": "Handdrawn Run Report",
+      "summary": "把图片生成结果、Prompt 与参数整理成可打印的 HTML 运行报告，适合归档、复现与展示。",
+      "scene": "design-visual",
+      "keywords": [
+        "image",
+        "report",
+        "html",
+        "prompt",
+        "reproducibility",
+        "archive",
+        "nano-banana"
+      ],
+      "invoke": "$img-handdrawn-run-report",
+      "visibility": "public",
+      "stability": "stable",
+      "updated_at": "2026-03-24",
+      "manifest_path": "content/skills/img-handdrawn-run-report/manifest.json",
+      "skill_md_path": "content/skills/img-handdrawn-run-report/SKILL.md"
+    },
+    {
+      "id": "mcp-builder",
+      "title": "MCP Builder",
+      "summary": "构建高质量 MCP server 的工程 guide，覆盖工具设计、协议理解、实现、测试与评估。",
+      "scene": "coding-engineering",
+      "keywords": [
+        "mcp",
+        "model-context-protocol",
+        "server",
+        "tools",
+        "typescript",
+        "python",
+        "integration"
+      ],
+      "invoke": "$mcp-builder",
+      "visibility": "public",
+      "stability": "stable",
+      "updated_at": "2026-03-24",
+      "manifest_path": "content/skills/mcp-builder/manifest.json",
+      "skill_md_path": "content/skills/mcp-builder/SKILL.md"
+    },
+    {
+      "id": "theme-factory",
+      "title": "Theme Factory",
+      "summary": "为 HTML、文档、幻灯或报告选择并应用成体系的视觉主题，而不是零散改样式。",
+      "scene": "design-visual",
+      "keywords": [
+        "theme",
+        "visual-system",
+        "slides",
+        "html",
+        "color",
+        "font",
+        "artifact"
+      ],
+      "invoke": "$theme-factory",
+      "visibility": "public",
+      "stability": "stable",
+      "updated_at": "2026-03-24",
+      "manifest_path": "content/skills/theme-factory/manifest.json",
+      "skill_md_path": "content/skills/theme-factory/SKILL.md"
+    },
+    {
+      "id": "vercel-deploy",
+      "title": "Vercel Deploy",
+      "summary": "将现有工程发布到 Vercel，并处理分析与域名配置。",
+      "scene": "automation-shipping",
+      "keywords": [
+        "deploy",
+        "vercel",
+        "domain",
+        "analytics",
+        "shipping"
+      ],
+      "invoke": "$vercel-deploy",
+      "visibility": "public",
+      "stability": "stable",
+      "updated_at": "2026-03-24",
+      "manifest_path": "content/skills/vercel-deploy/manifest.json",
+      "skill_md_path": "content/skills/vercel-deploy/SKILL.md"
+    },
+    {
+      "id": "webapp-testing",
+      "title": "Webapp Testing",
+      "summary": "用 Playwright 验证本地 Web 应用行为，适合交互验收、回归检查、截图取证与 UI 调试。",
+      "scene": "website-frontend",
+      "keywords": [
+        "playwright",
+        "testing",
+        "webapp",
+        "ui",
+        "browser",
+        "screenshot",
+        "frontend"
+      ],
+      "invoke": "$webapp-testing",
+      "visibility": "public",
+      "stability": "stable",
+      "updated_at": "2026-03-24",
+      "manifest_path": "content/skills/webapp-testing/manifest.json",
+      "skill_md_path": "content/skills/webapp-testing/SKILL.md"
+    }
+  ]
+}

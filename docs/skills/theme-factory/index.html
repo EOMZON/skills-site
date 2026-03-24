@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="为 HTML、文档、幻灯或报告选择并应用成体系的视觉主题，而不是零散改样式。" />
+    <title>Theme Factory · Skills</title>
+    <link rel="canonical" href="/skills/theme-factory/index.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/site.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <div class="topbar-inner">
+          <a class="brand" href="/index.html"><strong>Skills</strong><span>Registry</span></a>
+          <nav class="nav">
+            <a href="/index.html">Home</a>
+            <a href="/data/registry.json">registry.json</a>
+            <a href="/data/scenes.json">scenes.json</a>
+            <a href="/llms.txt">llms.txt</a>
+          </nav>
+        </div>
+      </header>
+      <main class="page">
+  <section class="page-head">
+    <p class="meta-kicker">设计与视觉</p>
+    <h1 class="page-title">Theme Factory</h1>
+    <p class="page-subtitle">为 HTML、文档、幻灯或报告选择并应用成体系的视觉主题，而不是零散改样式。</p>
+  </section>
+  <section class="detail-grid">
+    <article class="detail-main prose">
+      <h1>Theme Factory</h1>
+<p>给一个已有产物补上一套完整主题，而不是只改几个颜色或字体。</p>
+<h2>Use When</h2>
+<ul>
+<li>需要为 HTML、文档、幻灯或报告选一套统一主题</li>
+<li>需要快速比较不同视觉方向</li>
+<li>需要把主题 tokens 应用到真实交付物里</li>
+</ul>
+<h2>Input</h2>
+<ul>
+<li><code>artifact_type</code>：要处理的产物类型</li>
+<li><code>style_goal</code>：想要的气质、受众与使用场景</li>
+</ul>
+<h2>Returns</h2>
+<ul>
+<li>可选主题方向或自定义主题方案</li>
+<li>颜色、字体与视觉 tokens</li>
+<li>应用到成品时的样式执行建议</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>公开版保留主题选择和应用逻辑</li>
+<li>私有素材库、团队默认模板和个人路径约定已移除</li>
+</ul>
+    </article>
+    <aside class="detail-side">
+      <div class="side-card">
+        <p class="side-label">Invoke</p>
+        <div><span class="skill-invoke">$theme-factory</span></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Inputs</p>
+        <div class="side-list"><div><code>artifact_type</code> 要应用主题的产物类型，例如 HTML、文档或幻灯 (required)</div><div><code>style_goal</code> 希望呈现的气质、受众和使用场景</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Returns</p>
+        <div class="side-list"><div>主题 shortlist 或自定义方向</div><div>颜色与字体 tokens</div><div>应用到产物时的统一样式建议</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Use When</p>
+        <div class="side-list"><div>已有文档或页面，需要统一视觉主题</div><div>要快速比较不同风格方向</div><div>需要把主题 tokens 落到实际产物里</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Avoid When</p>
+        <div class="side-list"><div>还没确定内容结构或信息架构</div><div>只想讨论抽象审美而不落到产物上</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Keywords</p>
+        <div class="skill-tags">theme · visual-system · slides · html · color · font · artifact</div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Dependencies</p>
+        <div class="side-list"><div>Scene: 设计与视觉</div><div>Stateless workflow</div><div>No special runtime</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Related</p>
+        <div class="side-list"><div><a href="/skills/frontend-design/index.html">Frontend Design</a></div><div><a href="/skills/img-handdrawn-run-report/index.html">Handdrawn Run Report</a></div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Contract</p>
+        <div class="side-list"><div>Visibility: public</div><div>Stability: stable</div><div>Updated: 2026-03-24</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Machine</p>
+        <div class="side-list"><div><a href="/data/skills/theme-factory.json">manifest.json</a></div><div><a href="/data/scenes/design-visual.json">scene.json</a></div><div><a href="/data/skills.ndjson">skills.ndjson</a></div><div><a href="/llms-full.txt">llms-full.txt</a></div></div>
+      </div>
+    </aside>
+  </section>
+</main>
+      <footer class="footer">
+        <div>Skills Site · scenario-first registry renderer · source of truth: <code>skills-registry</code></div>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="世界级专家模拟与研究决策 skill，用于调研、思路梳理和路线规划。" />
+    <title>Best Minds · Skills</title>
+    <link rel="canonical" href="/skills/best-minds/index.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/site.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <div class="topbar-inner">
+          <a class="brand" href="/index.html"><strong>Skills</strong><span>Registry</span></a>
+          <nav class="nav">
+            <a href="/index.html">Home</a>
+            <a href="/data/registry.json">registry.json</a>
+            <a href="/data/scenes.json">scenes.json</a>
+            <a href="/llms.txt">llms.txt</a>
+          </nav>
+        </div>
+      </header>
+      <main class="page">
+  <section class="page-head">
+    <p class="meta-kicker">调研与决策</p>
+    <h1 class="page-title">Best Minds</h1>
+    <p class="page-subtitle">世界级专家模拟与研究决策 skill，用于调研、思路梳理和路线规划。</p>
+  </section>
+  <section class="detail-grid">
+    <article class="detail-main prose">
+      <h1>Best Minds</h1>
+<p>默认思维 skill：适用于调研、思路梳理、路线规划与决策。</p>
+<h2>Use When</h2>
+<ul>
+<li>你面对的是复杂问题，不知道该从哪里拆解</li>
+<li>你想借用“世界上谁最懂这个问题”的视角来组织研究</li>
+</ul>
+<h2>Input</h2>
+<ul>
+<li><code>question</code>：核心问题</li>
+<li><code>scope</code>：范围、对象、时间、限制</li>
+</ul>
+<h2>Returns</h2>
+<ul>
+<li>结论摘要</li>
+<li>发现与证据</li>
+<li>建议与下一步验证</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>公开版只保留方法论与调用契约</li>
+<li>具体私有工作流、内部 board/deploy 逻辑应留在私有作者源</li>
+</ul>
+    </article>
+    <aside class="detail-side">
+      <div class="side-card">
+        <p class="side-label">Invoke</p>
+        <div><span class="skill-invoke">$best-minds</span></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Inputs</p>
+        <div class="side-list"><div><code>question</code> 要研究或回答的核心问题 (required)</div><div><code>scope</code> 范围、对象、时间、地域、排除项</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Returns</p>
+        <div class="side-list"><div>结论摘要</div><div>关键发现与证据</div><div>建议与下一步验证</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Use When</p>
+        <div class="side-list"><div>需要快速理解一个复杂问题</div><div>需要从顶级专家视角组织分析和建议</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Avoid When</p>
+        <div class="side-list"><div>只需要简单事实而不需要分析</div><div>没有任何问题边界和目标</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Keywords</p>
+        <div class="skill-tags">research · decision · analysis · experts · best-minds · 调研</div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Dependencies</p>
+        <div class="side-list"><div>Scene: 调研与决策</div><div>Stateless workflow</div><div>No special runtime</div></div>
+      </div>
+      
+      <div class="side-card">
+        <p class="side-label">Contract</p>
+        <div class="side-list"><div>Visibility: public</div><div>Stability: core</div><div>Updated: 2026-03-24</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Machine</p>
+        <div class="side-list"><div><a href="/data/skills/best-minds.json">manifest.json</a></div><div><a href="/data/scenes/research-decision.json">scene.json</a></div><div><a href="/data/skills.ndjson">skills.ndjson</a></div><div><a href="/llms-full.txt">llms-full.txt</a></div></div>
+      </div>
+    </aside>
+  </section>
+</main>
+      <footer class="footer">
+        <div>Skills Site · scenario-first registry renderer · source of truth: <code>skills-registry</code></div>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "id": "doc-coauthoring",
+  "title": "Doc Co-Authoring",
+  "summary": "结构化文档共创 workflow，适合提案、Spec、PRD、决策文档与长文写作。",
+  "scene": "writing-docs",
+  "subscenes": [
+    "proposal",
+    "spec",
+    "decision-doc",
+    "rfc"
+  ],
+  "keywords": [
+    "writing",
+    "docs",
+    "proposal",
+    "spec",
+    "decision-doc",
+    "coauthoring",
+    "文档"
+  ],
+  "invoke": "$doc-coauthoring",
+  "use_when": [
+    "要写结构化文档，但上下文还很散",
+    "希望边梳理边成稿，而不是一次性吐整篇",
+    "想在发出去前做一次读者视角检查"
+  ],
+  "avoid_when": [
+    "只需要润色一小段文本",
+    "还没有明确的文档目标或受众"
+  ],
+  "inputs": [
+    {
+      "name": "doc_goal",
+      "required": true,
+      "description": "文档类型、目标和主要读者"
+    },
+    {
+      "name": "source_context",
+      "required": false,
+      "description": "背景信息、模板、已有草稿、会议记录或相关链接"
+    }
+  ],
+  "returns": [
+    "文档结构与章节 scaffold",
+    "逐段共创与修订建议",
+    "读者视角测试与缺口清单"
+  ],
+  "dependencies": {
+    "bins": [],
+    "services": [],
+    "stateful": false
+  },
+  "related_ids": [
+    "best-minds",
+    "theme-factory"
+  ],
+  "stability": "stable",
+  "visibility": "public",
+  "updated_at": "2026-03-24",
+  "license": "Complete terms in LICENSE.txt"
+}

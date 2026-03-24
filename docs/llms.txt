@@ -1,0 +1,95 @@
+# Skills Registry
+
+Public, scenario-first skill registry.
+
+## Canonical machine-readable entry points
+
+- /data/registry.json
+- /data/scenes.json
+- /data/scene-guides.json
+- /data/skills.ndjson
+- /data/skills/<id>.json
+- /data/scenes/<scene>.json
+
+## Scenes
+
+- 调研与决策 (research-decision) [Live, 1 skills]
+  paths: /scenes/research-decision/index.html | /data/scenes/research-decision.json
+  starters: best-minds
+- 写作与文档 (writing-docs) [Live, 1 skills]
+  paths: /scenes/writing-docs/index.html | /data/scenes/writing-docs.json
+  starters: doc-coauthoring
+- 设计与视觉 (design-visual) [Live, 2 skills]
+  paths: /scenes/design-visual/index.html | /data/scenes/design-visual.json
+  starters: theme-factory, img-handdrawn-run-report
+- 网站与前端 (website-frontend) [Live, 2 skills]
+  paths: /scenes/website-frontend/index.html | /data/scenes/website-frontend.json
+  starters: frontend-design, webapp-testing, vercel-deploy
+- 编程与工程 (coding-engineering) [Live, 1 skills]
+  paths: /scenes/coding-engineering/index.html | /data/scenes/coding-engineering.json
+  starters: mcp-builder
+- 自动化与交付 (automation-shipping) [Live, 1 skills]
+  paths: /scenes/automation-shipping/index.html | /data/scenes/automation-shipping.json
+  starters: vercel-deploy
+- 项目与产品推进 (product-project) [Coming Next, 0 skills]
+  paths: /scenes/product-project/index.html | /data/scenes/product-project.json
+  starters: none yet
+
+## Current skills
+
+- Best Minds (best-minds)
+  invoke: $best-minds
+  scene: research-decision
+  summary: 世界级专家模拟与研究决策 skill，用于调研、思路梳理和路线规划。
+  visibility: public
+  stability: core
+  paths: /skills/best-minds/index.html | /data/skills/best-minds.json
+- Doc Co-Authoring (doc-coauthoring)
+  invoke: $doc-coauthoring
+  scene: writing-docs
+  summary: 结构化文档共创 workflow，适合提案、Spec、PRD、决策文档与长文写作。
+  visibility: public
+  stability: stable
+  paths: /skills/doc-coauthoring/index.html | /data/skills/doc-coauthoring.json
+- Frontend Design (frontend-design)
+  invoke: $frontend-design
+  scene: website-frontend
+  summary: 高质量网页、界面和前端实现 skill，强调风格判断与可上线交付。
+  visibility: public
+  stability: core
+  paths: /skills/frontend-design/index.html | /data/skills/frontend-design.json
+- Handdrawn Run Report (img-handdrawn-run-report)
+  invoke: $img-handdrawn-run-report
+  scene: design-visual
+  summary: 把图片生成结果、Prompt 与参数整理成可打印的 HTML 运行报告，适合归档、复现与展示。
+  visibility: public
+  stability: stable
+  paths: /skills/img-handdrawn-run-report/index.html | /data/skills/img-handdrawn-run-report.json
+- MCP Builder (mcp-builder)
+  invoke: $mcp-builder
+  scene: coding-engineering
+  summary: 构建高质量 MCP server 的工程 guide，覆盖工具设计、协议理解、实现、测试与评估。
+  visibility: public
+  stability: stable
+  paths: /skills/mcp-builder/index.html | /data/skills/mcp-builder.json
+- Theme Factory (theme-factory)
+  invoke: $theme-factory
+  scene: design-visual
+  summary: 为 HTML、文档、幻灯或报告选择并应用成体系的视觉主题，而不是零散改样式。
+  visibility: public
+  stability: stable
+  paths: /skills/theme-factory/index.html | /data/skills/theme-factory.json
+- Vercel Deploy (vercel-deploy)
+  invoke: $vercel-deploy
+  scene: automation-shipping
+  summary: 将现有工程发布到 Vercel，并处理分析与域名配置。
+  visibility: public
+  stability: stable
+  paths: /skills/vercel-deploy/index.html | /data/skills/vercel-deploy.json
+- Webapp Testing (webapp-testing)
+  invoke: $webapp-testing
+  scene: website-frontend
+  summary: 用 Playwright 验证本地 Web 应用行为，适合交互验收、回归检查、截图取证与 UI 调试。
+  visibility: public
+  stability: stable
+  paths: /skills/webapp-testing/index.html | /data/skills/webapp-testing.json

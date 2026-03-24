@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "id": "research-decision",
+  "title": "调研与决策",
+  "summary": "适合调研、分析、判断、路线选择与证据组织。",
+  "total_skills": 1,
+  "status": "live",
+  "guide": {
+    "core_tasks": [
+      "快速拆解一个复杂问题",
+      "比较不同路径并形成判断",
+      "把结论转成下一步行动"
+    ],
+    "starter_ids": [
+      "best-minds"
+    ],
+    "chains": [
+      [
+        "best-minds",
+        "doc-coauthoring"
+      ]
+    ]
+  },
+  "skills": [
+    {
+      "id": "best-minds",
+      "title": "Best Minds",
+      "summary": "世界级专家模拟与研究决策 skill，用于调研、思路梳理和路线规划。",
+      "invoke": "$best-minds",
+      "keywords": [
+        "research",
+        "decision",
+        "analysis",
+        "experts",
+        "best-minds",
+        "调研"
+      ],
+      "visibility": "public",
+      "stability": "core",
+      "updated_at": "2026-03-24",
+      "detail_path": "/skills/best-minds/index.html",
+      "manifest_path": "/data/skills/best-minds.json"
+    }
+  ]
+}

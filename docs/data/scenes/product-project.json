@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "id": "product-project",
+  "title": "项目与产品推进",
+  "summary": "适合项目推进、产品规划、Backlog、Roadmap 与流程协同。",
+  "total_skills": 0,
+  "status": "coming-next",
+  "guide": {
+    "core_tasks": [
+      "梳理项目路线和优先级",
+      "组织 backlog、里程碑和推进节奏",
+      "把模糊需求压成可执行的问题"
+    ],
+    "starter_ids": [],
+    "chains": [
+      [
+        "best-minds",
+        "doc-coauthoring"
+      ]
+    ]
+  },
+  "skills": []
+}

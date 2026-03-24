@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="把图片生成结果、Prompt 与参数整理成可打印的 HTML 运行报告，适合归档、复现与展示。" />
+    <title>Handdrawn Run Report · Skills</title>
+    <link rel="canonical" href="/skills/img-handdrawn-run-report/index.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/site.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <div class="topbar-inner">
+          <a class="brand" href="/index.html"><strong>Skills</strong><span>Registry</span></a>
+          <nav class="nav">
+            <a href="/index.html">Home</a>
+            <a href="/data/registry.json">registry.json</a>
+            <a href="/data/scenes.json">scenes.json</a>
+            <a href="/llms.txt">llms.txt</a>
+          </nav>
+        </div>
+      </header>
+      <main class="page">
+  <section class="page-head">
+    <p class="meta-kicker">设计与视觉</p>
+    <h1 class="page-title">Handdrawn Run Report</h1>
+    <p class="page-subtitle">把图片生成结果、Prompt 与参数整理成可打印的 HTML 运行报告，适合归档、复现与展示。</p>
+  </section>
+  <section class="detail-grid">
+    <article class="detail-main prose">
+      <h1>Handdrawn Run Report</h1>
+<p>把图像生成的一次运行整理成可打印、可复查、可分享的 HTML 报告。</p>
+<h2>Use When</h2>
+<ul>
+<li>已经有输出图片和对应的 meta JSON</li>
+<li>需要保留 prompt、参数、结果和复现命令</li>
+<li>需要把一次运行沉淀成更适合展示或审计的页面</li>
+</ul>
+<h2>Input</h2>
+<ul>
+<li><code>meta_json</code>：包含 prompt、模型、尺寸和时间的运行元数据</li>
+<li><code>image_files</code>：输出图片文件</li>
+</ul>
+<h2>Returns</h2>
+<ul>
+<li>单文件 HTML 报告</li>
+<li>图片预览、prompt 与参数记录</li>
+<li>复现和审计所需的上下文</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>公开版只保留通用生成报告的流程</li>
+<li>本地项目路径和私有素材位置已抽象成通用输入</li>
+</ul>
+    </article>
+    <aside class="detail-side">
+      <div class="side-card">
+        <p class="side-label">Invoke</p>
+        <div><span class="skill-invoke">$img-handdrawn-run-report</span></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Inputs</p>
+        <div class="side-list"><div><code>meta_json</code> 包含 prompt、模型、尺寸和时间等信息的运行元数据 (required)</div><div><code>image_files</code> 对应的输出图片路径 (required)</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Returns</p>
+        <div class="side-list"><div>可打印的 HTML 运行报告</div><div>嵌入式图片预览与 prompt 记录</div><div>复现命令和审计信息</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Use When</p>
+        <div class="side-list"><div>已经有输出图片和 meta JSON</div><div>需要把生成结果整理成可复查、可分享的 HTML 报告</div><div>需要保存 prompt、参数和复现命令</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Avoid When</p>
+        <div class="side-list"><div>还没有任何图片输出或运行元数据</div><div>只需要单张图片本身，不需要归档或复现</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Keywords</p>
+        <div class="skill-tags">image · report · html · prompt · reproducibility · archive · nano-banana</div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Dependencies</p>
+        <div class="side-list"><div>Scene: 设计与视觉</div><div>Bins: <code>node</code></div><div>Stateless workflow</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Related</p>
+        <div class="side-list"><div><a href="/skills/theme-factory/index.html">Theme Factory</a></div><div><a href="/skills/frontend-design/index.html">Frontend Design</a></div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Contract</p>
+        <div class="side-list"><div>Visibility: public</div><div>Stability: stable</div><div>Updated: 2026-03-24</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Machine</p>
+        <div class="side-list"><div><a href="/data/skills/img-handdrawn-run-report.json">manifest.json</a></div><div><a href="/data/scenes/design-visual.json">scene.json</a></div><div><a href="/data/skills.ndjson">skills.ndjson</a></div><div><a href="/llms-full.txt">llms-full.txt</a></div></div>
+      </div>
+    </aside>
+  </section>
+</main>
+      <footer class="footer">
+        <div>Skills Site · scenario-first registry renderer · source of truth: <code>skills-registry</code></div>
+      </footer>
+    </div>
+  </body>
+</html>

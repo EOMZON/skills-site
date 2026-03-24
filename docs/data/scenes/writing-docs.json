@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0.0",
+  "id": "writing-docs",
+  "title": "写作与文档",
+  "summary": "适合提案、Spec、PRD、长文与结构化写作。",
+  "total_skills": 1,
+  "status": "live",
+  "guide": {
+    "core_tasks": [
+      "把散乱背景整理成结构化文档",
+      "围绕受众和目标搭建文档骨架",
+      "在发出去前做一次读者视角检查"
+    ],
+    "starter_ids": [
+      "doc-coauthoring"
+    ],
+    "chains": [
+      [
+        "best-minds",
+        "doc-coauthoring",
+        "theme-factory"
+      ]
+    ]
+  },
+  "skills": [
+    {
+      "id": "doc-coauthoring",
+      "title": "Doc Co-Authoring",
+      "summary": "结构化文档共创 workflow，适合提案、Spec、PRD、决策文档与长文写作。",
+      "invoke": "$doc-coauthoring",
+      "keywords": [
+        "writing",
+        "docs",
+        "proposal",
+        "spec",
+        "decision-doc",
+        "coauthoring",
+        "文档"
+      ],
+      "visibility": "public",
+      "stability": "stable",
+      "updated_at": "2026-03-24",
+      "detail_path": "/skills/doc-coauthoring/index.html",
+      "manifest_path": "/data/skills/doc-coauthoring.json"
+    }
+  ]
+}

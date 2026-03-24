@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "id": "automation-shipping",
+  "title": "自动化与交付",
+  "summary": "适合部署、发布、同步、自动化管道与持续交付。",
+  "total_skills": 1,
+  "status": "live",
+  "guide": {
+    "core_tasks": [
+      "把工程发布成稳定入口",
+      "补域名、分析和上线后的检查",
+      "把交付从一次性动作变成长期可复用流程"
+    ],
+    "starter_ids": [
+      "vercel-deploy"
+    ],
+    "chains": [
+      [
+        "frontend-design",
+        "webapp-testing",
+        "vercel-deploy"
+      ]
+    ]
+  },
+  "skills": [
+    {
+      "id": "vercel-deploy",
+      "title": "Vercel Deploy",
+      "summary": "将现有工程发布到 Vercel，并处理分析与域名配置。",
+      "invoke": "$vercel-deploy",
+      "keywords": [
+        "deploy",
+        "vercel",
+        "domain",
+        "analytics",
+        "shipping"
+      ],
+      "visibility": "public",
+      "stability": "stable",
+      "updated_at": "2026-03-24",
+      "detail_path": "/skills/vercel-deploy/index.html",
+      "manifest_path": "/data/skills/vercel-deploy.json"
+    }
+  ]
+}

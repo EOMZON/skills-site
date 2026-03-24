@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "id": "website-frontend",
+  "title": "网站与前端",
+  "summary": "适合网页、交互界面、前端实现与上线前页面工作。",
+  "total_skills": 2,
+  "status": "live",
+  "guide": {
+    "core_tasks": [
+      "明确页面风格、结构和叙事顺序",
+      "在真实浏览器里验证交互",
+      "把页面稳定上线"
+    ],
+    "starter_ids": [
+      "frontend-design",
+      "webapp-testing",
+      "vercel-deploy"
+    ],
+    "chains": [
+      [
+        "frontend-design",
+        "webapp-testing",
+        "vercel-deploy"
+      ]
+    ]
+  },
+  "skills": [
+    {
+      "id": "frontend-design",
+      "title": "Frontend Design",
+      "summary": "高质量网页、界面和前端实现 skill，强调风格判断与可上线交付。",
+      "invoke": "$frontend-design",
+      "keywords": [
+        "website",
+        "frontend",
+        "ui",
+        "landing-page",
+        "editorial",
+        "dashboard"
+      ],
+      "visibility": "public",
+      "stability": "core",
+      "updated_at": "2026-03-24",
+      "detail_path": "/skills/frontend-design/index.html",
+      "manifest_path": "/data/skills/frontend-design.json"
+    },
+    {
+      "id": "webapp-testing",
+      "title": "Webapp Testing",
+      "summary": "用 Playwright 验证本地 Web 应用行为，适合交互验收、回归检查、截图取证与 UI 调试。",
+      "invoke": "$webapp-testing",
+      "keywords": [
+        "playwright",
+        "testing",
+        "webapp",
+        "ui",
+        "browser",
+        "screenshot",
+        "frontend"
+      ],
+      "visibility": "public",
+      "stability": "stable",
+      "updated_at": "2026-03-24",
+      "detail_path": "/skills/webapp-testing/index.html",
+      "manifest_path": "/data/skills/webapp-testing.json"
+    }
+  ]
+}

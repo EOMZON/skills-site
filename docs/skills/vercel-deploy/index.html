@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="将现有工程发布到 Vercel，并处理分析与域名配置。" />
+    <title>Vercel Deploy · Skills</title>
+    <link rel="canonical" href="/skills/vercel-deploy/index.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/site.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <div class="topbar-inner">
+          <a class="brand" href="/index.html"><strong>Skills</strong><span>Registry</span></a>
+          <nav class="nav">
+            <a href="/index.html">Home</a>
+            <a href="/data/registry.json">registry.json</a>
+            <a href="/data/scenes.json">scenes.json</a>
+            <a href="/llms.txt">llms.txt</a>
+          </nav>
+        </div>
+      </header>
+      <main class="page">
+  <section class="page-head">
+    <p class="meta-kicker">自动化与交付</p>
+    <h1 class="page-title">Vercel Deploy</h1>
+    <p class="page-subtitle">将现有工程发布到 Vercel，并处理分析与域名配置。</p>
+  </section>
+  <section class="detail-grid">
+    <article class="detail-main prose">
+      <h1>Vercel Deploy</h1>
+<p>Deploy an existing project to Vercel and handle the final shipping checks.</p>
+<h2>Use When</h2>
+<ul>
+<li>你已经有可发布工程</li>
+<li>你需要上线到 Vercel</li>
+<li>你可能还需要域名或分析配置</li>
+</ul>
+<h2>Input</h2>
+<ul>
+<li><code>project_path</code>：项目路径</li>
+<li><code>domain</code>：可选域名</li>
+</ul>
+<h2>Returns</h2>
+<ul>
+<li>部署状态</li>
+<li>线上地址</li>
+<li>后续配置建议</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>公开版不包含任何私有 token 读取路径</li>
+<li>具体凭据管理应由使用者自己配置</li>
+</ul>
+    </article>
+    <aside class="detail-side">
+      <div class="side-card">
+        <p class="side-label">Invoke</p>
+        <div><span class="skill-invoke">$vercel-deploy</span></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Inputs</p>
+        <div class="side-list"><div><code>project_path</code> 待发布项目路径或仓库根目录 (required)</div><div><code>domain</code> 可选自定义域名或子域名</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Returns</p>
+        <div class="side-list"><div>部署结果</div><div>线上访问地址</div><div>必要的后续配置建议</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Use When</p>
+        <div class="side-list"><div>需要把工程发布到 Vercel</div><div>需要配置域名、分析或上线检查</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Avoid When</p>
+        <div class="side-list"><div>项目还没有可发布内容</div><div>只是需要本地预览而不是上线</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Keywords</p>
+        <div class="skill-tags">deploy · vercel · domain · analytics · shipping</div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Dependencies</p>
+        <div class="side-list"><div>Scene: 自动化与交付</div><div>Bins: <code>vercel</code> · <code>git</code></div><div>Services: vercel</div><div>Stateful workflow</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Related</p>
+        <div class="side-list"><div><a href="/skills/webapp-testing/index.html">Webapp Testing</a></div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Contract</p>
+        <div class="side-list"><div>Visibility: public</div><div>Stability: stable</div><div>Updated: 2026-03-24</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Machine</p>
+        <div class="side-list"><div><a href="/data/skills/vercel-deploy.json">manifest.json</a></div><div><a href="/data/scenes/automation-shipping.json">scene.json</a></div><div><a href="/data/skills.ndjson">skills.ndjson</a></div><div><a href="/llms-full.txt">llms-full.txt</a></div></div>
+      </div>
+    </aside>
+  </section>
+</main>
+      <footer class="footer">
+        <div>Skills Site · scenario-first registry renderer · source of truth: <code>skills-registry</code></div>
+      </footer>
+    </div>
+  </body>
+</html>

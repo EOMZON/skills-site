@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "id": "theme-factory",
+  "title": "Theme Factory",
+  "summary": "为 HTML、文档、幻灯或报告选择并应用成体系的视觉主题，而不是零散改样式。",
+  "scene": "design-visual",
+  "subscenes": [
+    "theme-selection",
+    "artifact-styling",
+    "presentation-design"
+  ],
+  "keywords": [
+    "theme",
+    "visual-system",
+    "slides",
+    "html",
+    "color",
+    "font",
+    "artifact"
+  ],
+  "invoke": "$theme-factory",
+  "use_when": [
+    "已有文档或页面，需要统一视觉主题",
+    "要快速比较不同风格方向",
+    "需要把主题 tokens 落到实际产物里"
+  ],
+  "avoid_when": [
+    "还没确定内容结构或信息架构",
+    "只想讨论抽象审美而不落到产物上"
+  ],
+  "inputs": [
+    {
+      "name": "artifact_type",
+      "required": true,
+      "description": "要应用主题的产物类型，例如 HTML、文档或幻灯"
+    },
+    {
+      "name": "style_goal",
+      "required": false,
+      "description": "希望呈现的气质、受众和使用场景"
+    }
+  ],
+  "returns": [
+    "主题 shortlist 或自定义方向",
+    "颜色与字体 tokens",
+    "应用到产物时的统一样式建议"
+  ],
+  "dependencies": {
+    "bins": [],
+    "services": [],
+    "stateful": false
+  },
+  "related_ids": [
+    "frontend-design",
+    "img-handdrawn-run-report"
+  ],
+  "stability": "stable",
+  "visibility": "public",
+  "updated_at": "2026-03-24",
+  "license": "Complete terms in LICENSE.txt"
+}

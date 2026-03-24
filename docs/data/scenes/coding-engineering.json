@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0.0",
+  "id": "coding-engineering",
+  "title": "编程与工程",
+  "summary": "适合代码实现、调试、架构、工程质量与开发工作流。",
+  "total_skills": 1,
+  "status": "live",
+  "guide": {
+    "core_tasks": [
+      "设计对 agent 友好的工程接口",
+      "把外部服务组织成 MCP server",
+      "补测试与评估让接口更可用"
+    ],
+    "starter_ids": [
+      "mcp-builder"
+    ],
+    "chains": [
+      [
+        "best-minds",
+        "mcp-builder",
+        "webapp-testing"
+      ]
+    ]
+  },
+  "skills": [
+    {
+      "id": "mcp-builder",
+      "title": "MCP Builder",
+      "summary": "构建高质量 MCP server 的工程 guide，覆盖工具设计、协议理解、实现、测试与评估。",
+      "invoke": "$mcp-builder",
+      "keywords": [
+        "mcp",
+        "model-context-protocol",
+        "server",
+        "tools",
+        "typescript",
+        "python",
+        "integration"
+      ],
+      "visibility": "public",
+      "stability": "stable",
+      "updated_at": "2026-03-24",
+      "detail_path": "/skills/mcp-builder/index.html",
+      "manifest_path": "/data/skills/mcp-builder.json"
+    }
+  ]
+}

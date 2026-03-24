@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="结构化文档共创 workflow，适合提案、Spec、PRD、决策文档与长文写作。" />
+    <title>Doc Co-Authoring · Skills</title>
+    <link rel="canonical" href="/skills/doc-coauthoring/index.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/site.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <div class="topbar-inner">
+          <a class="brand" href="/index.html"><strong>Skills</strong><span>Registry</span></a>
+          <nav class="nav">
+            <a href="/index.html">Home</a>
+            <a href="/data/registry.json">registry.json</a>
+            <a href="/data/scenes.json">scenes.json</a>
+            <a href="/llms.txt">llms.txt</a>
+          </nav>
+        </div>
+      </header>
+      <main class="page">
+  <section class="page-head">
+    <p class="meta-kicker">写作与文档</p>
+    <h1 class="page-title">Doc Co-Authoring</h1>
+    <p class="page-subtitle">结构化文档共创 workflow，适合提案、Spec、PRD、决策文档与长文写作。</p>
+  </section>
+  <section class="detail-grid">
+    <article class="detail-main prose">
+      <h1>Doc Co-Authoring</h1>
+<p>通过分阶段 workflow 把“信息很散、但必须写清楚”的文档任务推进成稿。</p>
+<h2>Use When</h2>
+<ul>
+<li>需要写提案、Spec、PRD、决策文档或较长的说明文</li>
+<li>需要先把上下文讲清，再逐段打磨</li>
+<li>希望在交付前用读者视角检查理解成本</li>
+</ul>
+<h2>Input</h2>
+<ul>
+<li><code>doc_goal</code>：文档类型、目标和主要读者</li>
+<li><code>source_context</code>：背景、模板、素材、已有草稿、会议记录</li>
+</ul>
+<h2>Returns</h2>
+<ul>
+<li>文档骨架与章节顺序</li>
+<li>每一段的共创与修订建议</li>
+<li>发布前的缺口检查和读者测试提示</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>公开版保留 workflow 和调用契约</li>
+<li>私有连接器、内部文档系统和团队上下文不在公开版内</li>
+</ul>
+    </article>
+    <aside class="detail-side">
+      <div class="side-card">
+        <p class="side-label">Invoke</p>
+        <div><span class="skill-invoke">$doc-coauthoring</span></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Inputs</p>
+        <div class="side-list"><div><code>doc_goal</code> 文档类型、目标和主要读者 (required)</div><div><code>source_context</code> 背景信息、模板、已有草稿、会议记录或相关链接</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Returns</p>
+        <div class="side-list"><div>文档结构与章节 scaffold</div><div>逐段共创与修订建议</div><div>读者视角测试与缺口清单</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Use When</p>
+        <div class="side-list"><div>要写结构化文档，但上下文还很散</div><div>希望边梳理边成稿，而不是一次性吐整篇</div><div>想在发出去前做一次读者视角检查</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Avoid When</p>
+        <div class="side-list"><div>只需要润色一小段文本</div><div>还没有明确的文档目标或受众</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Keywords</p>
+        <div class="skill-tags">writing · docs · proposal · spec · decision-doc · coauthoring · 文档</div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Dependencies</p>
+        <div class="side-list"><div>Scene: 写作与文档</div><div>Stateless workflow</div><div>No special runtime</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Related</p>
+        <div class="side-list"><div><a href="/skills/best-minds/index.html">Best Minds</a></div><div><a href="/skills/theme-factory/index.html">Theme Factory</a></div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Contract</p>
+        <div class="side-list"><div>Visibility: public</div><div>Stability: stable</div><div>Updated: 2026-03-24</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Machine</p>
+        <div class="side-list"><div><a href="/data/skills/doc-coauthoring.json">manifest.json</a></div><div><a href="/data/scenes/writing-docs.json">scene.json</a></div><div><a href="/data/skills.ndjson">skills.ndjson</a></div><div><a href="/llms-full.txt">llms-full.txt</a></div></div>
+      </div>
+    </aside>
+  </section>
+</main>
+      <footer class="footer">
+        <div>Skills Site · scenario-first registry renderer · source of truth: <code>skills-registry</code></div>
+      </footer>
+    </div>
+  </body>
+</html>
