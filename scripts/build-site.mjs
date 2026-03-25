@@ -159,12 +159,21 @@ function githubBlobUrl(repoUrl, filePath) {
   return `${normalizeRepoUrl(repoUrl)}/blob/${registryPublicRepoBranch}/${filePath.replace(/^\/+/, "")}`;
 }
 
+function isExternalHref(href) {
+  return /^https?:\/\//i.test(String(href || ""));
+}
+
+function anchorAttrs(href) {
+  const extra = isExternalHref(href) ? ` target="_blank" rel="noreferrer noopener"` : "";
+  return `href="${escapeHtml(href)}"${extra}`;
+}
+
 function preferredSkillHref(skill) {
   return skill.source_skill_md_url || skill.source_tree_url || `/skills/${skill.id}/index.html`;
 }
 
 function sourceLink(label, href) {
-  return `<a class="mono-link" href="${escapeHtml(href)}">${escapeHtml(label)}</a>`;
+  return `<a class="mono-link" ${anchorAttrs(href)}>${escapeHtml(label)}</a>`;
 }
 
 function countByVisibility(items) {
@@ -207,13 +216,13 @@ function layout({ title, description, body, canonicalPath }) {
         <div class="topbar-inner">
           <a class="brand" href="/index.html"><strong>Skills</strong><span>Registry</span></a>
           <nav class="nav">
-            ${navLinks.map((link) => `<a href="${escapeHtml(link.href)}">${escapeHtml(link.label)}</a>`).join("")}
+            ${navLinks.map((link) => `<a ${anchorAttrs(link.href)}>${escapeHtml(link.label)}</a>`).join("")}
           </nav>
         </div>
       </header>
       ${body}
       <footer class="footer">
-        <div>Skills Site · discovery layer only · full public docs and updates live on <a href="${escapeHtml(registryPublicRepoUrl)}">GitHub</a> · follow <a href="${escapeHtml(authorGithubUrl)}">@EOMZON</a></div>
+        <div>Skills Site · discovery layer only · full public docs and updates live on <a ${anchorAttrs(registryPublicRepoUrl)}>GitHub</a> · follow <a ${anchorAttrs(authorGithubUrl)}>@EOMZON</a></div>
       </footer>
     </div>
   </body>
@@ -229,7 +238,7 @@ ${sceneEntries
     const starter = (guide?.starter_ids || [])
       .map((id) => skills.find((skill) => skill.id === id))
       .filter(Boolean)
-      .map((item) => `<a href="${escapeHtml(preferredSkillHref(item))}">${escapeHtml(item.title)}</a>`)
+      .map((item) => `<a ${anchorAttrs(preferredSkillHref(item))}>${escapeHtml(item.title)}</a>`)
       .join(" · ");
     const taskItems = (guide?.core_tasks || [scene.summary]).slice(0, 3);
 return `<article class="scene-entry">
@@ -270,7 +279,7 @@ ${skills
   .map(
     (skill) => `<div class="skill-row">
   <div>
-    <h3 class="skill-name"><a href="${escapeHtml(preferredSkillHref(skill))}">${escapeHtml(skill.title)}</a></h3>
+    <h3 class="skill-name"><a ${anchorAttrs(preferredSkillHref(skill))}>${escapeHtml(skill.title)}</a></h3>
     <div class="skill-meta">${escapeHtml((skill.use_when && skill.use_when[0]) || skill.sceneTitle || "")}</div>
     <div class="skill-contract">${escapeHtml(skill.visibility || "public")} · ${escapeHtml(skill.stability || "stable")} · ${escapeHtml(skill.invoke)}</div>
   </div>
@@ -288,7 +297,7 @@ function renderEndpointList(links) {
   return `<div class="endpoint-list">
 ${links
   .map(
-    (link) => `<a class="endpoint-card" href="${escapeHtml(link.href)}">
+    (link) => `<a class="endpoint-card" ${anchorAttrs(link.href)}>
   <div class="endpoint-name">${escapeHtml(link.name)}</div>
   <div class="endpoint-desc">${escapeHtml(link.description)}</div>
 </a>`
@@ -302,14 +311,14 @@ function renderGuideBlock(guide, manifestsById) {
   const starter = (guide.starter_ids || [])
     .map((id) => manifestsById.get(id))
     .filter(Boolean)
-    .map((item) => `<a href="${escapeHtml(preferredSkillHref(item))}">${escapeHtml(item.title)}</a>`)
+    .map((item) => `<a ${anchorAttrs(preferredSkillHref(item))}>${escapeHtml(item.title)}</a>`)
     .join(" · ");
   const chains = (guide.chains || [])
     .map((chain) =>
       chain
         .map((id) => manifestsById.get(id))
         .filter(Boolean)
-        .map((item) => `<a href="${escapeHtml(preferredSkillHref(item))}">${escapeHtml(item.title)}</a>`)
+        .map((item) => `<a ${anchorAttrs(preferredSkillHref(item))}>${escapeHtml(item.title)}</a>`)
         .join(" → ")
     )
     .filter(Boolean);
@@ -428,9 +437,9 @@ function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifest
       <h1 class="hero-title">先按场景找，再去 GitHub 取用。</h1>
       <p class="hero-copy">这个站点只回答三件事: 你要完成什么、先点哪个 skill、值不值得继续深看。完整公开说明、更新历史和后续 star，都应该回到 GitHub 源头。</p>
       <div class="hero-actions">
-        <a class="hero-link" href="${escapeHtml(registryPublicRepoUrl)}">Open GitHub</a>
-        <a class="hero-link" href="${escapeHtml(`${registryPublicRepoUrl}/tree/${registryPublicRepoBranch}/content/skills`)}">Browse Skills</a>
-        <a class="hero-link" href="${escapeHtml(authorGithubUrl)}">Follow @EOMZON</a>
+        <a class="hero-link" ${anchorAttrs(registryPublicRepoUrl)}>Open GitHub</a>
+        <a class="hero-link" ${anchorAttrs(`${registryPublicRepoUrl}/tree/${registryPublicRepoBranch}/content/skills`)}>Browse Skills</a>
+        <a class="hero-link" ${anchorAttrs(authorGithubUrl)}>Follow @EOMZON</a>
       </div>
     </div>
     <div class="hero-notes">
@@ -609,7 +618,7 @@ function buildDetailPage(manifest, scenesById, manifestsById) {
         <p class="side-label">Related</p>
         ${renderSideList(
           related.map(
-            (item) => `<a href="${escapeHtml(preferredSkillHref(item))}">${escapeHtml(item.title)}</a>`
+            (item) => `<a ${anchorAttrs(preferredSkillHref(item))}>${escapeHtml(item.title)}</a>`
           )
         )}
       </div>`
