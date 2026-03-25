@@ -44,8 +44,9 @@
       "source_repo": "https://github.com/EOMZON/skills-registry",
       "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/best-minds",
       "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/best-minds/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/best-minds/SKILL.md",
       "detail_path": "/skills/best-minds/index.html",
-      "manifest_path": "/data/skills/best-minds.json"
+      "site_data_path": "/data/skills/best-minds.json"
     }
   ]
 }

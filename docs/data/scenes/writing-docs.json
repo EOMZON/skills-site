@@ -46,8 +46,9 @@
       "source_repo": "https://github.com/EOMZON/skills-registry",
       "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/doc-coauthoring",
       "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/doc-coauthoring/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/doc-coauthoring/SKILL.md",
       "detail_path": "/skills/doc-coauthoring/index.html",
-      "manifest_path": "/data/skills/doc-coauthoring.json"
+      "site_data_path": "/data/skills/doc-coauthoring.json"
     }
   ]
 }

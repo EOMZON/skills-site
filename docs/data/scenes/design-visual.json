@@ -53,8 +53,9 @@
       "source_repo": "https://github.com/EOMZON/skills-registry",
       "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/img-handdrawn-run-report",
       "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/img-handdrawn-run-report/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/img-handdrawn-run-report/SKILL.md",
       "detail_path": "/skills/img-handdrawn-run-report/index.html",
-      "manifest_path": "/data/skills/img-handdrawn-run-report.json"
+      "site_data_path": "/data/skills/img-handdrawn-run-report.json"
     },
     {
       "id": "theme-factory",
@@ -76,8 +77,9 @@
       "source_repo": "https://github.com/EOMZON/skills-registry",
       "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/theme-factory",
       "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/theme-factory/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/theme-factory/SKILL.md",
       "detail_path": "/skills/theme-factory/index.html",
-      "manifest_path": "/data/skills/theme-factory.json"
+      "site_data_path": "/data/skills/theme-factory.json"
     },
     {
       "id": "zon-minimal-editorial",
@@ -99,8 +101,9 @@
       "source_repo": "https://github.com/EOMZON/skills-registry",
       "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/zon-minimal-editorial",
       "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/zon-minimal-editorial/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/zon-minimal-editorial/SKILL.md",
       "detail_path": "/skills/zon-minimal-editorial/index.html",
-      "manifest_path": "/data/skills/zon-minimal-editorial.json"
+      "site_data_path": "/data/skills/zon-minimal-editorial.json"
     }
   ]
 }

@@ -20,6 +20,7 @@ const registryPublicRepoUrl = normalizeRepoUrl(
 );
 const registryPublicRepoBranch = process.env.SKILLS_REGISTRY_PUBLIC_REPO_BRANCH || "main";
 const siteOrigin = normalizeRepoUrl(process.env.SKILLS_SITE_ORIGIN || "https://skills.zondev.top");
+const authorGithubUrl = process.env.SKILLS_AUTHOR_GITHUB_URL || "https://github.com/EOMZON";
 const sceneStatusLabel = {
   live: "Live",
   "coming-next": "Coming Next",
@@ -187,7 +188,7 @@ function layout({ title, description, body, canonicalPath }) {
     { label: "Home", href: "/index.html" },
     { label: "GitHub Repo", href: registryPublicRepoUrl },
     { label: "Browse Skills", href: `${registryPublicRepoUrl}/tree/${registryPublicRepoBranch}/content/skills` },
-    { label: "Scenes", href: "/index.html#scenes" }
+    { label: "Follow @EOMZON", href: authorGithubUrl }
   ];
   return `<!doctype html>
 <html lang="zh-CN">
@@ -212,7 +213,7 @@ function layout({ title, description, body, canonicalPath }) {
       </header>
       ${body}
       <footer class="footer">
-        <div>Skills Site · discovery layer only · full public docs and updates live on <a href="${escapeHtml(registryPublicRepoUrl)}">GitHub</a></div>
+        <div>Skills Site · discovery layer only · full public docs and updates live on <a href="${escapeHtml(registryPublicRepoUrl)}">GitHub</a> · follow <a href="${escapeHtml(authorGithubUrl)}">@EOMZON</a></div>
       </footer>
     </div>
   </body>
@@ -405,14 +406,14 @@ function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifest
       description: "直接浏览所有公开 skill 文件夹，而不是下载站内镜像。"
     },
     {
-      name: "Latest Updates",
-      href: `${registryPublicRepoUrl}/commits/${registryPublicRepoBranch}`,
-      description: "查看最近提交和公开更新节奏。"
+      name: "Browse Content Source",
+      href: `${registryPublicRepoUrl}/tree/${registryPublicRepoBranch}/content`,
+      description: "查看 skills、scenes 和 guides 的 GitHub 源目录，而不是站内镜像。"
     },
     {
-      name: "Browse Registry Content",
-      href: `${registryPublicRepoUrl}/tree/${registryPublicRepoBranch}/content`,
-      description: "统一查看 scenes、guides 和公开 skills 的目录结构。"
+      name: "Follow @EOMZON",
+      href: authorGithubUrl,
+      description: "如果你是顺着某个 skill 过来的，这里是继续 follow 作者的入口。"
     }
   ];
 
@@ -426,6 +427,11 @@ function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifest
       <p class="hero-kicker">Scenario-First Skill Registry</p>
       <h1 class="hero-title">先按场景找，再去 GitHub 取用。</h1>
       <p class="hero-copy">这个站点只回答三件事: 你要完成什么、先点哪个 skill、值不值得继续深看。完整公开说明、更新历史和后续 star，都应该回到 GitHub 源头。</p>
+      <div class="hero-actions">
+        <a class="hero-link" href="${escapeHtml(registryPublicRepoUrl)}">Open GitHub</a>
+        <a class="hero-link" href="${escapeHtml(`${registryPublicRepoUrl}/tree/${registryPublicRepoBranch}/content/skills`)}">Browse Skills</a>
+        <a class="hero-link" href="${escapeHtml(authorGithubUrl)}">Follow @EOMZON</a>
+      </div>
     </div>
     <div class="hero-notes">
       ${differentiators
@@ -471,7 +477,7 @@ function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifest
         <p class="section-kicker">GitHub</p>
         <h2 class="section-title">真正的公开入口在 GitHub</h2>
       </div>
-      <div class="section-summary">机器镜像仍然存在，但对人类访问者来说，主入口应该是 GitHub 仓库本身。这个站点负责发现与筛选，不负责替代源码与原始文档。</div>
+      <div class="section-summary">机器镜像仍然存在，但不再占据主导航。对人类访问者来说，主入口应该是 GitHub 仓库、技能目录和作者主页。</div>
     </div>
     ${renderEndpointList(agentLinks)}
   </section>
@@ -541,11 +547,12 @@ function buildDetailPage(manifest, scenesById, manifestsById) {
   const detailLead = `<div class="detail-note">
     <p class="source-kicker">GitHub First</p>
     <h2 class="detail-note-title">完整公开说明放在 GitHub，不放在站内长期镜像。</h2>
-    <p class="detail-note-copy">这个页面只保留快速判断和调用契约。真正的公开文档、更新历史和 star 入口都应该回到 GitHub。</p>
+    <p class="detail-note-copy">这个页面只保留快速判断和调用契约。真正的公开文档、更新历史，以及 star / follow 行为都应该回到 GitHub。</p>
     <div class="source-actions">
       ${manifest.source_skill_md_url ? sourceLink("Read on GitHub", manifest.source_skill_md_url) : ""}
       ${manifest.source_tree_url ? sourceLink("Browse Folder", manifest.source_tree_url) : ""}
       ${manifest.source_repo ? sourceLink("Open Repo", manifest.source_repo) : ""}
+      ${sourceLink("Follow @EOMZON", authorGithubUrl)}
     </div>
   </div>`;
 

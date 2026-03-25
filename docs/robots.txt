@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://skills.zondev.top/sitemap.xml

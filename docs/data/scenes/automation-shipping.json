@@ -59,8 +59,9 @@
       "source_repo": "https://github.com/EOMZON/skills-registry",
       "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/github-ops",
       "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-ops/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-ops/SKILL.md",
       "detail_path": "/skills/github-ops/index.html",
-      "manifest_path": "/data/skills/github-ops.json"
+      "site_data_path": "/data/skills/github-ops.json"
     },
     {
       "id": "github-repo-bootstrap",
@@ -82,8 +83,9 @@
       "source_repo": "https://github.com/EOMZON/skills-registry",
       "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/github-repo-bootstrap",
       "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-repo-bootstrap/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-repo-bootstrap/SKILL.md",
       "detail_path": "/skills/github-repo-bootstrap/index.html",
-      "manifest_path": "/data/skills/github-repo-bootstrap.json"
+      "site_data_path": "/data/skills/github-repo-bootstrap.json"
     },
     {
       "id": "vercel-deploy",
@@ -103,8 +105,9 @@
       "source_repo": "https://github.com/EOMZON/skills-registry",
       "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/vercel-deploy",
       "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-deploy/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-deploy/SKILL.md",
       "detail_path": "/skills/vercel-deploy/index.html",
-      "manifest_path": "/data/skills/vercel-deploy.json"
+      "site_data_path": "/data/skills/vercel-deploy.json"
     },
     {
       "id": "vercel-ship",
@@ -127,8 +130,9 @@
       "source_repo": "https://github.com/EOMZON/skills-registry",
       "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/vercel-ship",
       "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-ship/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-ship/SKILL.md",
       "detail_path": "/skills/vercel-ship/index.html",
-      "manifest_path": "/data/skills/vercel-ship.json"
+      "site_data_path": "/data/skills/vercel-ship.json"
     }
   ]
 }
