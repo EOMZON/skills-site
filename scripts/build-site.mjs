@@ -15,6 +15,10 @@ const distRoot = path.join(root, "dist");
 const stylesSrc = path.join(root, "src", "site.css");
 const faviconSrc = path.join(root, "src", "favicon.svg");
 const sceneGuidesPath = path.join(registryContentRoot, "scene-guides.json");
+const registryPublicRepoUrl = normalizeRepoUrl(
+  process.env.SKILLS_REGISTRY_PUBLIC_REPO_URL || "https://github.com/EOMZON/skills-registry"
+);
+const registryPublicRepoBranch = process.env.SKILLS_REGISTRY_PUBLIC_REPO_BRANCH || "main";
 const sceneStatusLabel = {
   live: "Live",
   "coming-next": "Coming Next",
@@ -33,6 +37,13 @@ function ensureDir(dir) {
 function writeFile(filePath, content) {
   ensureDir(path.dirname(filePath));
   fs.writeFileSync(filePath, content);
+}
+
+function normalizeRepoUrl(repoUrl) {
+  return String(repoUrl || "")
+    .trim()
+    .replace(/\.git$/, "")
+    .replace(/\/+$/, "");
 }
 
 function resolveRegistryRoot() {
@@ -73,6 +84,57 @@ function escapeHtml(text) {
 function stripRuntimeFields(manifest) {
   const { _markdown, sceneTitle, ...publicManifest } = manifest;
   return publicManifest;
+}
+
+function buildSourceMeta(entry) {
+  const sourceRepo = normalizeRepoUrl(entry.source_repo || registryPublicRepoUrl);
+  const sourcePath = entry.source_path || (entry.manifest_path ? path.posix.dirname(entry.manifest_path) : `content/skills/${entry.id}`);
+  const manifestPath = entry.manifest_path || `${sourcePath}/manifest.json`;
+  const skillMdPath = entry.skill_md_path || `${sourcePath}/SKILL.md`;
+
+  return {
+    source_repo: sourceRepo,
+    source_path: sourcePath,
+    source_tree_url: entry.source_tree_url || `${sourceRepo}/tree/${registryPublicRepoBranch}/${sourcePath}`,
+    source_manifest_url:
+      entry.source_manifest_url || `${sourceRepo}/blob/${registryPublicRepoBranch}/${manifestPath}`,
+    source_skill_md_url:
+      entry.source_skill_md_url || `${sourceRepo}/blob/${registryPublicRepoBranch}/${skillMdPath}`
+  };
+}
+
+function toPublicRegistrySkill(skill) {
+  const sourceMeta = buildSourceMeta(skill);
+  return {
+    id: skill.id,
+    title: skill.title,
+    summary: skill.summary,
+    scene: skill.scene,
+    keywords: skill.keywords || [],
+    invoke: skill.invoke,
+    visibility: skill.visibility || "public",
+    stability: skill.stability || "stable",
+    updated_at: skill.updated_at,
+    ...sourceMeta,
+    detail_path: `/skills/${skill.id}/index.html`,
+    data_path: `/data/skills/${skill.id}.json`
+  };
+}
+
+function toPublicRegistryDocument(registry) {
+  return {
+    schema_version: registry.schema_version,
+    generated_at: registry.generated_at,
+    total_skills: registry.total_skills,
+    visibility_counts: registry.visibility_counts || {},
+    source_repo: registry.source_repo || registryPublicRepoUrl,
+    scenes: (registry.scenes || []).map((scene) => ({
+      ...scene,
+      detail_path: `/scenes/${scene.id}/index.html`,
+      data_path: `/data/scenes/${scene.id}.json`
+    })),
+    skills: (registry.skills || []).map((skill) => toPublicRegistrySkill(skill))
+  };
 }
 
 function previewText(items, limit = 2) {
@@ -225,12 +287,13 @@ function layout({ title, description, body, canonicalPath }) {
             <a href="/data/registry.json">registry.json</a>
             <a href="/data/scenes.json">scenes.json</a>
             <a href="/llms.txt">llms.txt</a>
+            <a href="${escapeHtml(registryPublicRepoUrl)}">repo</a>
           </nav>
         </div>
       </header>
       ${body}
       <footer class="footer">
-        <div>Skills Site · scenario-first registry renderer · source of truth: <code>skills-registry</code></div>
+        <div>Skills Site · scenario-first registry renderer · source of truth: <a href="${escapeHtml(registryPublicRepoUrl)}">EOMZON/skills-registry</a></div>
       </footer>
     </div>
   </body>
@@ -404,7 +467,7 @@ function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifest
     },
     {
       label: "Private source -> exposed manifests",
-      body: "私有作者源先沉淀，再导出 exposed manifest；涉及状态和敏感运行细节的 workflow 以 sanitized 方式列出。"
+      body: "私有作者源先沉淀，再导出 repo-backed 的 exposed manifest；涉及状态和敏感运行细节的 workflow 以 sanitized 方式列出。"
     },
     {
       label: "Agent-readable",
@@ -415,7 +478,7 @@ function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifest
     {
       name: "registry.json",
       href: "/data/registry.json",
-      description: "所有已列出 skills 的轻量索引，含 visibility 与 scene。"
+      description: "所有已列出 skills 的轻量索引，含 visibility、scene 与 GitHub source links。"
     },
     {
       name: "scene-guides.json",
@@ -431,6 +494,11 @@ function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifest
       name: "llms-full.txt",
       href: "/llms-full.txt",
       description: "扩展版文本契约，补足 inputs、returns 和 dependencies。"
+    },
+    {
+      name: "registry repo",
+      href: registryPublicRepoUrl,
+      description: "公开 registry 仓库。当前列出的 public / sanitized skills 都从这里暴露 source links。"
     }
   ];
 
@@ -443,7 +511,7 @@ function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifest
     <div>
       <p class="hero-kicker">Scenario-First Skill Registry</p>
       <h1 class="hero-title">先按场景进入，再选 skill。</h1>
-      <p class="hero-copy">首页先回答能做什么、从哪里起手、会拿到什么产出。公开层只保留可复用调用契约；需要收口运行细节的 workflow 用 sanitized entry 暴露，私有作者源继续留在上游，不把展示层做成又一面大卡片墙。</p>
+      <p class="hero-copy">首页先回答能做什么、从哪里起手、会拿到什么产出。公开层只保留可复用调用契约；需要收口运行细节的 workflow 用 sanitized entry 暴露，公开展示与机器入口都直接回到 repo-backed 的 source links。</p>
     </div>
     <div class="hero-notes">
       ${differentiators
@@ -478,7 +546,7 @@ function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifest
         <p class="section-kicker">Coverage</p>
         <h2 class="section-title">按场景展开的已列出 skills</h2>
       </div>
-      <div class="section-summary">这里专注看当前已经进入 registry 的技能索引，其中同时包含 fully public 与 sanitized entry。每一行同时暴露作用、输入、产出、可见性与调用方式，而不是只放一段摘要文案。</div>
+      <div class="section-summary">这里专注看当前已经进入 registry 的技能索引，其中同时包含 fully public 与 sanitized entry。每一行同时暴露作用、输入、产出、可见性与调用方式，并且 detail 页会直接给出 source repo 链接。</div>
     </div>
     ${renderCoverage(activeSceneEntries, manifestsById)}
   </section>
@@ -557,6 +625,12 @@ function buildDetailPage(manifest, markdown, scenesById, manifestsById) {
   if (!manifest.dependencies?.bins?.length && !manifest.dependencies?.services?.length) {
     dependencyLines.push("No special runtime");
   }
+  const sourceLines = [
+    manifest.source_repo ? `<a href="${escapeHtml(manifest.source_repo)}">Source Repo</a>` : null,
+    manifest.source_tree_url ? `<a href="${escapeHtml(manifest.source_tree_url)}">Skill Folder</a>` : null,
+    manifest.source_skill_md_url ? `<a href="${escapeHtml(manifest.source_skill_md_url)}">Public SKILL.md</a>` : null,
+    manifest.source_manifest_url ? `<a href="${escapeHtml(manifest.source_manifest_url)}">Public manifest.json</a>` : null
+  ].filter(Boolean);
 
   return layout({
     title: `${manifest.title} · Skills`,
@@ -625,6 +699,14 @@ function buildDetailPage(manifest, markdown, scenesById, manifestsById) {
           `Updated: ${escapeHtml(manifest.updated_at)}`
         ])}
       </div>
+      ${
+        sourceLines.length
+          ? `<div class="side-card">
+        <p class="side-label">Source</p>
+        ${renderSideList(sourceLines)}
+      </div>`
+          : ""
+      }
       <div class="side-card">
         <p class="side-label">Machine</p>
         ${renderSideList([
@@ -660,13 +742,16 @@ function buildLlmsTxt(registry, scenesById, sceneGuidesById) {
   summary: ${skill.summary}
   visibility: ${skill.visibility || "public"}
   stability: ${skill.stability || "stable"}
-  paths: /skills/${skill.id}/index.html | /data/skills/${skill.id}.json`
+  paths: /skills/${skill.id}/index.html | /data/skills/${skill.id}.json
+  source: ${skill.source_tree_url || skill.source_repo || registry.source_repo || registryPublicRepoUrl}`
     )
     .join("\n");
 
   return `# Skills Registry
 
 Scenario-first skill registry with public and sanitized entries.
+
+Registry repo: ${registry.source_repo || registryPublicRepoUrl}
 
 ## Canonical machine-readable entry points
 
@@ -707,7 +792,9 @@ inputs: ${(manifest.inputs || [])
 returns: ${(manifest.returns || []).join(" | ") || "none"}
 bins: ${(manifest.dependencies?.bins || []).join(", ") || "none"}
 services: ${(manifest.dependencies?.services || []).join(", ") || "none"}
-json: /data/skills/${manifest.id}.json`;
+json: /data/skills/${manifest.id}.json
+source_repo: ${manifest.source_repo || registryPublicRepoUrl}
+source_tree: ${manifest.source_tree_url || registryPublicRepoUrl}`;
   })
   .join("\n\n")}
 `;
@@ -722,6 +809,7 @@ function main() {
 
   const scenesDoc = readJson(path.join(registryContentRoot, "scenes.json"));
   const registry = readJson(path.join(registryContentRoot, "registry.json"));
+  const publicRegistry = toPublicRegistryDocument(registry);
   const sceneGuides = fs.existsSync(sceneGuidesPath) ? readJson(sceneGuidesPath) : { scenes: [] };
   const scenesById = new Map(scenesDoc.scenes.map((scene) => [scene.id, scene]));
   const sceneGuidesById = new Map((sceneGuides.scenes || []).map((guide) => [guide.id, guide]));
@@ -730,8 +818,10 @@ function main() {
     const manifestPath = path.join(registryRoot, skill.manifest_path);
     const skillMdPath = path.join(registryRoot, skill.skill_md_path);
     const manifest = readJson(manifestPath);
+    const sourceMeta = buildSourceMeta(skill);
     return {
       ...manifest,
+      ...sourceMeta,
       sceneTitle: scenesById.get(manifest.scene)?.title || manifest.scene,
       _markdown: fs.readFileSync(skillMdPath, "utf8")
     };
@@ -813,6 +903,9 @@ function main() {
           visibility: publicManifest.visibility || "public",
           stability: publicManifest.stability || "stable",
           updated_at: publicManifest.updated_at,
+          source_repo: publicManifest.source_repo || registryPublicRepoUrl,
+          source_tree_url: publicManifest.source_tree_url,
+          source_manifest_url: publicManifest.source_manifest_url,
           detail_path: `/skills/${publicManifest.id}/index.html`,
           manifest_path: `/data/skills/${publicManifest.id}.json`
         };
@@ -845,8 +938,8 @@ function main() {
     );
   }
 
-  writeFile(path.join(distRoot, "data", "registry.json"), JSON.stringify(registry, null, 2) + "\n");
-  writeFile(path.join(distRoot, "llms.txt"), buildLlmsTxt(registry, scenesById, sceneGuidesById));
+  writeFile(path.join(distRoot, "data", "registry.json"), JSON.stringify(publicRegistry, null, 2) + "\n");
+  writeFile(path.join(distRoot, "llms.txt"), buildLlmsTxt(publicRegistry, scenesById, sceneGuidesById));
   writeFile(path.join(distRoot, "llms-full.txt"), buildLlmsFullTxt(manifests, scenesById));
   console.log(`Built skills-site into ${distRoot}`);
 }

@@ -43,6 +43,9 @@
       "visibility": "public",
       "stability": "stable",
       "updated_at": "2026-03-24",
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/doc-coauthoring",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/doc-coauthoring/manifest.json",
       "detail_path": "/skills/doc-coauthoring/index.html",
       "manifest_path": "/data/skills/doc-coauthoring.json"
     }

@@ -56,6 +56,9 @@
       "visibility": "sanitized",
       "stability": "stable",
       "updated_at": "2026-03-25",
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/github-ops",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-ops/manifest.json",
       "detail_path": "/skills/github-ops/index.html",
       "manifest_path": "/data/skills/github-ops.json"
     },
@@ -76,6 +79,9 @@
       "visibility": "sanitized",
       "stability": "stable",
       "updated_at": "2026-03-25",
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/github-repo-bootstrap",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-repo-bootstrap/manifest.json",
       "detail_path": "/skills/github-repo-bootstrap/index.html",
       "manifest_path": "/data/skills/github-repo-bootstrap.json"
     },
@@ -94,6 +100,9 @@
       "visibility": "public",
       "stability": "stable",
       "updated_at": "2026-03-24",
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/vercel-deploy",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-deploy/manifest.json",
       "detail_path": "/skills/vercel-deploy/index.html",
       "manifest_path": "/data/skills/vercel-deploy.json"
     },
@@ -115,6 +124,9 @@
       "visibility": "sanitized",
       "stability": "stable",
       "updated_at": "2026-03-25",
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/vercel-ship",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-ship/manifest.json",
       "detail_path": "/skills/vercel-ship/index.html",
       "manifest_path": "/data/skills/vercel-ship.json"
     }

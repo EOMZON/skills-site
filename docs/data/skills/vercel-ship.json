@@ -65,5 +65,10 @@
   ],
   "stability": "stable",
   "visibility": "sanitized",
-  "updated_at": "2026-03-25"
+  "updated_at": "2026-03-25",
+  "source_repo": "https://github.com/EOMZON/skills-registry",
+  "source_path": "content/skills/vercel-ship",
+  "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/vercel-ship",
+  "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-ship/manifest.json",
+  "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-ship/SKILL.md"
 }

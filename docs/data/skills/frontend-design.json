@@ -58,5 +58,10 @@
   "stability": "core",
   "visibility": "public",
   "updated_at": "2026-03-24",
-  "license": "Complete terms in upstream license"
+  "license": "Complete terms in upstream license",
+  "source_repo": "https://github.com/EOMZON/skills-registry",
+  "source_path": "content/skills/frontend-design",
+  "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/frontend-design",
+  "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/frontend-design/manifest.json",
+  "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/frontend-design/SKILL.md"
 }

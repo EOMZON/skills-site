@@ -58,5 +58,10 @@
   "stability": "stable",
   "visibility": "public",
   "updated_at": "2026-03-24",
-  "license": "Complete terms in LICENSE.txt"
+  "license": "Complete terms in LICENSE.txt",
+  "source_repo": "https://github.com/EOMZON/skills-registry",
+  "source_path": "content/skills/doc-coauthoring",
+  "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/doc-coauthoring",
+  "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/doc-coauthoring/manifest.json",
+  "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/doc-coauthoring/SKILL.md"
 }

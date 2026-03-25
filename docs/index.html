@@ -19,6 +19,7 @@
             <a href="/data/registry.json">registry.json</a>
             <a href="/data/scenes.json">scenes.json</a>
             <a href="/llms.txt">llms.txt</a>
+            <a href="https://github.com/EOMZON/skills-registry">repo</a>
           </nav>
         </div>
       </header>
@@ -27,12 +28,12 @@
     <div>
       <p class="hero-kicker">Scenario-First Skill Registry</p>
       <h1 class="hero-title">先按场景进入，再选 skill。</h1>
-      <p class="hero-copy">首页先回答能做什么、从哪里起手、会拿到什么产出。公开层只保留可复用调用契约；需要收口运行细节的 workflow 用 sanitized entry 暴露，私有作者源继续留在上游，不把展示层做成又一面大卡片墙。</p>
+      <p class="hero-copy">首页先回答能做什么、从哪里起手、会拿到什么产出。公开层只保留可复用调用契约；需要收口运行细节的 workflow 用 sanitized entry 暴露，公开展示与机器入口都直接回到 repo-backed 的 source links。</p>
     </div>
     <div class="hero-notes">
       <div class="hero-note"><strong>Executable systems</strong>不是 prompt 片段。很多 skill 会直接落到报告、页面、脚本、部署或可复查产物。</div>
 <div class="hero-note"><strong>Scenario-first</strong>先按要完成的事情分组，再在 scene 里看可调用的 skill，而不是先按工具名找。</div>
-<div class="hero-note"><strong>Private source -&gt; exposed manifests</strong>私有作者源先沉淀，再导出 exposed manifest；涉及状态和敏感运行细节的 workflow 以 sanitized 方式列出。</div>
+<div class="hero-note"><strong>Private source -&gt; exposed manifests</strong>私有作者源先沉淀，再导出 repo-backed 的 exposed manifest；涉及状态和敏感运行细节的 workflow 以 sanitized 方式列出。</div>
 <div class="hero-note"><strong>Agent-readable</strong>人看页面，AI 读 JSON 和 llms.txt。每个 skill 都有稳定的 machine entry point。</div>
     </div>
   </section>
@@ -202,7 +203,7 @@
         <p class="section-kicker">Coverage</p>
         <h2 class="section-title">按场景展开的已列出 skills</h2>
       </div>
-      <div class="section-summary">这里专注看当前已经进入 registry 的技能索引，其中同时包含 fully public 与 sanitized entry。每一行同时暴露作用、输入、产出、可见性与调用方式，而不是只放一段摘要文案。</div>
+      <div class="section-summary">这里专注看当前已经进入 registry 的技能索引，其中同时包含 fully public 与 sanitized entry。每一行同时暴露作用、输入、产出、可见性与调用方式，并且 detail 页会直接给出 source repo 链接。</div>
     </div>
     <div class="scene-blocks">
 <section class="scene-block">
@@ -489,7 +490,7 @@
     <div class="endpoint-list">
 <a class="endpoint-card" href="/data/registry.json">
   <div class="endpoint-name">registry.json</div>
-  <div class="endpoint-desc">所有已列出 skills 的轻量索引，含 visibility 与 scene。</div>
+  <div class="endpoint-desc">所有已列出 skills 的轻量索引，含 visibility、scene 与 GitHub source links。</div>
 </a>
 <a class="endpoint-card" href="/data/scene-guides.json">
   <div class="endpoint-name">scene-guides.json</div>
@@ -503,11 +504,15 @@
   <div class="endpoint-name">llms-full.txt</div>
   <div class="endpoint-desc">扩展版文本契约，补足 inputs、returns 和 dependencies。</div>
 </a>
+<a class="endpoint-card" href="https://github.com/EOMZON/skills-registry">
+  <div class="endpoint-name">registry repo</div>
+  <div class="endpoint-desc">公开 registry 仓库。当前列出的 public / sanitized skills 都从这里暴露 source links。</div>
+</a>
 </div>
   </section>
 </main>
       <footer class="footer">
-        <div>Skills Site · scenario-first registry renderer · source of truth: <code>skills-registry</code></div>
+        <div>Skills Site · scenario-first registry renderer · source of truth: <a href="https://github.com/EOMZON/skills-registry">EOMZON/skills-registry</a></div>
       </footer>
     </div>
   </body>

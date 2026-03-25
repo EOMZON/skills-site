@@ -1,11 +1,12 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-03-25T03:00:36.407Z",
+  "generated_at": "2026-03-25T03:57:43.452Z",
   "total_skills": 12,
   "visibility_counts": {
     "public": 9,
     "sanitized": 3
   },
+  "source_repo": "https://github.com/EOMZON/skills-registry",
   "scenes": [
     {
       "id": "research-decision",
@@ -13,7 +14,9 @@
       "count": 1,
       "visibility_counts": {
         "public": 1
-      }
+      },
+      "detail_path": "/scenes/research-decision/index.html",
+      "data_path": "/data/scenes/research-decision.json"
     },
     {
       "id": "writing-docs",
@@ -21,7 +24,9 @@
       "count": 1,
       "visibility_counts": {
         "public": 1
-      }
+      },
+      "detail_path": "/scenes/writing-docs/index.html",
+      "data_path": "/data/scenes/writing-docs.json"
     },
     {
       "id": "design-visual",
@@ -29,7 +34,9 @@
       "count": 3,
       "visibility_counts": {
         "public": 3
-      }
+      },
+      "detail_path": "/scenes/design-visual/index.html",
+      "data_path": "/data/scenes/design-visual.json"
     },
     {
       "id": "website-frontend",
@@ -37,7 +44,9 @@
       "count": 2,
       "visibility_counts": {
         "public": 2
-      }
+      },
+      "detail_path": "/scenes/website-frontend/index.html",
+      "data_path": "/data/scenes/website-frontend.json"
     },
     {
       "id": "coding-engineering",
@@ -45,7 +54,9 @@
       "count": 1,
       "visibility_counts": {
         "public": 1
-      }
+      },
+      "detail_path": "/scenes/coding-engineering/index.html",
+      "data_path": "/data/scenes/coding-engineering.json"
     },
     {
       "id": "automation-shipping",
@@ -54,13 +65,17 @@
       "visibility_counts": {
         "sanitized": 3,
         "public": 1
-      }
+      },
+      "detail_path": "/scenes/automation-shipping/index.html",
+      "data_path": "/data/scenes/automation-shipping.json"
     },
     {
       "id": "product-project",
       "title": "项目与产品推进",
       "count": 0,
-      "visibility_counts": {}
+      "visibility_counts": {},
+      "detail_path": "/scenes/product-project/index.html",
+      "data_path": "/data/scenes/product-project.json"
     }
   ],
   "skills": [
@@ -81,8 +96,13 @@
       "visibility": "public",
       "stability": "core",
       "updated_at": "2026-03-24",
-      "manifest_path": "content/skills/best-minds/manifest.json",
-      "skill_md_path": "content/skills/best-minds/SKILL.md"
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_path": "content/skills/best-minds",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/best-minds",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/best-minds/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/best-minds/SKILL.md",
+      "detail_path": "/skills/best-minds/index.html",
+      "data_path": "/data/skills/best-minds.json"
     },
     {
       "id": "doc-coauthoring",
@@ -102,8 +122,13 @@
       "visibility": "public",
       "stability": "stable",
       "updated_at": "2026-03-24",
-      "manifest_path": "content/skills/doc-coauthoring/manifest.json",
-      "skill_md_path": "content/skills/doc-coauthoring/SKILL.md"
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_path": "content/skills/doc-coauthoring",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/doc-coauthoring",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/doc-coauthoring/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/doc-coauthoring/SKILL.md",
+      "detail_path": "/skills/doc-coauthoring/index.html",
+      "data_path": "/data/skills/doc-coauthoring.json"
     },
     {
       "id": "frontend-design",
@@ -122,8 +147,13 @@
       "visibility": "public",
       "stability": "core",
       "updated_at": "2026-03-24",
-      "manifest_path": "content/skills/frontend-design/manifest.json",
-      "skill_md_path": "content/skills/frontend-design/SKILL.md"
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_path": "content/skills/frontend-design",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/frontend-design",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/frontend-design/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/frontend-design/SKILL.md",
+      "detail_path": "/skills/frontend-design/index.html",
+      "data_path": "/data/skills/frontend-design.json"
     },
     {
       "id": "github-ops",
@@ -145,8 +175,13 @@
       "visibility": "sanitized",
       "stability": "stable",
       "updated_at": "2026-03-25",
-      "manifest_path": "content/skills/github-ops/manifest.json",
-      "skill_md_path": "content/skills/github-ops/SKILL.md"
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_path": "content/skills/github-ops",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/github-ops",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-ops/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-ops/SKILL.md",
+      "detail_path": "/skills/github-ops/index.html",
+      "data_path": "/data/skills/github-ops.json"
     },
     {
       "id": "github-repo-bootstrap",
@@ -166,8 +201,13 @@
       "visibility": "sanitized",
       "stability": "stable",
       "updated_at": "2026-03-25",
-      "manifest_path": "content/skills/github-repo-bootstrap/manifest.json",
-      "skill_md_path": "content/skills/github-repo-bootstrap/SKILL.md"
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_path": "content/skills/github-repo-bootstrap",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/github-repo-bootstrap",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-repo-bootstrap/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-repo-bootstrap/SKILL.md",
+      "detail_path": "/skills/github-repo-bootstrap/index.html",
+      "data_path": "/data/skills/github-repo-bootstrap.json"
     },
     {
       "id": "img-handdrawn-run-report",
@@ -187,8 +227,13 @@
       "visibility": "public",
       "stability": "stable",
       "updated_at": "2026-03-24",
-      "manifest_path": "content/skills/img-handdrawn-run-report/manifest.json",
-      "skill_md_path": "content/skills/img-handdrawn-run-report/SKILL.md"
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_path": "content/skills/img-handdrawn-run-report",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/img-handdrawn-run-report",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/img-handdrawn-run-report/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/img-handdrawn-run-report/SKILL.md",
+      "detail_path": "/skills/img-handdrawn-run-report/index.html",
+      "data_path": "/data/skills/img-handdrawn-run-report.json"
     },
     {
       "id": "mcp-builder",
@@ -208,8 +253,13 @@
       "visibility": "public",
       "stability": "stable",
       "updated_at": "2026-03-24",
-      "manifest_path": "content/skills/mcp-builder/manifest.json",
-      "skill_md_path": "content/skills/mcp-builder/SKILL.md"
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_path": "content/skills/mcp-builder",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/mcp-builder",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/mcp-builder/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/mcp-builder/SKILL.md",
+      "detail_path": "/skills/mcp-builder/index.html",
+      "data_path": "/data/skills/mcp-builder.json"
     },
     {
       "id": "theme-factory",
@@ -229,8 +279,13 @@
       "visibility": "public",
       "stability": "stable",
       "updated_at": "2026-03-24",
-      "manifest_path": "content/skills/theme-factory/manifest.json",
-      "skill_md_path": "content/skills/theme-factory/SKILL.md"
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_path": "content/skills/theme-factory",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/theme-factory",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/theme-factory/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/theme-factory/SKILL.md",
+      "detail_path": "/skills/theme-factory/index.html",
+      "data_path": "/data/skills/theme-factory.json"
     },
     {
       "id": "vercel-deploy",
@@ -248,8 +303,13 @@
       "visibility": "public",
       "stability": "stable",
       "updated_at": "2026-03-24",
-      "manifest_path": "content/skills/vercel-deploy/manifest.json",
-      "skill_md_path": "content/skills/vercel-deploy/SKILL.md"
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_path": "content/skills/vercel-deploy",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/vercel-deploy",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-deploy/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-deploy/SKILL.md",
+      "detail_path": "/skills/vercel-deploy/index.html",
+      "data_path": "/data/skills/vercel-deploy.json"
     },
     {
       "id": "vercel-ship",
@@ -270,8 +330,13 @@
       "visibility": "sanitized",
       "stability": "stable",
       "updated_at": "2026-03-25",
-      "manifest_path": "content/skills/vercel-ship/manifest.json",
-      "skill_md_path": "content/skills/vercel-ship/SKILL.md"
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_path": "content/skills/vercel-ship",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/vercel-ship",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-ship/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-ship/SKILL.md",
+      "detail_path": "/skills/vercel-ship/index.html",
+      "data_path": "/data/skills/vercel-ship.json"
     },
     {
       "id": "webapp-testing",
@@ -291,8 +356,13 @@
       "visibility": "public",
       "stability": "stable",
       "updated_at": "2026-03-24",
-      "manifest_path": "content/skills/webapp-testing/manifest.json",
-      "skill_md_path": "content/skills/webapp-testing/SKILL.md"
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_path": "content/skills/webapp-testing",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/webapp-testing",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/webapp-testing/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/webapp-testing/SKILL.md",
+      "detail_path": "/skills/webapp-testing/index.html",
+      "data_path": "/data/skills/webapp-testing.json"
     },
     {
       "id": "zon-minimal-editorial",
@@ -312,8 +382,13 @@
       "visibility": "public",
       "stability": "stable",
       "updated_at": "2026-03-25",
-      "manifest_path": "content/skills/zon-minimal-editorial/manifest.json",
-      "skill_md_path": "content/skills/zon-minimal-editorial/SKILL.md"
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_path": "content/skills/zon-minimal-editorial",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/zon-minimal-editorial",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/zon-minimal-editorial/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/zon-minimal-editorial/SKILL.md",
+      "detail_path": "/skills/zon-minimal-editorial/index.html",
+      "data_path": "/data/skills/zon-minimal-editorial.json"
     }
   ]
 }

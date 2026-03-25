@@ -43,6 +43,9 @@
       "visibility": "public",
       "stability": "stable",
       "updated_at": "2026-03-24",
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/mcp-builder",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/mcp-builder/manifest.json",
       "detail_path": "/skills/mcp-builder/index.html",
       "manifest_path": "/data/skills/mcp-builder.json"
     }

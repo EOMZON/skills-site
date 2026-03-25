@@ -2,6 +2,8 @@
 
 Scenario-first skill registry with public and sanitized entries.
 
+Registry repo: https://github.com/EOMZON/skills-registry
+
 ## Canonical machine-readable entry points
 
 - /data/registry.json
@@ -44,6 +46,7 @@ Scenario-first skill registry with public and sanitized entries.
   visibility: public
   stability: core
   paths: /skills/best-minds/index.html | /data/skills/best-minds.json
+  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/best-minds
 - Doc Co-Authoring (doc-coauthoring)
   invoke: $doc-coauthoring
   scene: writing-docs
@@ -51,6 +54,7 @@ Scenario-first skill registry with public and sanitized entries.
   visibility: public
   stability: stable
   paths: /skills/doc-coauthoring/index.html | /data/skills/doc-coauthoring.json
+  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/doc-coauthoring
 - Frontend Design (frontend-design)
   invoke: $frontend-design
   scene: website-frontend
@@ -58,6 +62,7 @@ Scenario-first skill registry with public and sanitized entries.
   visibility: public
   stability: core
   paths: /skills/frontend-design/index.html | /data/skills/frontend-design.json
+  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/frontend-design
 - GitHub Ops (github-ops)
   invoke: $github-ops
   scene: automation-shipping
@@ -65,6 +70,7 @@ Scenario-first skill registry with public and sanitized entries.
   visibility: sanitized
   stability: stable
   paths: /skills/github-ops/index.html | /data/skills/github-ops.json
+  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/github-ops
 - GitHub Repo Bootstrap (github-repo-bootstrap)
   invoke: $github-repo-bootstrap
   scene: automation-shipping
@@ -72,6 +78,7 @@ Scenario-first skill registry with public and sanitized entries.
   visibility: sanitized
   stability: stable
   paths: /skills/github-repo-bootstrap/index.html | /data/skills/github-repo-bootstrap.json
+  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/github-repo-bootstrap
 - Handdrawn Run Report (img-handdrawn-run-report)
   invoke: $img-handdrawn-run-report
   scene: design-visual
@@ -79,6 +86,7 @@ Scenario-first skill registry with public and sanitized entries.
   visibility: public
   stability: stable
   paths: /skills/img-handdrawn-run-report/index.html | /data/skills/img-handdrawn-run-report.json
+  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/img-handdrawn-run-report
 - MCP Builder (mcp-builder)
   invoke: $mcp-builder
   scene: coding-engineering
@@ -86,6 +94,7 @@ Scenario-first skill registry with public and sanitized entries.
   visibility: public
   stability: stable
   paths: /skills/mcp-builder/index.html | /data/skills/mcp-builder.json
+  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/mcp-builder
 - Theme Factory (theme-factory)
   invoke: $theme-factory
   scene: design-visual
@@ -93,6 +102,7 @@ Scenario-first skill registry with public and sanitized entries.
   visibility: public
   stability: stable
   paths: /skills/theme-factory/index.html | /data/skills/theme-factory.json
+  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/theme-factory
 - Vercel Deploy (vercel-deploy)
   invoke: $vercel-deploy
   scene: automation-shipping
@@ -100,6 +110,7 @@ Scenario-first skill registry with public and sanitized entries.
   visibility: public
   stability: stable
   paths: /skills/vercel-deploy/index.html | /data/skills/vercel-deploy.json
+  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/vercel-deploy
 - Vercel Ship (vercel-ship)
   invoke: $vercel-ship
   scene: automation-shipping
@@ -107,6 +118,7 @@ Scenario-first skill registry with public and sanitized entries.
   visibility: sanitized
   stability: stable
   paths: /skills/vercel-ship/index.html | /data/skills/vercel-ship.json
+  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/vercel-ship
 - Webapp Testing (webapp-testing)
   invoke: $webapp-testing
   scene: website-frontend
@@ -114,6 +126,7 @@ Scenario-first skill registry with public and sanitized entries.
   visibility: public
   stability: stable
   paths: /skills/webapp-testing/index.html | /data/skills/webapp-testing.json
+  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/webapp-testing
 - Zon Minimal Editorial (zon-minimal-editorial)
   invoke: $zon-minimal-editorial
   scene: design-visual
@@ -121,3 +134,4 @@ Scenario-first skill registry with public and sanitized entries.
   visibility: public
   stability: stable
   paths: /skills/zon-minimal-editorial/index.html | /data/skills/zon-minimal-editorial.json
+  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/zon-minimal-editorial

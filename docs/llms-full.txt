@@ -13,6 +13,8 @@ returns: 结论摘要 | 关键发现与证据 | 建议与下一步验证
 bins: none
 services: none
 json: /data/skills/best-minds.json
+source_repo: https://github.com/EOMZON/skills-registry
+source_tree: https://github.com/EOMZON/skills-registry/tree/main/content/skills/best-minds
 
 ## Doc Co-Authoring
 id: doc-coauthoring
@@ -27,6 +29,8 @@ returns: 文档结构与章节 scaffold | 逐段共创与修订建议 | 读者�
 bins: none
 services: none
 json: /data/skills/doc-coauthoring.json
+source_repo: https://github.com/EOMZON/skills-registry
+source_tree: https://github.com/EOMZON/skills-registry/tree/main/content/skills/doc-coauthoring
 
 ## Frontend Design
 id: frontend-design
@@ -41,6 +45,8 @@ returns: 设计方向 | 页面或组件实现 | 验收与优化建议
 bins: node
 services: none
 json: /data/skills/frontend-design.json
+source_repo: https://github.com/EOMZON/skills-registry
+source_tree: https://github.com/EOMZON/skills-registry/tree/main/content/skills/frontend-design
 
 ## GitHub Ops
 id: github-ops
@@ -55,6 +61,8 @@ returns: 安全默认下的操作路径 | 可执行命令或实际处理结果 |
 bins: gh, git, node
 services: github
 json: /data/skills/github-ops.json
+source_repo: https://github.com/EOMZON/skills-registry
+source_tree: https://github.com/EOMZON/skills-registry/tree/main/content/skills/github-ops
 
 ## GitHub Repo Bootstrap
 id: github-repo-bootstrap
@@ -69,6 +77,8 @@ returns: 已创建的 GitHub 远端仓库 | 已配置的远端和首次推送结
 bins: git, python3
 services: github
 json: /data/skills/github-repo-bootstrap.json
+source_repo: https://github.com/EOMZON/skills-registry
+source_tree: https://github.com/EOMZON/skills-registry/tree/main/content/skills/github-repo-bootstrap
 
 ## Handdrawn Run Report
 id: img-handdrawn-run-report
@@ -83,6 +93,8 @@ returns: 可打印的 HTML 运行报告 | 嵌入式图片预览与 prompt 记录
 bins: node
 services: none
 json: /data/skills/img-handdrawn-run-report.json
+source_repo: https://github.com/EOMZON/skills-registry
+source_tree: https://github.com/EOMZON/skills-registry/tree/main/content/skills/img-handdrawn-run-report
 
 ## MCP Builder
 id: mcp-builder
@@ -97,6 +109,8 @@ returns: MCP server 设计原则与实现路线 | tool schema 与错误处理建
 bins: node, python3
 services: none
 json: /data/skills/mcp-builder.json
+source_repo: https://github.com/EOMZON/skills-registry
+source_tree: https://github.com/EOMZON/skills-registry/tree/main/content/skills/mcp-builder
 
 ## Theme Factory
 id: theme-factory
@@ -111,6 +125,8 @@ returns: 主题 shortlist 或自定义方向 | 颜色与字体 tokens | 应用�
 bins: none
 services: none
 json: /data/skills/theme-factory.json
+source_repo: https://github.com/EOMZON/skills-registry
+source_tree: https://github.com/EOMZON/skills-registry/tree/main/content/skills/theme-factory
 
 ## Vercel Deploy
 id: vercel-deploy
@@ -125,6 +141,8 @@ returns: 部署结果 | 线上访问地址 | 必要的后续配置建议
 bins: vercel, git
 services: vercel
 json: /data/skills/vercel-deploy.json
+source_repo: https://github.com/EOMZON/skills-registry
+source_tree: https://github.com/EOMZON/skills-registry/tree/main/content/skills/vercel-deploy
 
 ## Vercel Ship
 id: vercel-ship
@@ -139,6 +157,8 @@ returns: 已提交并推送的 Git 状态 | Vercel 部署结果与线上地址 |
 bins: node, git, vercel
 services: github, vercel
 json: /data/skills/vercel-ship.json
+source_repo: https://github.com/EOMZON/skills-registry
+source_tree: https://github.com/EOMZON/skills-registry/tree/main/content/skills/vercel-ship
 
 ## Webapp Testing
 id: webapp-testing
@@ -153,6 +173,8 @@ returns: 浏览器内的验证结论 | 截图、日志或复现证据 | 可复�
 bins: playwright, python3
 services: none
 json: /data/skills/webapp-testing.json
+source_repo: https://github.com/EOMZON/skills-registry
+source_tree: https://github.com/EOMZON/skills-registry/tree/main/content/skills/webapp-testing
 
 ## Zon Minimal Editorial
 id: zon-minimal-editorial
@@ -167,3 +189,5 @@ returns: editorial fit 判断与页面原型方向 | 层级、排版和视觉约
 bins: none
 services: none
 json: /data/skills/zon-minimal-editorial.json
+source_repo: https://github.com/EOMZON/skills-registry
+source_tree: https://github.com/EOMZON/skills-registry/tree/main/content/skills/zon-minimal-editorial

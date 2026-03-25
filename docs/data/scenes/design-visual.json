@@ -50,6 +50,9 @@
       "visibility": "public",
       "stability": "stable",
       "updated_at": "2026-03-24",
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/img-handdrawn-run-report",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/img-handdrawn-run-report/manifest.json",
       "detail_path": "/skills/img-handdrawn-run-report/index.html",
       "manifest_path": "/data/skills/img-handdrawn-run-report.json"
     },
@@ -70,6 +73,9 @@
       "visibility": "public",
       "stability": "stable",
       "updated_at": "2026-03-24",
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/theme-factory",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/theme-factory/manifest.json",
       "detail_path": "/skills/theme-factory/index.html",
       "manifest_path": "/data/skills/theme-factory.json"
     },
@@ -90,6 +96,9 @@
       "visibility": "public",
       "stability": "stable",
       "updated_at": "2026-03-25",
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/zon-minimal-editorial",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/zon-minimal-editorial/manifest.json",
       "detail_path": "/skills/zon-minimal-editorial/index.html",
       "manifest_path": "/data/skills/zon-minimal-editorial.json"
     }

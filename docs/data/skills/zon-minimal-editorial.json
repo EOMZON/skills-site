@@ -57,5 +57,10 @@
   ],
   "stability": "stable",
   "visibility": "public",
-  "updated_at": "2026-03-25"
+  "updated_at": "2026-03-25",
+  "source_repo": "https://github.com/EOMZON/skills-registry",
+  "source_path": "content/skills/zon-minimal-editorial",
+  "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/zon-minimal-editorial",
+  "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/zon-minimal-editorial/manifest.json",
+  "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/zon-minimal-editorial/SKILL.md"
 }
