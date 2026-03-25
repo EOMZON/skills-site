@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Scenario-first skill registry for human browsing and agent consumption." />
+    <meta name="description" content="Scenario-first skills discovery layer with GitHub-first source links." />
     <title>Skills Registry</title>
     <link rel="canonical" href="/index.html" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -15,7 +15,7 @@
         <div class="topbar-inner">
           <a class="brand" href="/index.html"><strong>Skills</strong><span>Registry</span></a>
           <nav class="nav">
-            <a href="/index.html">Home</a><a href="https://github.com/EOMZON/skills-registry">GitHub</a><a href="https://github.com/EOMZON/skills-registry/tree/main/content/skills">All Skills</a><a href="https://github.com/EOMZON/skills-registry/blob/main/content/scenes.json">Scene Map</a>
+            <a href="/index.html">Home</a><a href="https://github.com/EOMZON/skills-registry">GitHub Repo</a><a href="https://github.com/EOMZON/skills-registry/tree/main/content/skills">Browse Skills</a><a href="https://github.com/EOMZON/skills-registry/blob/main/content/scenes.json">Scenes on GitHub</a>
           </nav>
         </div>
       </header>
@@ -23,14 +23,14 @@
   <section class="hero">
     <div>
       <p class="hero-kicker">Scenario-First Skill Registry</p>
-      <h1 class="hero-title">先按场景进入，再点 GitHub。</h1>
-      <p class="hero-copy">这个站点更像 skills 的发现层，不是全文消费层。首页先回答能做什么、从哪里起手，然后把你尽量导回 GitHub 对应 skill 的公开说明与仓库入口，让 star、follow 和后续更新都回到源头。</p>
+      <h1 class="hero-title">先按场景找，再去 GitHub 取用。</h1>
+      <p class="hero-copy">这个站点只回答三件事: 你要完成什么、先点哪个 skill、值不值得继续深看。完整公开说明、更新历史和后续 star，都应该回到 GitHub 源头。</p>
     </div>
     <div class="hero-notes">
       <div class="hero-note"><strong>Executable systems</strong>不是 prompt 片段。很多 skill 会直接落到报告、页面、脚本、部署或可复查产物。</div>
 <div class="hero-note"><strong>Scenario-first</strong>先按要完成的事情分组，再在 scene 里看可调用的 skill，而不是先按工具名找。</div>
-<div class="hero-note"><strong>Private source -&gt; exposed manifests</strong>私有作者源先沉淀，再导出 repo-backed 的 exposed manifest；涉及状态和敏感运行细节的 workflow 以 sanitized 方式列出。</div>
-<div class="hero-note"><strong>GitHub-first</strong>站点负责发现与筛选，完整公开说明和后续更新优先回到 GitHub，而不是把人困在站内镜像。</div>
+<div class="hero-note"><strong>Private source -&gt; public source</strong>私有作者源先沉淀，再导出可公开的 GitHub 版本；敏感运行细节不在公开层硬展开。</div>
+<div class="hero-note"><strong>GitHub-first</strong>站点负责发现与筛选，完整公开说明、更新历史和 star 入口都回到 GitHub。</div>
     </div>
   </section>
 
@@ -47,7 +47,7 @@
         <p class="section-kicker">Scenes</p>
         <h2 class="section-title">先看你要完成什么</h2>
       </div>
-      <div class="section-summary">每个 scene 都直接暴露当前列出状态、核心任务和起手 skill。这里的 skill 点击优先跳 GitHub，而不是把你困在站内镜像里。</div>
+      <div class="section-summary">每个 scene 只保留最必要的判断信息: 你在解决什么问题、从哪里起手、哪些 skill 值得点进去。skill 点击优先跳 GitHub。</div>
     </div>
     <div class="scene-directory">
 <article class="scene-entry">
@@ -199,7 +199,7 @@
         <p class="section-kicker">Coverage</p>
         <h2 class="section-title">按场景展开，然后直接跳 GitHub</h2>
       </div>
-      <div class="section-summary">这里保留最必要的判断信息: 这是什么、适合什么时候用、输入输出大概是什么。真正的 skill 说明、更新与获取路径，主链接都回到 GitHub。</div>
+      <div class="section-summary">这里保留最必要的判断信息: 这是什么、适合什么时候用、输入输出大概是什么。真正的 skill 说明、更新与获取路径都回到 GitHub。</div>
     </div>
     <div class="scene-blocks">
 <section class="scene-block">
@@ -478,37 +478,37 @@
   <section class="section">
     <div class="section-header">
       <div>
-        <p class="section-kicker">Repository</p>
-        <h2 class="section-title">公开入口优先回到 GitHub</h2>
+        <p class="section-kicker">GitHub</p>
+        <h2 class="section-title">真正的公开入口在 GitHub</h2>
       </div>
-      <div class="section-summary">机器入口仍然存在，但对人类访问者来说，主入口应该是 GitHub 仓库本身。这个站点负责发现与筛选，不负责替代源码与原始文档。</div>
+      <div class="section-summary">机器镜像仍然存在，但对人类访问者来说，主入口应该是 GitHub 仓库本身。这个站点负责发现与筛选，不负责替代源码与原始文档。</div>
     </div>
     <div class="endpoint-list">
 <a class="endpoint-card" href="https://github.com/EOMZON/skills-registry">
-  <div class="endpoint-name">Registry Repo</div>
-  <div class="endpoint-desc">公开仓库总入口。主流量应该被导回这里，而不是停在站内全文页。</div>
+  <div class="endpoint-name">Open Repo</div>
+  <div class="endpoint-desc">公开仓库总入口。需要完整说明、star 或 follow 时，优先回到这里。</div>
 </a>
 <a class="endpoint-card" href="https://github.com/EOMZON/skills-registry/tree/main/content/skills">
-  <div class="endpoint-name">All Skills Folder</div>
-  <div class="endpoint-desc">直接浏览所有公开 skill 文件夹。</div>
+  <div class="endpoint-name">Browse All Skills</div>
+  <div class="endpoint-desc">直接浏览所有公开 skill 文件夹，而不是下载站内镜像。</div>
+</a>
+<a class="endpoint-card" href="https://github.com/EOMZON/skills-registry/commits/main">
+  <div class="endpoint-name">Latest Updates</div>
+  <div class="endpoint-desc">查看最近提交和公开更新节奏。</div>
 </a>
 <a class="endpoint-card" href="https://github.com/EOMZON/skills-registry/blob/main/content/scenes.json">
   <div class="endpoint-name">Scene Taxonomy</div>
-  <div class="endpoint-desc">所有应用场景的源文件。</div>
+  <div class="endpoint-desc">应用场景分类的 GitHub 源文件。</div>
 </a>
 <a class="endpoint-card" href="https://github.com/EOMZON/skills-registry/blob/main/content/scene-guides.json">
-  <div class="endpoint-name">Scene Guides</div>
-  <div class="endpoint-desc">starter 和 chain 的源文件。</div>
-</a>
-<a class="endpoint-card" href="https://github.com/EOMZON/skills-registry/blob/main/content/registry.json">
-  <div class="endpoint-name">registry.json</div>
-  <div class="endpoint-desc">公开 registry index 的 GitHub 源文件。</div>
+  <div class="endpoint-name">Starter Chains</div>
+  <div class="endpoint-desc">starter 和 chain 组织方式的 GitHub 源文件。</div>
 </a>
 </div>
   </section>
 </main>
       <footer class="footer">
-        <div>Skills Site · scenario-first registry renderer · source of truth: <a href="https://github.com/EOMZON/skills-registry">EOMZON/skills-registry</a></div>
+        <div>Skills Site · discovery layer only · full public docs and updates live on <a href="https://github.com/EOMZON/skills-registry">GitHub</a></div>
       </footer>
     </div>
   </body>

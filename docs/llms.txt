@@ -1,10 +1,15 @@
 # Skills Registry
 
-Scenario-first skill registry with public and sanitized entries.
+Scenario-first skills discovery layer with GitHub-first source links.
 
 Registry repo: https://github.com/EOMZON/skills-registry
 
-## Canonical machine-readable entry points
+## Preferred public source
+
+- https://github.com/EOMZON/skills-registry
+- https://github.com/EOMZON/skills-registry/tree/main/content/skills
+
+## Site mirrors for agents
 
 - /data/registry.json
 - /data/scenes.json
@@ -16,25 +21,32 @@ Registry repo: https://github.com/EOMZON/skills-registry
 ## Scenes
 
 - 调研与决策 (research-decision) [Live, 1 skills]
-  paths: /scenes/research-decision/index.html | /data/scenes/research-decision.json
+  preview: /scenes/research-decision/index.html
+  mirror_json: /data/scenes/research-decision.json
   starters: best-minds
 - 写作与文档 (writing-docs) [Live, 1 skills]
-  paths: /scenes/writing-docs/index.html | /data/scenes/writing-docs.json
+  preview: /scenes/writing-docs/index.html
+  mirror_json: /data/scenes/writing-docs.json
   starters: doc-coauthoring
 - 设计与视觉 (design-visual) [Live, 3 skills]
-  paths: /scenes/design-visual/index.html | /data/scenes/design-visual.json
+  preview: /scenes/design-visual/index.html
+  mirror_json: /data/scenes/design-visual.json
   starters: zon-minimal-editorial, theme-factory, img-handdrawn-run-report
 - 网站与前端 (website-frontend) [Live, 2 skills]
-  paths: /scenes/website-frontend/index.html | /data/scenes/website-frontend.json
+  preview: /scenes/website-frontend/index.html
+  mirror_json: /data/scenes/website-frontend.json
   starters: frontend-design, webapp-testing, vercel-deploy
 - 编程与工程 (coding-engineering) [Live, 1 skills]
-  paths: /scenes/coding-engineering/index.html | /data/scenes/coding-engineering.json
+  preview: /scenes/coding-engineering/index.html
+  mirror_json: /data/scenes/coding-engineering.json
   starters: mcp-builder
 - 自动化与交付 (automation-shipping) [Live, 4 skills]
-  paths: /scenes/automation-shipping/index.html | /data/scenes/automation-shipping.json
+  preview: /scenes/automation-shipping/index.html
+  mirror_json: /data/scenes/automation-shipping.json
   starters: github-repo-bootstrap, github-ops, vercel-ship, vercel-deploy
 - 项目与产品推进 (product-project) [Coming Next, 0 skills]
-  paths: /scenes/product-project/index.html | /data/scenes/product-project.json
+  preview: /scenes/product-project/index.html
+  mirror_json: /data/scenes/product-project.json
   starters: none yet
 
 ## Current listed skills
@@ -45,93 +57,105 @@ Registry repo: https://github.com/EOMZON/skills-registry
   summary: 世界级专家模拟与研究决策 skill，用于调研、思路梳理和路线规划。
   visibility: public
   stability: core
-  paths: /skills/best-minds/index.html | /data/skills/best-minds.json
-  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/best-minds
+  preview: /skills/best-minds/index.html
+  mirror_json: /data/skills/best-minds.json
+  preferred_source: https://github.com/EOMZON/skills-registry/blob/main/content/skills/best-minds/SKILL.md
 - Doc Co-Authoring (doc-coauthoring)
   invoke: $doc-coauthoring
   scene: writing-docs
   summary: 结构化文档共创 workflow，适合提案、Spec、PRD、决策文档与长文写作。
   visibility: public
   stability: stable
-  paths: /skills/doc-coauthoring/index.html | /data/skills/doc-coauthoring.json
-  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/doc-coauthoring
+  preview: /skills/doc-coauthoring/index.html
+  mirror_json: /data/skills/doc-coauthoring.json
+  preferred_source: https://github.com/EOMZON/skills-registry/blob/main/content/skills/doc-coauthoring/SKILL.md
 - Frontend Design (frontend-design)
   invoke: $frontend-design
   scene: website-frontend
   summary: 高质量网页、界面和前端实现 skill，强调风格判断与可上线交付。
   visibility: public
   stability: core
-  paths: /skills/frontend-design/index.html | /data/skills/frontend-design.json
-  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/frontend-design
+  preview: /skills/frontend-design/index.html
+  mirror_json: /data/skills/frontend-design.json
+  preferred_source: https://github.com/EOMZON/skills-registry/blob/main/content/skills/frontend-design/SKILL.md
 - GitHub Ops (github-ops)
   invoke: $github-ops
   scene: automation-shipping
   summary: 用 gh CLI + git 处理 GitHub 日常运维：仓库、PR、Issue、Release、Actions、Secrets 与权限管理。
   visibility: sanitized
   stability: stable
-  paths: /skills/github-ops/index.html | /data/skills/github-ops.json
-  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/github-ops
+  preview: /skills/github-ops/index.html
+  mirror_json: /data/skills/github-ops.json
+  preferred_source: https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-ops/SKILL.md
 - GitHub Repo Bootstrap (github-repo-bootstrap)
   invoke: $github-repo-bootstrap
   scene: automation-shipping
   summary: 把一个本地文件夹稳定地变成 GitHub 仓库：创建远端、配置 origin、推送 main，并处理常见 PAT/SSH 问题。
   visibility: sanitized
   stability: stable
-  paths: /skills/github-repo-bootstrap/index.html | /data/skills/github-repo-bootstrap.json
-  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/github-repo-bootstrap
+  preview: /skills/github-repo-bootstrap/index.html
+  mirror_json: /data/skills/github-repo-bootstrap.json
+  preferred_source: https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-repo-bootstrap/SKILL.md
 - Handdrawn Run Report (img-handdrawn-run-report)
   invoke: $img-handdrawn-run-report
   scene: design-visual
   summary: 把图片生成结果、Prompt 与参数整理成可打印的 HTML 运行报告，适合归档、复现与展示。
   visibility: public
   stability: stable
-  paths: /skills/img-handdrawn-run-report/index.html | /data/skills/img-handdrawn-run-report.json
-  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/img-handdrawn-run-report
+  preview: /skills/img-handdrawn-run-report/index.html
+  mirror_json: /data/skills/img-handdrawn-run-report.json
+  preferred_source: https://github.com/EOMZON/skills-registry/blob/main/content/skills/img-handdrawn-run-report/SKILL.md
 - MCP Builder (mcp-builder)
   invoke: $mcp-builder
   scene: coding-engineering
   summary: 构建高质量 MCP server 的工程 guide，覆盖工具设计、协议理解、实现、测试与评估。
   visibility: public
   stability: stable
-  paths: /skills/mcp-builder/index.html | /data/skills/mcp-builder.json
-  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/mcp-builder
+  preview: /skills/mcp-builder/index.html
+  mirror_json: /data/skills/mcp-builder.json
+  preferred_source: https://github.com/EOMZON/skills-registry/blob/main/content/skills/mcp-builder/SKILL.md
 - Theme Factory (theme-factory)
   invoke: $theme-factory
   scene: design-visual
   summary: 为 HTML、文档、幻灯或报告选择并应用成体系的视觉主题，而不是零散改样式。
   visibility: public
   stability: stable
-  paths: /skills/theme-factory/index.html | /data/skills/theme-factory.json
-  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/theme-factory
+  preview: /skills/theme-factory/index.html
+  mirror_json: /data/skills/theme-factory.json
+  preferred_source: https://github.com/EOMZON/skills-registry/blob/main/content/skills/theme-factory/SKILL.md
 - Vercel Deploy (vercel-deploy)
   invoke: $vercel-deploy
   scene: automation-shipping
   summary: 将现有工程发布到 Vercel，并处理分析与域名配置。
   visibility: public
   stability: stable
-  paths: /skills/vercel-deploy/index.html | /data/skills/vercel-deploy.json
-  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/vercel-deploy
+  preview: /skills/vercel-deploy/index.html
+  mirror_json: /data/skills/vercel-deploy.json
+  preferred_source: https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-deploy/SKILL.md
 - Vercel Ship (vercel-ship)
   invoke: $vercel-ship
   scene: automation-shipping
   summary: 把 Git 提交、GitHub 推送、Vercel 部署、Analytics 与自定义域名串成一条可重复执行的 ship 流水线。
   visibility: sanitized
   stability: stable
-  paths: /skills/vercel-ship/index.html | /data/skills/vercel-ship.json
-  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/vercel-ship
+  preview: /skills/vercel-ship/index.html
+  mirror_json: /data/skills/vercel-ship.json
+  preferred_source: https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-ship/SKILL.md
 - Webapp Testing (webapp-testing)
   invoke: $webapp-testing
   scene: website-frontend
   summary: 用 Playwright 验证本地 Web 应用行为，适合交互验收、回归检查、截图取证与 UI 调试。
   visibility: public
   stability: stable
-  paths: /skills/webapp-testing/index.html | /data/skills/webapp-testing.json
-  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/webapp-testing
+  preview: /skills/webapp-testing/index.html
+  mirror_json: /data/skills/webapp-testing.json
+  preferred_source: https://github.com/EOMZON/skills-registry/blob/main/content/skills/webapp-testing/SKILL.md
 - Zon Minimal Editorial (zon-minimal-editorial)
   invoke: $zon-minimal-editorial
   scene: design-visual
   summary: 把内容型网站和页面收口为克制、黑白、内容优先的 editorial house style。
   visibility: public
   stability: stable
-  paths: /skills/zon-minimal-editorial/index.html | /data/skills/zon-minimal-editorial.json
-  source: https://github.com/EOMZON/skills-registry/tree/main/content/skills/zon-minimal-editorial
+  preview: /skills/zon-minimal-editorial/index.html
+  mirror_json: /data/skills/zon-minimal-editorial.json
+  preferred_source: https://github.com/EOMZON/skills-registry/blob/main/content/skills/zon-minimal-editorial/SKILL.md

@@ -19,6 +19,7 @@ const registryPublicRepoUrl = normalizeRepoUrl(
   process.env.SKILLS_REGISTRY_PUBLIC_REPO_URL || "https://github.com/EOMZON/skills-registry"
 );
 const registryPublicRepoBranch = process.env.SKILLS_REGISTRY_PUBLIC_REPO_BRANCH || "main";
+const siteOrigin = normalizeRepoUrl(process.env.SKILLS_SITE_ORIGIN || "https://skills.zondev.top");
 const sceneStatusLabel = {
   live: "Live",
   "coming-next": "Coming Next",
@@ -180,109 +181,13 @@ function skillSort(a, b, scenesById) {
   return a.title.localeCompare(b.title, "zh-Hans-CN");
 }
 
-function stripFrontMatter(markdown) {
-  return markdown.replace(/^---\n[\s\S]*?\n---\n?/, "");
-}
-
-function markdownToHtml(markdown) {
-  const lines = stripFrontMatter(markdown).replace(/\r\n/g, "\n").split("\n");
-  const chunks = [];
-  let inList = false;
-  let inCode = false;
-  let paragraph = [];
-
-  const flushParagraph = () => {
-    if (!paragraph.length) return;
-    const text = paragraph.join(" ").trim();
-    if (text) chunks.push(`<p>${inline(text)}</p>`);
-    paragraph = [];
-  };
-
-  const closeList = () => {
-    if (!inList) return;
-    chunks.push("</ul>");
-    inList = false;
-  };
-
-  function inline(text) {
-    return escapeHtml(text)
-      .replace(/`([^`]+)`/g, "<code>$1</code>")
-      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
-  }
-
-  for (const line of lines) {
-    if (line.startsWith("```")) {
-      flushParagraph();
-      closeList();
-      if (inCode) {
-        chunks.push("</code></pre>");
-        inCode = false;
-      } else {
-        chunks.push("<pre><code>");
-        inCode = true;
-      }
-      continue;
-    }
-
-    if (inCode) {
-      chunks.push(`${escapeHtml(line)}\n`);
-      continue;
-    }
-
-    if (/^#\s+/.test(line)) {
-      flushParagraph();
-      closeList();
-      chunks.push(`<h1>${inline(line.replace(/^#\s+/, ""))}</h1>`);
-      continue;
-    }
-
-    if (/^##\s+/.test(line)) {
-      flushParagraph();
-      closeList();
-      chunks.push(`<h2>${inline(line.replace(/^##\s+/, ""))}</h2>`);
-      continue;
-    }
-
-    if (/^###\s+/.test(line)) {
-      flushParagraph();
-      closeList();
-      chunks.push(`<h3>${inline(line.replace(/^###\s+/, ""))}</h3>`);
-      continue;
-    }
-
-    if (/^- /.test(line)) {
-      flushParagraph();
-      if (!inList) {
-        chunks.push("<ul>");
-        inList = true;
-      }
-      chunks.push(`<li>${inline(line.replace(/^- /, ""))}</li>`);
-      continue;
-    }
-
-    if (!line.trim()) {
-      flushParagraph();
-      closeList();
-      continue;
-    }
-
-    paragraph.push(line.trim());
-  }
-
-  flushParagraph();
-  closeList();
-  if (inCode) chunks.push("</code></pre>");
-
-  return chunks.join("\n");
-}
-
 function layout({ title, description, body, canonicalPath }) {
-  const canonical = `/${canonicalPath.replace(/^\/+/, "")}`;
+  const canonical = `${siteOrigin}/${canonicalPath.replace(/^\/+/, "")}`;
   const navLinks = [
     { label: "Home", href: "/index.html" },
-    { label: "GitHub", href: registryPublicRepoUrl },
-    { label: "All Skills", href: `${registryPublicRepoUrl}/tree/${registryPublicRepoBranch}/content/skills` },
-    { label: "Scene Map", href: githubBlobUrl(registryPublicRepoUrl, "content/scenes.json") }
+    { label: "GitHub Repo", href: registryPublicRepoUrl },
+    { label: "Browse Skills", href: `${registryPublicRepoUrl}/tree/${registryPublicRepoBranch}/content/skills` },
+    { label: "Scenes", href: "/index.html#scenes" }
   ];
   return `<!doctype html>
 <html lang="zh-CN">
@@ -307,7 +212,7 @@ function layout({ title, description, body, canonicalPath }) {
       </header>
       ${body}
       <footer class="footer">
-        <div>Skills Site · scenario-first registry renderer · source of truth: <a href="${escapeHtml(registryPublicRepoUrl)}">EOMZON/skills-registry</a></div>
+        <div>Skills Site · discovery layer only · full public docs and updates live on <a href="${escapeHtml(registryPublicRepoUrl)}">GitHub</a></div>
       </footer>
     </div>
   </body>
@@ -371,7 +276,7 @@ ${skills
   <div class="skill-copy">${escapeHtml(skill.summary)}</div>
   <div class="skill-io">${previewInputs(skill.inputs)}</div>
   <div class="skill-io">${previewText(skill.returns)}</div>
-  <div class="skill-call">${sourceLink("Open", preferredSkillHref(skill))}</div>
+  <div class="skill-call">${sourceLink("View on GitHub", preferredSkillHref(skill))}</div>
 </div>`
   )
   .join("\n")}
@@ -480,52 +385,47 @@ function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifest
       body: "先按要完成的事情分组，再在 scene 里看可调用的 skill，而不是先按工具名找。"
     },
     {
-      label: "Private source -> exposed manifests",
-      body: "私有作者源先沉淀，再导出 repo-backed 的 exposed manifest；涉及状态和敏感运行细节的 workflow 以 sanitized 方式列出。"
+      label: "Private source -> public source",
+      body: "私有作者源先沉淀，再导出可公开的 GitHub 版本；敏感运行细节不在公开层硬展开。"
     },
     {
       label: "GitHub-first",
-      body: "站点负责发现与筛选，完整公开说明和后续更新优先回到 GitHub，而不是把人困在站内镜像。"
+      body: "站点负责发现与筛选，完整公开说明、更新历史和 star 入口都回到 GitHub。"
     }
   ];
   const agentLinks = [
     {
-      name: "Registry Repo",
+      name: "Open Repo",
       href: registryPublicRepoUrl,
-      description: "公开仓库总入口。主流量应该被导回这里，而不是停在站内全文页。"
+      description: "公开仓库总入口。需要完整说明、star 或 follow 时，优先回到这里。"
     },
     {
-      name: "All Skills Folder",
+      name: "Browse All Skills",
       href: `${registryPublicRepoUrl}/tree/${registryPublicRepoBranch}/content/skills`,
-      description: "直接浏览所有公开 skill 文件夹。"
+      description: "直接浏览所有公开 skill 文件夹，而不是下载站内镜像。"
     },
     {
-      name: "Scene Taxonomy",
-      href: githubBlobUrl(registryPublicRepoUrl, "content/scenes.json"),
-      description: "所有应用场景的源文件。"
+      name: "Latest Updates",
+      href: `${registryPublicRepoUrl}/commits/${registryPublicRepoBranch}`,
+      description: "查看最近提交和公开更新节奏。"
     },
     {
-      name: "Scene Guides",
-      href: githubBlobUrl(registryPublicRepoUrl, "content/scene-guides.json"),
-      description: "starter 和 chain 的源文件。"
-    },
-    {
-      name: "registry.json",
-      href: githubBlobUrl(registryPublicRepoUrl, "content/registry.json"),
-      description: "公开 registry index 的 GitHub 源文件。"
+      name: "Browse Registry Content",
+      href: `${registryPublicRepoUrl}/tree/${registryPublicRepoBranch}/content`,
+      description: "统一查看 scenes、guides 和公开 skills 的目录结构。"
     }
   ];
 
   return layout({
     title: "Skills Registry",
-    description: "Scenario-first skill registry for human browsing and agent consumption.",
+    description: "Scenario-first skills discovery layer with GitHub-first source links.",
     canonicalPath: "index.html",
     body: `<main class="page">
   <section class="hero">
     <div>
       <p class="hero-kicker">Scenario-First Skill Registry</p>
-      <h1 class="hero-title">先按场景进入，再点 GitHub。</h1>
-      <p class="hero-copy">这个站点更像 skills 的发现层，不是全文消费层。首页先回答能做什么、从哪里起手，然后把你尽量导回 GitHub 对应 skill 的公开说明与仓库入口，让 star、follow 和后续更新都回到源头。</p>
+      <h1 class="hero-title">先按场景找，再去 GitHub 取用。</h1>
+      <p class="hero-copy">这个站点只回答三件事: 你要完成什么、先点哪个 skill、值不值得继续深看。完整公开说明、更新历史和后续 star，都应该回到 GitHub 源头。</p>
     </div>
     <div class="hero-notes">
       ${differentiators
@@ -543,13 +443,13 @@ function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifest
     <div class="stat"><span class="stat-value">${stats.liveScenes}</span><span class="stat-label">Live Scenes</span></div>
   </section>
 
-  <section class="section">
+  <section class="section" id="scenes">
     <div class="section-header">
       <div>
         <p class="section-kicker">Scenes</p>
         <h2 class="section-title">先看你要完成什么</h2>
       </div>
-      <div class="section-summary">每个 scene 都直接暴露当前列出状态、核心任务和起手 skill。这里的 skill 点击优先跳 GitHub，而不是把你困在站内镜像里。</div>
+      <div class="section-summary">每个 scene 只保留最必要的判断信息: 你在解决什么问题、从哪里起手、哪些 skill 值得点进去。skill 点击优先跳 GitHub。</div>
     </div>
     ${renderSceneGrid(sceneEntries)}
   </section>
@@ -560,7 +460,7 @@ function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifest
         <p class="section-kicker">Coverage</p>
         <h2 class="section-title">按场景展开，然后直接跳 GitHub</h2>
       </div>
-      <div class="section-summary">这里保留最必要的判断信息: 这是什么、适合什么时候用、输入输出大概是什么。真正的 skill 说明、更新与获取路径，主链接都回到 GitHub。</div>
+      <div class="section-summary">这里保留最必要的判断信息: 这是什么、适合什么时候用、输入输出大概是什么。真正的 skill 说明、更新与获取路径都回到 GitHub。</div>
     </div>
     ${renderCoverage(activeSceneEntries, manifestsById)}
   </section>
@@ -568,10 +468,10 @@ function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifest
   <section class="section">
     <div class="section-header">
       <div>
-        <p class="section-kicker">Repository</p>
-        <h2 class="section-title">公开入口优先回到 GitHub</h2>
+        <p class="section-kicker">GitHub</p>
+        <h2 class="section-title">真正的公开入口在 GitHub</h2>
       </div>
-      <div class="section-summary">机器入口仍然存在，但对人类访问者来说，主入口应该是 GitHub 仓库本身。这个站点负责发现与筛选，不负责替代源码与原始文档。</div>
+      <div class="section-summary">机器镜像仍然存在，但对人类访问者来说，主入口应该是 GitHub 仓库本身。这个站点负责发现与筛选，不负责替代源码与原始文档。</div>
     </div>
     ${renderEndpointList(agentLinks)}
   </section>
@@ -606,7 +506,7 @@ function buildScenePage(scene, skills, scenesById, guide, manifestsById) {
         <p class="section-kicker">Index</p>
         <h2 class="section-title">${normalized.length} listed skills</h2>
       </div>
-      <div class="section-summary">场景页回答三件事: 常见任务是什么、从哪里起手、现在有哪些已列出 skill 可以继续往下走。</div>
+      <div class="section-summary">场景页回答三件事: 常见任务是什么、从哪里起手、现在有哪些已列出 skill 值得点去 GitHub 深看。</div>
     </div>
     ${body}
   </section>
@@ -614,7 +514,7 @@ function buildScenePage(scene, skills, scenesById, guide, manifestsById) {
   });
 }
 
-function buildDetailPage(manifest, markdown, scenesById, manifestsById) {
+function buildDetailPage(manifest, scenesById, manifestsById) {
   const sceneTitle = scenesById.get(manifest.scene)?.title || manifest.scene;
   const tags = manifest.keywords || [];
   const related = (manifest.related_ids || [])
@@ -638,19 +538,13 @@ function buildDetailPage(manifest, markdown, scenesById, manifestsById) {
   if (!manifest.dependencies?.bins?.length && !manifest.dependencies?.services?.length) {
     dependencyLines.push("No special runtime");
   }
-  const sourceLines = [
-    manifest.source_repo ? `<a href="${escapeHtml(manifest.source_repo)}">Source Repo</a>` : null,
-    manifest.source_tree_url ? `<a href="${escapeHtml(manifest.source_tree_url)}">Skill Folder</a>` : null,
-    manifest.source_skill_md_url ? `<a href="${escapeHtml(manifest.source_skill_md_url)}">Public SKILL.md</a>` : null,
-    manifest.source_manifest_url ? `<a href="${escapeHtml(manifest.source_manifest_url)}">Public manifest.json</a>` : null
-  ].filter(Boolean);
   const detailLead = `<div class="detail-note">
     <p class="source-kicker">GitHub First</p>
     <h2 class="detail-note-title">完整公开说明放在 GitHub，不放在站内长期镜像。</h2>
-    <p class="detail-note-copy">这个页面只保留 discovery 和 contract。真正的公开说明、后续更新和 star 入口都应回到 GitHub source。</p>
+    <p class="detail-note-copy">这个页面只保留快速判断和调用契约。真正的公开文档、更新历史和 star 入口都应该回到 GitHub。</p>
     <div class="source-actions">
-      ${manifest.source_skill_md_url ? sourceLink("Open SKILL.md", manifest.source_skill_md_url) : ""}
-      ${manifest.source_tree_url ? sourceLink("Open Folder", manifest.source_tree_url) : ""}
+      ${manifest.source_skill_md_url ? sourceLink("Read on GitHub", manifest.source_skill_md_url) : ""}
+      ${manifest.source_tree_url ? sourceLink("Browse Folder", manifest.source_tree_url) : ""}
       ${manifest.source_repo ? sourceLink("Open Repo", manifest.source_repo) : ""}
     </div>
   </div>`;
@@ -722,14 +616,6 @@ function buildDetailPage(manifest, markdown, scenesById, manifestsById) {
           `Updated: ${escapeHtml(manifest.updated_at)}`
         ])}
       </div>
-      ${
-        sourceLines.length
-          ? `<div class="side-card">
-        <p class="side-label">Source</p>
-        ${renderSideList(sourceLines)}
-      </div>`
-          : ""
-      }
     </aside>
   </section>
 </main>`
@@ -744,7 +630,8 @@ function buildLlmsTxt(registry, scenesById, sceneGuidesById) {
       const status = guide?.status || (scene.count > 0 ? "live" : "coming-next");
       const starters = (guide?.starter_ids || []).join(", ") || "none yet";
       return `- ${full?.title || scene.id} (${scene.id}) [${sceneStatusLabel[status] || status}, ${scene.count} skills]
-  paths: /scenes/${scene.id}/index.html | /data/scenes/${scene.id}.json
+  preview: /scenes/${scene.id}/index.html
+  mirror_json: /data/scenes/${scene.id}.json
   starters: ${starters}`;
     })
     .join("\n");
@@ -756,18 +643,24 @@ function buildLlmsTxt(registry, scenesById, sceneGuidesById) {
   summary: ${skill.summary}
   visibility: ${skill.visibility || "public"}
   stability: ${skill.stability || "stable"}
-  paths: /skills/${skill.id}/index.html | /data/skills/${skill.id}.json
-  source: ${skill.source_tree_url || skill.source_repo || registry.source_repo || registryPublicRepoUrl}`
+  preview: /skills/${skill.id}/index.html
+  mirror_json: /data/skills/${skill.id}.json
+  preferred_source: ${skill.source_skill_md_url || skill.source_tree_url || skill.source_repo || registry.source_repo || registryPublicRepoUrl}`
     )
     .join("\n");
 
   return `# Skills Registry
 
-Scenario-first skill registry with public and sanitized entries.
+Scenario-first skills discovery layer with GitHub-first source links.
 
 Registry repo: ${registry.source_repo || registryPublicRepoUrl}
 
-## Canonical machine-readable entry points
+## Preferred public source
+
+- ${registry.source_repo || registryPublicRepoUrl}
+- ${registryPublicRepoUrl}/tree/${registryPublicRepoBranch}/content/skills
+
+## Site mirrors for agents
 
 - /data/registry.json
 - /data/scenes.json
@@ -806,11 +699,31 @@ inputs: ${(manifest.inputs || [])
 returns: ${(manifest.returns || []).join(" | ") || "none"}
 bins: ${(manifest.dependencies?.bins || []).join(", ") || "none"}
 services: ${(manifest.dependencies?.services || []).join(", ") || "none"}
-json: /data/skills/${manifest.id}.json
-source_repo: ${manifest.source_repo || registryPublicRepoUrl}
-source_tree: ${manifest.source_tree_url || registryPublicRepoUrl}`;
+preview: /skills/${manifest.id}/index.html
+mirror_json: /data/skills/${manifest.id}.json
+preferred_source: ${manifest.source_skill_md_url || manifest.source_tree_url || manifest.source_repo || registryPublicRepoUrl}
+source_repo: ${manifest.source_repo || registryPublicRepoUrl}`;
   })
   .join("\n\n")}
+`;
+}
+
+function buildRobotsTxt() {
+  return `User-agent: *
+Allow: /
+
+Sitemap: ${siteOrigin}/sitemap.xml
+`;
+}
+
+function buildSitemap(paths) {
+  const uniquePaths = Array.from(new Set(paths)).sort();
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${uniquePaths
+  .map((pagePath) => `  <url><loc>${escapeHtml(`${siteOrigin}/${pagePath.replace(/^\/+/, "")}`)}</loc></url>`)
+  .join("\n")}
+</urlset>
 `;
 }
 
@@ -830,14 +743,12 @@ function main() {
 
   const manifests = registry.skills.map((skill) => {
     const manifestPath = path.join(registryRoot, skill.manifest_path);
-    const skillMdPath = path.join(registryRoot, skill.skill_md_path);
     const manifest = readJson(manifestPath);
     const sourceMeta = buildSourceMeta(skill);
     return {
       ...manifest,
       ...sourceMeta,
-      sceneTitle: scenesById.get(manifest.scene)?.title || manifest.scene,
-      _markdown: fs.readFileSync(skillMdPath, "utf8")
+      sceneTitle: scenesById.get(manifest.scene)?.title || manifest.scene
     };
   });
 
@@ -867,7 +778,7 @@ function main() {
   for (const manifest of manifests) {
     writeFile(
       path.join(distRoot, "skills", manifest.id, "index.html"),
-      buildDetailPage(manifest, manifest._markdown, scenesById, manifestsById)
+      buildDetailPage(manifest, scenesById, manifestsById)
     );
     writeFile(
       path.join(distRoot, "data", "skills", `${manifest.id}.json`),
@@ -920,8 +831,9 @@ function main() {
           source_repo: publicManifest.source_repo || registryPublicRepoUrl,
           source_tree_url: publicManifest.source_tree_url,
           source_manifest_url: publicManifest.source_manifest_url,
+          source_skill_md_url: publicManifest.source_skill_md_url,
           detail_path: `/skills/${publicManifest.id}/index.html`,
-          manifest_path: `/data/skills/${publicManifest.id}.json`
+          site_data_path: `/data/skills/${publicManifest.id}.json`
         };
       });
     const guide = sceneGuidesById.get(scene.id) || null;
@@ -955,6 +867,15 @@ function main() {
   writeFile(path.join(distRoot, "data", "registry.json"), JSON.stringify(publicRegistry, null, 2) + "\n");
   writeFile(path.join(distRoot, "llms.txt"), buildLlmsTxt(publicRegistry, scenesById, sceneGuidesById));
   writeFile(path.join(distRoot, "llms-full.txt"), buildLlmsFullTxt(manifests, scenesById));
+  writeFile(path.join(distRoot, "robots.txt"), buildRobotsTxt());
+  writeFile(
+    path.join(distRoot, "sitemap.xml"),
+    buildSitemap([
+      "index.html",
+      ...scenesDoc.scenes.map((scene) => `scenes/${scene.id}/index.html`),
+      ...manifests.map((manifest) => `skills/${manifest.id}/index.html`)
+    ])
+  );
   console.log(`Built skills-site into ${distRoot}`);
 }
 
