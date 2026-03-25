@@ -15,11 +15,7 @@
         <div class="topbar-inner">
           <a class="brand" href="/index.html"><strong>Skills</strong><span>Registry</span></a>
           <nav class="nav">
-            <a href="/index.html">Home</a>
-            <a href="/data/registry.json">registry.json</a>
-            <a href="/data/scenes.json">scenes.json</a>
-            <a href="/llms.txt">llms.txt</a>
-            <a href="https://github.com/EOMZON/skills-registry">repo</a>
+            <a href="/index.html">Home</a><a href="https://github.com/EOMZON/skills-registry">GitHub</a><a href="https://github.com/EOMZON/skills-registry/tree/main/content/skills">All Skills</a><a href="https://github.com/EOMZON/skills-registry/blob/main/content/scenes.json">Scene Map</a>
           </nav>
         </div>
       </header>
@@ -27,14 +23,14 @@
   <section class="hero">
     <div>
       <p class="hero-kicker">Scenario-First Skill Registry</p>
-      <h1 class="hero-title">先按场景进入，再选 skill。</h1>
-      <p class="hero-copy">首页先回答能做什么、从哪里起手、会拿到什么产出。公开层只保留可复用调用契约；需要收口运行细节的 workflow 用 sanitized entry 暴露，公开展示与机器入口都直接回到 repo-backed 的 source links。</p>
+      <h1 class="hero-title">先按场景进入，再点 GitHub。</h1>
+      <p class="hero-copy">这个站点更像 skills 的发现层，不是全文消费层。首页先回答能做什么、从哪里起手，然后把你尽量导回 GitHub 对应 skill 的公开说明与仓库入口，让 star、follow 和后续更新都回到源头。</p>
     </div>
     <div class="hero-notes">
       <div class="hero-note"><strong>Executable systems</strong>不是 prompt 片段。很多 skill 会直接落到报告、页面、脚本、部署或可复查产物。</div>
 <div class="hero-note"><strong>Scenario-first</strong>先按要完成的事情分组，再在 scene 里看可调用的 skill，而不是先按工具名找。</div>
 <div class="hero-note"><strong>Private source -&gt; exposed manifests</strong>私有作者源先沉淀，再导出 repo-backed 的 exposed manifest；涉及状态和敏感运行细节的 workflow 以 sanitized 方式列出。</div>
-<div class="hero-note"><strong>Agent-readable</strong>人看页面，AI 读 JSON 和 llms.txt。每个 skill 都有稳定的 machine entry point。</div>
+<div class="hero-note"><strong>GitHub-first</strong>站点负责发现与筛选，完整公开说明和后续更新优先回到 GitHub，而不是把人困在站内镜像。</div>
     </div>
   </section>
 
@@ -51,7 +47,7 @@
         <p class="section-kicker">Scenes</p>
         <h2 class="section-title">先看你要完成什么</h2>
       </div>
-      <div class="section-summary">每个 scene 都直接暴露当前列出状态、核心任务和起手 skill。尚未列出 skills 的 scene 也保留在首页，作为真实路线图而不是被隐藏的空白。</div>
+      <div class="section-summary">每个 scene 都直接暴露当前列出状态、核心任务和起手 skill。这里的 skill 点击优先跳 GitHub，而不是把你困在站内镜像里。</div>
     </div>
     <div class="scene-directory">
 <article class="scene-entry">
@@ -71,7 +67,7 @@
   </div>
   <div class="scene-starters">
     <p class="scene-label">Start With</p>
-    <div class="scene-links"><a href="/skills/best-minds/index.html">Best Minds</a></div>
+    <div class="scene-links"><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/best-minds/SKILL.md">Best Minds</a></div>
   </div>
 </article>
 <article class="scene-entry">
@@ -91,7 +87,7 @@
   </div>
   <div class="scene-starters">
     <p class="scene-label">Start With</p>
-    <div class="scene-links"><a href="/skills/doc-coauthoring/index.html">Doc Co-Authoring</a></div>
+    <div class="scene-links"><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/doc-coauthoring/SKILL.md">Doc Co-Authoring</a></div>
   </div>
 </article>
 <article class="scene-entry">
@@ -111,7 +107,7 @@
   </div>
   <div class="scene-starters">
     <p class="scene-label">Start With</p>
-    <div class="scene-links"><a href="/skills/zon-minimal-editorial/index.html">Zon Minimal Editorial</a> · <a href="/skills/theme-factory/index.html">Theme Factory</a> · <a href="/skills/img-handdrawn-run-report/index.html">Handdrawn Run Report</a></div>
+    <div class="scene-links"><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/zon-minimal-editorial/SKILL.md">Zon Minimal Editorial</a> · <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/theme-factory/SKILL.md">Theme Factory</a> · <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/img-handdrawn-run-report/SKILL.md">Handdrawn Run Report</a></div>
   </div>
 </article>
 <article class="scene-entry">
@@ -131,7 +127,7 @@
   </div>
   <div class="scene-starters">
     <p class="scene-label">Start With</p>
-    <div class="scene-links"><a href="/skills/frontend-design/index.html">Frontend Design</a> · <a href="/skills/webapp-testing/index.html">Webapp Testing</a></div>
+    <div class="scene-links"><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/frontend-design/SKILL.md">Frontend Design</a> · <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/webapp-testing/SKILL.md">Webapp Testing</a></div>
   </div>
 </article>
 <article class="scene-entry">
@@ -151,7 +147,7 @@
   </div>
   <div class="scene-starters">
     <p class="scene-label">Start With</p>
-    <div class="scene-links"><a href="/skills/mcp-builder/index.html">MCP Builder</a></div>
+    <div class="scene-links"><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/mcp-builder/SKILL.md">MCP Builder</a></div>
   </div>
 </article>
 <article class="scene-entry">
@@ -171,7 +167,7 @@
   </div>
   <div class="scene-starters">
     <p class="scene-label">Start With</p>
-    <div class="scene-links"><a href="/skills/github-repo-bootstrap/index.html">GitHub Repo Bootstrap</a> · <a href="/skills/github-ops/index.html">GitHub Ops</a> · <a href="/skills/vercel-ship/index.html">Vercel Ship</a> · <a href="/skills/vercel-deploy/index.html">Vercel Deploy</a></div>
+    <div class="scene-links"><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-repo-bootstrap/SKILL.md">GitHub Repo Bootstrap</a> · <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-ops/SKILL.md">GitHub Ops</a> · <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-ship/SKILL.md">Vercel Ship</a> · <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-deploy/SKILL.md">Vercel Deploy</a></div>
   </div>
 </article>
 <article class="scene-entry">
@@ -201,9 +197,9 @@
     <div class="section-header">
       <div>
         <p class="section-kicker">Coverage</p>
-        <h2 class="section-title">按场景展开的已列出 skills</h2>
+        <h2 class="section-title">按场景展开，然后直接跳 GitHub</h2>
       </div>
-      <div class="section-summary">这里专注看当前已经进入 registry 的技能索引，其中同时包含 fully public 与 sanitized entry。每一行同时暴露作用、输入、产出、可见性与调用方式，并且 detail 页会直接给出 source repo 链接。</div>
+      <div class="section-summary">这里保留最必要的判断信息: 这是什么、适合什么时候用、输入输出大概是什么。真正的 skill 说明、更新与获取路径，主链接都回到 GitHub。</div>
     </div>
     <div class="scene-blocks">
 <section class="scene-block">
@@ -216,8 +212,8 @@
   </div>
   <div class="scene-guide">
     <div class="guide-line"><span>Core Tasks</span>快速拆解一个复杂问题 · 比较不同路径并形成判断 · 把结论转成下一步行动</div>
-    <div class="guide-line"><span>Starter</span><a href="/skills/best-minds/index.html">Best Minds</a></div>
-    <div class="guide-line"><span>Chain</span><a href="/skills/best-minds/index.html">Best Minds</a> → <a href="/skills/doc-coauthoring/index.html">Doc Co-Authoring</a></div>
+    <div class="guide-line"><span>Starter</span><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/best-minds/SKILL.md">Best Minds</a></div>
+    <div class="guide-line"><span>Chain</span><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/best-minds/SKILL.md">Best Minds</a> → <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/doc-coauthoring/SKILL.md">Doc Co-Authoring</a></div>
   </div>
   <div class="skill-table">
   <div class="skill-head">
@@ -225,18 +221,18 @@
     <div>作用</div>
     <div>输入</div>
     <div>产出</div>
-    <div>Invoke</div>
+    <div>GitHub</div>
   </div>
 <div class="skill-row">
   <div>
-    <h3 class="skill-name"><a href="/skills/best-minds/index.html">Best Minds</a></h3>
+    <h3 class="skill-name"><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/best-minds/SKILL.md">Best Minds</a></h3>
     <div class="skill-meta">需要快速理解一个复杂问题</div>
-    <div class="skill-contract">public · core</div>
+    <div class="skill-contract">public · core · $best-minds</div>
   </div>
   <div class="skill-copy">世界级专家模拟与研究决策 skill，用于调研、思路梳理和路线规划。</div>
   <div class="skill-io"><code>question</code> · <code>scope</code></div>
   <div class="skill-io">结论摘要 · 关键发现与证据</div>
-  <div><span class="skill-invoke">$best-minds</span></div>
+  <div class="skill-call"><a class="mono-link" href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/best-minds/SKILL.md">Open</a></div>
 </div>
 </div>
 </section>
@@ -250,8 +246,8 @@
   </div>
   <div class="scene-guide">
     <div class="guide-line"><span>Core Tasks</span>把散乱背景整理成结构化文档 · 围绕受众和目标搭建文档骨架 · 在发出去前做一次读者视角检查</div>
-    <div class="guide-line"><span>Starter</span><a href="/skills/doc-coauthoring/index.html">Doc Co-Authoring</a></div>
-    <div class="guide-line"><span>Chain</span><a href="/skills/best-minds/index.html">Best Minds</a> → <a href="/skills/doc-coauthoring/index.html">Doc Co-Authoring</a> → <a href="/skills/theme-factory/index.html">Theme Factory</a></div>
+    <div class="guide-line"><span>Starter</span><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/doc-coauthoring/SKILL.md">Doc Co-Authoring</a></div>
+    <div class="guide-line"><span>Chain</span><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/best-minds/SKILL.md">Best Minds</a> → <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/doc-coauthoring/SKILL.md">Doc Co-Authoring</a> → <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/theme-factory/SKILL.md">Theme Factory</a></div>
   </div>
   <div class="skill-table">
   <div class="skill-head">
@@ -259,18 +255,18 @@
     <div>作用</div>
     <div>输入</div>
     <div>产出</div>
-    <div>Invoke</div>
+    <div>GitHub</div>
   </div>
 <div class="skill-row">
   <div>
-    <h3 class="skill-name"><a href="/skills/doc-coauthoring/index.html">Doc Co-Authoring</a></h3>
+    <h3 class="skill-name"><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/doc-coauthoring/SKILL.md">Doc Co-Authoring</a></h3>
     <div class="skill-meta">要写结构化文档，但上下文还很散</div>
-    <div class="skill-contract">public · stable</div>
+    <div class="skill-contract">public · stable · $doc-coauthoring</div>
   </div>
   <div class="skill-copy">结构化文档共创 workflow，适合提案、Spec、PRD、决策文档与长文写作。</div>
   <div class="skill-io"><code>doc_goal</code> · <code>source_context</code></div>
   <div class="skill-io">文档结构与章节 scaffold · 逐段共创与修订建议</div>
-  <div><span class="skill-invoke">$doc-coauthoring</span></div>
+  <div class="skill-call"><a class="mono-link" href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/doc-coauthoring/SKILL.md">Open</a></div>
 </div>
 </div>
 </section>
@@ -284,8 +280,8 @@
   </div>
   <div class="scene-guide">
     <div class="guide-line"><span>Core Tasks</span>为产物确定一套清晰的视觉主题 · 把图像生成过程整理成可复查的报告 · 把视觉方向沉淀成可复用的呈现层</div>
-    <div class="guide-line"><span>Starter</span><a href="/skills/zon-minimal-editorial/index.html">Zon Minimal Editorial</a> · <a href="/skills/theme-factory/index.html">Theme Factory</a> · <a href="/skills/img-handdrawn-run-report/index.html">Handdrawn Run Report</a></div>
-    <div class="guide-line"><span>Chain</span><a href="/skills/zon-minimal-editorial/index.html">Zon Minimal Editorial</a> → <a href="/skills/theme-factory/index.html">Theme Factory</a> → <a href="/skills/frontend-design/index.html">Frontend Design</a></div>
+    <div class="guide-line"><span>Starter</span><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/zon-minimal-editorial/SKILL.md">Zon Minimal Editorial</a> · <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/theme-factory/SKILL.md">Theme Factory</a> · <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/img-handdrawn-run-report/SKILL.md">Handdrawn Run Report</a></div>
+    <div class="guide-line"><span>Chain</span><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/zon-minimal-editorial/SKILL.md">Zon Minimal Editorial</a> → <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/theme-factory/SKILL.md">Theme Factory</a> → <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/frontend-design/SKILL.md">Frontend Design</a></div>
   </div>
   <div class="skill-table">
   <div class="skill-head">
@@ -293,40 +289,40 @@
     <div>作用</div>
     <div>输入</div>
     <div>产出</div>
-    <div>Invoke</div>
+    <div>GitHub</div>
   </div>
 <div class="skill-row">
   <div>
-    <h3 class="skill-name"><a href="/skills/img-handdrawn-run-report/index.html">Handdrawn Run Report</a></h3>
+    <h3 class="skill-name"><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/img-handdrawn-run-report/SKILL.md">Handdrawn Run Report</a></h3>
     <div class="skill-meta">已经有输出图片和 meta JSON</div>
-    <div class="skill-contract">public · stable</div>
+    <div class="skill-contract">public · stable · $img-handdrawn-run-report</div>
   </div>
   <div class="skill-copy">把图片生成结果、Prompt 与参数整理成可打印的 HTML 运行报告，适合归档、复现与展示。</div>
   <div class="skill-io"><code>meta_json</code> · <code>image_files</code></div>
   <div class="skill-io">可打印的 HTML 运行报告 · 嵌入式图片预览与 prompt 记录</div>
-  <div><span class="skill-invoke">$img-handdrawn-run-report</span></div>
+  <div class="skill-call"><a class="mono-link" href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/img-handdrawn-run-report/SKILL.md">Open</a></div>
 </div>
 <div class="skill-row">
   <div>
-    <h3 class="skill-name"><a href="/skills/theme-factory/index.html">Theme Factory</a></h3>
+    <h3 class="skill-name"><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/theme-factory/SKILL.md">Theme Factory</a></h3>
     <div class="skill-meta">已有文档或页面，需要统一视觉主题</div>
-    <div class="skill-contract">public · stable</div>
+    <div class="skill-contract">public · stable · $theme-factory</div>
   </div>
   <div class="skill-copy">为 HTML、文档、幻灯或报告选择并应用成体系的视觉主题，而不是零散改样式。</div>
   <div class="skill-io"><code>artifact_type</code> · <code>style_goal</code></div>
   <div class="skill-io">主题 shortlist 或自定义方向 · 颜色与字体 tokens</div>
-  <div><span class="skill-invoke">$theme-factory</span></div>
+  <div class="skill-call"><a class="mono-link" href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/theme-factory/SKILL.md">Open</a></div>
 </div>
 <div class="skill-row">
   <div>
-    <h3 class="skill-name"><a href="/skills/zon-minimal-editorial/index.html">Zon Minimal Editorial</a></h3>
+    <h3 class="skill-name"><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/zon-minimal-editorial/SKILL.md">Zon Minimal Editorial</a></h3>
     <div class="skill-meta">要把网站、报告、作品集或档案页做成出版物式阅读体验</div>
-    <div class="skill-contract">public · stable</div>
+    <div class="skill-contract">public · stable · $zon-minimal-editorial</div>
   </div>
   <div class="skill-copy">把内容型网站和页面收口为克制、黑白、内容优先的 editorial house style。</div>
   <div class="skill-io"><code>artifact_type</code> · <code>content_shape</code></div>
   <div class="skill-io">editorial fit 判断与页面原型方向 · 层级、排版和视觉约束</div>
-  <div><span class="skill-invoke">$zon-minimal-editorial</span></div>
+  <div class="skill-call"><a class="mono-link" href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/zon-minimal-editorial/SKILL.md">Open</a></div>
 </div>
 </div>
 </section>
@@ -340,8 +336,8 @@
   </div>
   <div class="scene-guide">
     <div class="guide-line"><span>Core Tasks</span>明确页面风格、结构和叙事顺序 · 在真实浏览器里验证交互 · 把页面稳定上线</div>
-    <div class="guide-line"><span>Starter</span><a href="/skills/frontend-design/index.html">Frontend Design</a> · <a href="/skills/webapp-testing/index.html">Webapp Testing</a> · <a href="/skills/vercel-deploy/index.html">Vercel Deploy</a></div>
-    <div class="guide-line"><span>Chain</span><a href="/skills/frontend-design/index.html">Frontend Design</a> → <a href="/skills/webapp-testing/index.html">Webapp Testing</a> → <a href="/skills/vercel-deploy/index.html">Vercel Deploy</a></div>
+    <div class="guide-line"><span>Starter</span><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/frontend-design/SKILL.md">Frontend Design</a> · <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/webapp-testing/SKILL.md">Webapp Testing</a> · <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-deploy/SKILL.md">Vercel Deploy</a></div>
+    <div class="guide-line"><span>Chain</span><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/frontend-design/SKILL.md">Frontend Design</a> → <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/webapp-testing/SKILL.md">Webapp Testing</a> → <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-deploy/SKILL.md">Vercel Deploy</a></div>
   </div>
   <div class="skill-table">
   <div class="skill-head">
@@ -349,29 +345,29 @@
     <div>作用</div>
     <div>输入</div>
     <div>产出</div>
-    <div>Invoke</div>
+    <div>GitHub</div>
   </div>
 <div class="skill-row">
   <div>
-    <h3 class="skill-name"><a href="/skills/frontend-design/index.html">Frontend Design</a></h3>
+    <h3 class="skill-name"><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/frontend-design/SKILL.md">Frontend Design</a></h3>
     <div class="skill-meta">需要设计并实现网页或前端界面</div>
-    <div class="skill-contract">public · core</div>
+    <div class="skill-contract">public · core · $frontend-design</div>
   </div>
   <div class="skill-copy">高质量网页、界面和前端实现 skill，强调风格判断与可上线交付。</div>
   <div class="skill-io"><code>goal</code> · <code>constraints</code></div>
   <div class="skill-io">设计方向 · 页面或组件实现</div>
-  <div><span class="skill-invoke">$frontend-design</span></div>
+  <div class="skill-call"><a class="mono-link" href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/frontend-design/SKILL.md">Open</a></div>
 </div>
 <div class="skill-row">
   <div>
-    <h3 class="skill-name"><a href="/skills/webapp-testing/index.html">Webapp Testing</a></h3>
+    <h3 class="skill-name"><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/webapp-testing/SKILL.md">Webapp Testing</a></h3>
     <div class="skill-meta">需要验证本地网页或前端交互</div>
-    <div class="skill-contract">public · stable</div>
+    <div class="skill-contract">public · stable · $webapp-testing</div>
   </div>
   <div class="skill-copy">用 Playwright 验证本地 Web 应用行为，适合交互验收、回归检查、截图取证与 UI 调试。</div>
   <div class="skill-io"><code>app_url_or_path</code> · <code>verification_goal</code></div>
   <div class="skill-io">浏览器内的验证结论 · 截图、日志或复现证据</div>
-  <div><span class="skill-invoke">$webapp-testing</span></div>
+  <div class="skill-call"><a class="mono-link" href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/webapp-testing/SKILL.md">Open</a></div>
 </div>
 </div>
 </section>
@@ -385,8 +381,8 @@
   </div>
   <div class="scene-guide">
     <div class="guide-line"><span>Core Tasks</span>设计对 agent 友好的工程接口 · 把外部服务组织成 MCP server · 补测试与评估让接口更可用</div>
-    <div class="guide-line"><span>Starter</span><a href="/skills/mcp-builder/index.html">MCP Builder</a></div>
-    <div class="guide-line"><span>Chain</span><a href="/skills/best-minds/index.html">Best Minds</a> → <a href="/skills/mcp-builder/index.html">MCP Builder</a> → <a href="/skills/webapp-testing/index.html">Webapp Testing</a></div>
+    <div class="guide-line"><span>Starter</span><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/mcp-builder/SKILL.md">MCP Builder</a></div>
+    <div class="guide-line"><span>Chain</span><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/best-minds/SKILL.md">Best Minds</a> → <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/mcp-builder/SKILL.md">MCP Builder</a> → <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/webapp-testing/SKILL.md">Webapp Testing</a></div>
   </div>
   <div class="skill-table">
   <div class="skill-head">
@@ -394,18 +390,18 @@
     <div>作用</div>
     <div>输入</div>
     <div>产出</div>
-    <div>Invoke</div>
+    <div>GitHub</div>
   </div>
 <div class="skill-row">
   <div>
-    <h3 class="skill-name"><a href="/skills/mcp-builder/index.html">MCP Builder</a></h3>
+    <h3 class="skill-name"><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/mcp-builder/SKILL.md">MCP Builder</a></h3>
     <div class="skill-meta">要把外部 API 或服务接入 LLM 或 agent</div>
-    <div class="skill-contract">public · stable</div>
+    <div class="skill-contract">public · stable · $mcp-builder</div>
   </div>
   <div class="skill-copy">构建高质量 MCP server 的工程 guide，覆盖工具设计、协议理解、实现、测试与评估。</div>
   <div class="skill-io"><code>target_service</code> · <code>stack_constraints</code></div>
   <div class="skill-io">MCP server 设计原则与实现路线 · tool schema 与错误处理建议</div>
-  <div><span class="skill-invoke">$mcp-builder</span></div>
+  <div class="skill-call"><a class="mono-link" href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/mcp-builder/SKILL.md">Open</a></div>
 </div>
 </div>
 </section>
@@ -419,8 +415,8 @@
   </div>
   <div class="scene-guide">
     <div class="guide-line"><span>Core Tasks</span>把本地工程变成可持续发布的仓库 · 安全地处理 GitHub 仓库、PR、Actions 和权限 · 把工程发布成稳定入口</div>
-    <div class="guide-line"><span>Starter</span><a href="/skills/github-repo-bootstrap/index.html">GitHub Repo Bootstrap</a> · <a href="/skills/github-ops/index.html">GitHub Ops</a> · <a href="/skills/vercel-ship/index.html">Vercel Ship</a> · <a href="/skills/vercel-deploy/index.html">Vercel Deploy</a></div>
-    <div class="guide-line"><span>Chain</span><a href="/skills/github-repo-bootstrap/index.html">GitHub Repo Bootstrap</a> → <a href="/skills/github-ops/index.html">GitHub Ops</a> → <a href="/skills/vercel-ship/index.html">Vercel Ship</a></div>
+    <div class="guide-line"><span>Starter</span><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-repo-bootstrap/SKILL.md">GitHub Repo Bootstrap</a> · <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-ops/SKILL.md">GitHub Ops</a> · <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-ship/SKILL.md">Vercel Ship</a> · <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-deploy/SKILL.md">Vercel Deploy</a></div>
+    <div class="guide-line"><span>Chain</span><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-repo-bootstrap/SKILL.md">GitHub Repo Bootstrap</a> → <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-ops/SKILL.md">GitHub Ops</a> → <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-ship/SKILL.md">Vercel Ship</a></div>
   </div>
   <div class="skill-table">
   <div class="skill-head">
@@ -428,51 +424,51 @@
     <div>作用</div>
     <div>输入</div>
     <div>产出</div>
-    <div>Invoke</div>
+    <div>GitHub</div>
   </div>
 <div class="skill-row">
   <div>
-    <h3 class="skill-name"><a href="/skills/github-ops/index.html">GitHub Ops</a></h3>
+    <h3 class="skill-name"><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-ops/SKILL.md">GitHub Ops</a></h3>
     <div class="skill-meta">需要处理 GitHub 仓库、PR、Issue、Release 或 Actions</div>
-    <div class="skill-contract">sanitized · stable</div>
+    <div class="skill-contract">sanitized · stable · $github-ops</div>
   </div>
   <div class="skill-copy">用 gh CLI + git 处理 GitHub 日常运维：仓库、PR、Issue、Release、Actions、Secrets 与权限管理。</div>
   <div class="skill-io"><code>repo_target</code> · <code>operation_goal</code></div>
   <div class="skill-io">安全默认下的操作路径 · 可执行命令或实际处理结果</div>
-  <div><span class="skill-invoke">$github-ops</span></div>
+  <div class="skill-call"><a class="mono-link" href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-ops/SKILL.md">Open</a></div>
 </div>
 <div class="skill-row">
   <div>
-    <h3 class="skill-name"><a href="/skills/github-repo-bootstrap/index.html">GitHub Repo Bootstrap</a></h3>
+    <h3 class="skill-name"><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-repo-bootstrap/SKILL.md">GitHub Repo Bootstrap</a></h3>
     <div class="skill-meta">需要把一个本地目录快速变成 GitHub 仓库</div>
-    <div class="skill-contract">sanitized · stable</div>
+    <div class="skill-contract">sanitized · stable · $github-repo-bootstrap</div>
   </div>
   <div class="skill-copy">把一个本地文件夹稳定地变成 GitHub 仓库：创建远端、配置 origin、推送 main，并处理常见 PAT/SSH 问题。</div>
   <div class="skill-io"><code>local_path</code> · <code>owner_repo</code></div>
   <div class="skill-io">已创建的 GitHub 远端仓库 · 已配置的远端和首次推送结果</div>
-  <div><span class="skill-invoke">$github-repo-bootstrap</span></div>
+  <div class="skill-call"><a class="mono-link" href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-repo-bootstrap/SKILL.md">Open</a></div>
 </div>
 <div class="skill-row">
   <div>
-    <h3 class="skill-name"><a href="/skills/vercel-deploy/index.html">Vercel Deploy</a></h3>
+    <h3 class="skill-name"><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-deploy/SKILL.md">Vercel Deploy</a></h3>
     <div class="skill-meta">需要把工程发布到 Vercel</div>
-    <div class="skill-contract">public · stable</div>
+    <div class="skill-contract">public · stable · $vercel-deploy</div>
   </div>
   <div class="skill-copy">将现有工程发布到 Vercel，并处理分析与域名配置。</div>
   <div class="skill-io"><code>project_path</code> · <code>domain</code></div>
   <div class="skill-io">部署结果 · 线上访问地址</div>
-  <div><span class="skill-invoke">$vercel-deploy</span></div>
+  <div class="skill-call"><a class="mono-link" href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-deploy/SKILL.md">Open</a></div>
 </div>
 <div class="skill-row">
   <div>
-    <h3 class="skill-name"><a href="/skills/vercel-ship/index.html">Vercel Ship</a></h3>
+    <h3 class="skill-name"><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-ship/SKILL.md">Vercel Ship</a></h3>
     <div class="skill-meta">想把本地项目一口气 ship 到 GitHub 与 Vercel</div>
-    <div class="skill-contract">sanitized · stable</div>
+    <div class="skill-contract">sanitized · stable · $vercel-ship</div>
   </div>
   <div class="skill-copy">把 Git 提交、GitHub 推送、Vercel 部署、Analytics 与自定义域名串成一条可重复执行的 ship 流水线。</div>
   <div class="skill-io"><code>project_path</code> · <code>shipping_overrides</code></div>
   <div class="skill-io">已提交并推送的 Git 状态 · Vercel 部署结果与线上地址</div>
-  <div><span class="skill-invoke">$vercel-ship</span></div>
+  <div class="skill-call"><a class="mono-link" href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-ship/SKILL.md">Open</a></div>
 </div>
 </div>
 </section>
@@ -482,31 +478,31 @@
   <section class="section">
     <div class="section-header">
       <div>
-        <p class="section-kicker">For Agents</p>
-        <h2 class="section-title">机器入口保持稳定</h2>
+        <p class="section-kicker">Repository</p>
+        <h2 class="section-title">公开入口优先回到 GitHub</h2>
       </div>
-      <div class="section-summary">展示层给人看，数据层给 agent 读。这里暴露的是最稳定的入口，不要求 agent 从 HTML 里猜结构。</div>
+      <div class="section-summary">机器入口仍然存在，但对人类访问者来说，主入口应该是 GitHub 仓库本身。这个站点负责发现与筛选，不负责替代源码与原始文档。</div>
     </div>
     <div class="endpoint-list">
-<a class="endpoint-card" href="/data/registry.json">
-  <div class="endpoint-name">registry.json</div>
-  <div class="endpoint-desc">所有已列出 skills 的轻量索引，含 visibility、scene 与 GitHub source links。</div>
-</a>
-<a class="endpoint-card" href="/data/scene-guides.json">
-  <div class="endpoint-name">scene-guides.json</div>
-  <div class="endpoint-desc">scene 级别的 core tasks、starter 与 chain 提示。</div>
-</a>
-<a class="endpoint-card" href="/data/skills.ndjson">
-  <div class="endpoint-name">skills.ndjson</div>
-  <div class="endpoint-desc">每行一个 manifest，适合 agent 批量抓取。</div>
-</a>
-<a class="endpoint-card" href="/llms-full.txt">
-  <div class="endpoint-name">llms-full.txt</div>
-  <div class="endpoint-desc">扩展版文本契约，补足 inputs、returns 和 dependencies。</div>
-</a>
 <a class="endpoint-card" href="https://github.com/EOMZON/skills-registry">
-  <div class="endpoint-name">registry repo</div>
-  <div class="endpoint-desc">公开 registry 仓库。当前列出的 public / sanitized skills 都从这里暴露 source links。</div>
+  <div class="endpoint-name">Registry Repo</div>
+  <div class="endpoint-desc">公开仓库总入口。主流量应该被导回这里，而不是停在站内全文页。</div>
+</a>
+<a class="endpoint-card" href="https://github.com/EOMZON/skills-registry/tree/main/content/skills">
+  <div class="endpoint-name">All Skills Folder</div>
+  <div class="endpoint-desc">直接浏览所有公开 skill 文件夹。</div>
+</a>
+<a class="endpoint-card" href="https://github.com/EOMZON/skills-registry/blob/main/content/scenes.json">
+  <div class="endpoint-name">Scene Taxonomy</div>
+  <div class="endpoint-desc">所有应用场景的源文件。</div>
+</a>
+<a class="endpoint-card" href="https://github.com/EOMZON/skills-registry/blob/main/content/scene-guides.json">
+  <div class="endpoint-name">Scene Guides</div>
+  <div class="endpoint-desc">starter 和 chain 的源文件。</div>
+</a>
+<a class="endpoint-card" href="https://github.com/EOMZON/skills-registry/blob/main/content/registry.json">
+  <div class="endpoint-name">registry.json</div>
+  <div class="endpoint-desc">公开 registry index 的 GitHub 源文件。</div>
 </a>
 </div>
   </section>

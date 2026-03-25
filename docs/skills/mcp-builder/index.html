@@ -15,11 +15,7 @@
         <div class="topbar-inner">
           <a class="brand" href="/index.html"><strong>Skills</strong><span>Registry</span></a>
           <nav class="nav">
-            <a href="/index.html">Home</a>
-            <a href="/data/registry.json">registry.json</a>
-            <a href="/data/scenes.json">scenes.json</a>
-            <a href="/llms.txt">llms.txt</a>
-            <a href="https://github.com/EOMZON/skills-registry">repo</a>
+            <a href="/index.html">Home</a><a href="https://github.com/EOMZON/skills-registry">GitHub</a><a href="https://github.com/EOMZON/skills-registry/tree/main/content/skills">All Skills</a><a href="https://github.com/EOMZON/skills-registry/blob/main/content/scenes.json">Scene Map</a>
           </nav>
         </div>
       </header>
@@ -31,30 +27,16 @@
   </section>
   <section class="detail-grid">
     <article class="detail-main prose">
-      <h1>MCP Builder</h1>
-<p>用于把外部 API 或系统组织成高质量 MCP server，而不是只写一组零散工具。</p>
-<h2>Use When</h2>
-<ul>
-<li>需要为 agent 暴露一套稳定的工具接口</li>
-<li>需要决定用 TypeScript 还是 Python 来实现 MCP server</li>
-<li>需要补协议理解、工具设计、测试和 evaluation</li>
-</ul>
-<h2>Input</h2>
-<ul>
-<li><code>target_service</code>：要接入的 API、数据源或系统</li>
-<li><code>stack_constraints</code>：语言偏好、鉴权方式、运行环境</li>
-</ul>
-<h2>Returns</h2>
-<ul>
-<li>MCP server 的实现路线</li>
-<li>更适合 agent 发现和调用的 tool 设计建议</li>
-<li>测试、评估和质量检查清单</li>
-</ul>
-<h2>Notes</h2>
-<ul>
-<li>公开版保留协议与工程方法</li>
-<li>私有密钥、账号配置和组织内部 API 细节需要由使用者自行补充</li>
-</ul>
+      <div class="detail-note">
+    <p class="source-kicker">GitHub First</p>
+    <h2 class="detail-note-title">完整公开说明放在 GitHub，不放在站内长期镜像。</h2>
+    <p class="detail-note-copy">这个页面只保留 discovery 和 contract。真正的公开说明、后续更新和 star 入口都应回到 GitHub source。</p>
+    <div class="source-actions">
+      <a class="mono-link" href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/mcp-builder/SKILL.md">Open SKILL.md</a>
+      <a class="mono-link" href="https://github.com/EOMZON/skills-registry/tree/main/content/skills/mcp-builder">Open Folder</a>
+      <a class="mono-link" href="https://github.com/EOMZON/skills-registry">Open Repo</a>
+    </div>
+  </div>
     </article>
     <aside class="detail-side">
       <div class="side-card">
@@ -87,7 +69,7 @@
       </div>
       <div class="side-card">
         <p class="side-label">Related</p>
-        <div class="side-list"><div><a href="/skills/best-minds/index.html">Best Minds</a></div><div><a href="/skills/webapp-testing/index.html">Webapp Testing</a></div></div>
+        <div class="side-list"><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/best-minds/SKILL.md">Best Minds</a></div><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/webapp-testing/SKILL.md">Webapp Testing</a></div></div>
       </div>
       <div class="side-card">
         <p class="side-label">Contract</p>
@@ -96,10 +78,6 @@
       <div class="side-card">
         <p class="side-label">Source</p>
         <div class="side-list"><div><a href="https://github.com/EOMZON/skills-registry">Source Repo</a></div><div><a href="https://github.com/EOMZON/skills-registry/tree/main/content/skills/mcp-builder">Skill Folder</a></div><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/mcp-builder/SKILL.md">Public SKILL.md</a></div><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/mcp-builder/manifest.json">Public manifest.json</a></div></div>
-      </div>
-      <div class="side-card">
-        <p class="side-label">Machine</p>
-        <div class="side-list"><div><a href="/data/skills/mcp-builder.json">manifest.json</a></div><div><a href="/data/scenes/coding-engineering.json">scene.json</a></div><div><a href="/data/skills.ndjson">skills.ndjson</a></div><div><a href="/llms-full.txt">llms-full.txt</a></div></div>
       </div>
     </aside>
   </section>

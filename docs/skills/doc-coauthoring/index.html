@@ -15,11 +15,7 @@
         <div class="topbar-inner">
           <a class="brand" href="/index.html"><strong>Skills</strong><span>Registry</span></a>
           <nav class="nav">
-            <a href="/index.html">Home</a>
-            <a href="/data/registry.json">registry.json</a>
-            <a href="/data/scenes.json">scenes.json</a>
-            <a href="/llms.txt">llms.txt</a>
-            <a href="https://github.com/EOMZON/skills-registry">repo</a>
+            <a href="/index.html">Home</a><a href="https://github.com/EOMZON/skills-registry">GitHub</a><a href="https://github.com/EOMZON/skills-registry/tree/main/content/skills">All Skills</a><a href="https://github.com/EOMZON/skills-registry/blob/main/content/scenes.json">Scene Map</a>
           </nav>
         </div>
       </header>
@@ -31,30 +27,16 @@
   </section>
   <section class="detail-grid">
     <article class="detail-main prose">
-      <h1>Doc Co-Authoring</h1>
-<p>通过分阶段 workflow 把“信息很散、但必须写清楚”的文档任务推进成稿。</p>
-<h2>Use When</h2>
-<ul>
-<li>需要写提案、Spec、PRD、决策文档或较长的说明文</li>
-<li>需要先把上下文讲清，再逐段打磨</li>
-<li>希望在交付前用读者视角检查理解成本</li>
-</ul>
-<h2>Input</h2>
-<ul>
-<li><code>doc_goal</code>：文档类型、目标和主要读者</li>
-<li><code>source_context</code>：背景、模板、素材、已有草稿、会议记录</li>
-</ul>
-<h2>Returns</h2>
-<ul>
-<li>文档骨架与章节顺序</li>
-<li>每一段的共创与修订建议</li>
-<li>发布前的缺口检查和读者测试提示</li>
-</ul>
-<h2>Notes</h2>
-<ul>
-<li>公开版保留 workflow 和调用契约</li>
-<li>私有连接器、内部文档系统和团队上下文不在公开版内</li>
-</ul>
+      <div class="detail-note">
+    <p class="source-kicker">GitHub First</p>
+    <h2 class="detail-note-title">完整公开说明放在 GitHub，不放在站内长期镜像。</h2>
+    <p class="detail-note-copy">这个页面只保留 discovery 和 contract。真正的公开说明、后续更新和 star 入口都应回到 GitHub source。</p>
+    <div class="source-actions">
+      <a class="mono-link" href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/doc-coauthoring/SKILL.md">Open SKILL.md</a>
+      <a class="mono-link" href="https://github.com/EOMZON/skills-registry/tree/main/content/skills/doc-coauthoring">Open Folder</a>
+      <a class="mono-link" href="https://github.com/EOMZON/skills-registry">Open Repo</a>
+    </div>
+  </div>
     </article>
     <aside class="detail-side">
       <div class="side-card">
@@ -87,7 +69,7 @@
       </div>
       <div class="side-card">
         <p class="side-label">Related</p>
-        <div class="side-list"><div><a href="/skills/best-minds/index.html">Best Minds</a></div><div><a href="/skills/theme-factory/index.html">Theme Factory</a></div></div>
+        <div class="side-list"><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/best-minds/SKILL.md">Best Minds</a></div><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/theme-factory/SKILL.md">Theme Factory</a></div></div>
       </div>
       <div class="side-card">
         <p class="side-label">Contract</p>
@@ -96,10 +78,6 @@
       <div class="side-card">
         <p class="side-label">Source</p>
         <div class="side-list"><div><a href="https://github.com/EOMZON/skills-registry">Source Repo</a></div><div><a href="https://github.com/EOMZON/skills-registry/tree/main/content/skills/doc-coauthoring">Skill Folder</a></div><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/doc-coauthoring/SKILL.md">Public SKILL.md</a></div><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/doc-coauthoring/manifest.json">Public manifest.json</a></div></div>
-      </div>
-      <div class="side-card">
-        <p class="side-label">Machine</p>
-        <div class="side-list"><div><a href="/data/skills/doc-coauthoring.json">manifest.json</a></div><div><a href="/data/scenes/writing-docs.json">scene.json</a></div><div><a href="/data/skills.ndjson">skills.ndjson</a></div><div><a href="/llms-full.txt">llms-full.txt</a></div></div>
       </div>
     </aside>
   </section>

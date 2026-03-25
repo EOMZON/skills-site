@@ -498,6 +498,39 @@ code {
   letter-spacing: 0.08em;
 }
 
+.source-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.detail-note {
+  padding: 0 0 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.source-kicker {
+  margin: 0 0 10px;
+  font-size: 0.77rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.detail-note-title {
+  margin: 0;
+  font-size: 1.55rem;
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+}
+
+.detail-note-copy {
+  max-width: 34rem;
+  margin: 14px 0 0;
+  color: var(--ink-soft);
+}
+
 .route-list {
   gap: 12px;
 }

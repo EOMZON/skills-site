@@ -15,11 +15,7 @@
         <div class="topbar-inner">
           <a class="brand" href="/index.html"><strong>Skills</strong><span>Registry</span></a>
           <nav class="nav">
-            <a href="/index.html">Home</a>
-            <a href="/data/registry.json">registry.json</a>
-            <a href="/data/scenes.json">scenes.json</a>
-            <a href="/llms.txt">llms.txt</a>
-            <a href="https://github.com/EOMZON/skills-registry">repo</a>
+            <a href="/index.html">Home</a><a href="https://github.com/EOMZON/skills-registry">GitHub</a><a href="https://github.com/EOMZON/skills-registry/tree/main/content/skills">All Skills</a><a href="https://github.com/EOMZON/skills-registry/blob/main/content/scenes.json">Scene Map</a>
           </nav>
         </div>
       </header>
@@ -31,30 +27,16 @@
   </section>
   <section class="detail-grid">
     <article class="detail-main prose">
-      <h1>Vercel Ship</h1>
-<p>把“提交、推送、部署、分析、域名”串成一条可以重复执行的 ship 流水线。</p>
-<h2>Use When</h2>
-<ul>
-<li>想把本地项目一口气 ship 到 GitHub 与 Vercel</li>
-<li>想把 preview/prod、analytics 与域名处理成统一入口</li>
-<li>需要一个稳定的发布流程，而不是手工拼几段命令</li>
-</ul>
-<h2>Input</h2>
-<ul>
-<li><code>project_path</code>：待发布项目路径</li>
-<li><code>shipping_overrides</code>：preview/prod、push、域名等覆盖项</li>
-</ul>
-<h2>Returns</h2>
-<ul>
-<li>已提交并推送的 Git 状态</li>
-<li>Vercel 部署结果与线上地址</li>
-<li>域名、Analytics 与后续验收信息</li>
-</ul>
-<h2>Notes</h2>
-<ul>
-<li>公开版保留 ship 的结构与安全前置</li>
-<li>私有 token 文件位置、个人默认域名和本地路径约定已被通用化</li>
-</ul>
+      <div class="detail-note">
+    <p class="source-kicker">GitHub First</p>
+    <h2 class="detail-note-title">完整公开说明放在 GitHub，不放在站内长期镜像。</h2>
+    <p class="detail-note-copy">这个页面只保留 discovery 和 contract。真正的公开说明、后续更新和 star 入口都应回到 GitHub source。</p>
+    <div class="source-actions">
+      <a class="mono-link" href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-ship/SKILL.md">Open SKILL.md</a>
+      <a class="mono-link" href="https://github.com/EOMZON/skills-registry/tree/main/content/skills/vercel-ship">Open Folder</a>
+      <a class="mono-link" href="https://github.com/EOMZON/skills-registry">Open Repo</a>
+    </div>
+  </div>
     </article>
     <aside class="detail-side">
       <div class="side-card">
@@ -87,7 +69,7 @@
       </div>
       <div class="side-card">
         <p class="side-label">Related</p>
-        <div class="side-list"><div><a href="/skills/vercel-deploy/index.html">Vercel Deploy</a></div><div><a href="/skills/github-repo-bootstrap/index.html">GitHub Repo Bootstrap</a></div><div><a href="/skills/github-ops/index.html">GitHub Ops</a></div></div>
+        <div class="side-list"><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-deploy/SKILL.md">Vercel Deploy</a></div><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-repo-bootstrap/SKILL.md">GitHub Repo Bootstrap</a></div><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-ops/SKILL.md">GitHub Ops</a></div></div>
       </div>
       <div class="side-card">
         <p class="side-label">Contract</p>
@@ -96,10 +78,6 @@
       <div class="side-card">
         <p class="side-label">Source</p>
         <div class="side-list"><div><a href="https://github.com/EOMZON/skills-registry">Source Repo</a></div><div><a href="https://github.com/EOMZON/skills-registry/tree/main/content/skills/vercel-ship">Skill Folder</a></div><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-ship/SKILL.md">Public SKILL.md</a></div><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-ship/manifest.json">Public manifest.json</a></div></div>
-      </div>
-      <div class="side-card">
-        <p class="side-label">Machine</p>
-        <div class="side-list"><div><a href="/data/skills/vercel-ship.json">manifest.json</a></div><div><a href="/data/scenes/automation-shipping.json">scene.json</a></div><div><a href="/data/skills.ndjson">skills.ndjson</a></div><div><a href="/llms-full.txt">llms-full.txt</a></div></div>
       </div>
     </aside>
   </section>

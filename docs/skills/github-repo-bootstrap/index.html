@@ -15,11 +15,7 @@
         <div class="topbar-inner">
           <a class="brand" href="/index.html"><strong>Skills</strong><span>Registry</span></a>
           <nav class="nav">
-            <a href="/index.html">Home</a>
-            <a href="/data/registry.json">registry.json</a>
-            <a href="/data/scenes.json">scenes.json</a>
-            <a href="/llms.txt">llms.txt</a>
-            <a href="https://github.com/EOMZON/skills-registry">repo</a>
+            <a href="/index.html">Home</a><a href="https://github.com/EOMZON/skills-registry">GitHub</a><a href="https://github.com/EOMZON/skills-registry/tree/main/content/skills">All Skills</a><a href="https://github.com/EOMZON/skills-registry/blob/main/content/scenes.json">Scene Map</a>
           </nav>
         </div>
       </header>
@@ -31,30 +27,16 @@
   </section>
   <section class="detail-grid">
     <article class="detail-main prose">
-      <h1>GitHub Repo Bootstrap</h1>
-<p>把一个本地文件夹快速而可靠地变成 GitHub 仓库，而不是手工散落地做初始化、建远端和推送。</p>
-<h2>Use When</h2>
-<ul>
-<li>需要给现有本地目录创建 GitHub 仓库</li>
-<li>需要自动配置 <code>origin</code> 并推送 <code>main</code></li>
-<li>需要排查首次推送时的 PAT、SSH 或权限问题</li>
-</ul>
-<h2>Input</h2>
-<ul>
-<li><code>local_path</code>：要初始化或推送的本地目录</li>
-<li><code>owner_repo</code>：可选 owner/repo、仓库命名偏好或可见性要求</li>
-</ul>
-<h2>Returns</h2>
-<ul>
-<li>已创建的 GitHub 远端仓库</li>
-<li>已配置的远端和首次推送结果</li>
-<li>失败时的快速诊断与替代路径</li>
-</ul>
-<h2>Notes</h2>
-<ul>
-<li>公开版只保留通用 bootstrap 流程</li>
-<li>个人 PAT 文件路径和本地环境约定已改成抽象输入</li>
-</ul>
+      <div class="detail-note">
+    <p class="source-kicker">GitHub First</p>
+    <h2 class="detail-note-title">完整公开说明放在 GitHub，不放在站内长期镜像。</h2>
+    <p class="detail-note-copy">这个页面只保留 discovery 和 contract。真正的公开说明、后续更新和 star 入口都应回到 GitHub source。</p>
+    <div class="source-actions">
+      <a class="mono-link" href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-repo-bootstrap/SKILL.md">Open SKILL.md</a>
+      <a class="mono-link" href="https://github.com/EOMZON/skills-registry/tree/main/content/skills/github-repo-bootstrap">Open Folder</a>
+      <a class="mono-link" href="https://github.com/EOMZON/skills-registry">Open Repo</a>
+    </div>
+  </div>
     </article>
     <aside class="detail-side">
       <div class="side-card">
@@ -87,7 +69,7 @@
       </div>
       <div class="side-card">
         <p class="side-label">Related</p>
-        <div class="side-list"><div><a href="/skills/github-ops/index.html">GitHub Ops</a></div><div><a href="/skills/vercel-ship/index.html">Vercel Ship</a></div></div>
+        <div class="side-list"><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-ops/SKILL.md">GitHub Ops</a></div><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-ship/SKILL.md">Vercel Ship</a></div></div>
       </div>
       <div class="side-card">
         <p class="side-label">Contract</p>
@@ -96,10 +78,6 @@
       <div class="side-card">
         <p class="side-label">Source</p>
         <div class="side-list"><div><a href="https://github.com/EOMZON/skills-registry">Source Repo</a></div><div><a href="https://github.com/EOMZON/skills-registry/tree/main/content/skills/github-repo-bootstrap">Skill Folder</a></div><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-repo-bootstrap/SKILL.md">Public SKILL.md</a></div><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-repo-bootstrap/manifest.json">Public manifest.json</a></div></div>
-      </div>
-      <div class="side-card">
-        <p class="side-label">Machine</p>
-        <div class="side-list"><div><a href="/data/skills/github-repo-bootstrap.json">manifest.json</a></div><div><a href="/data/scenes/automation-shipping.json">scene.json</a></div><div><a href="/data/skills.ndjson">skills.ndjson</a></div><div><a href="/llms-full.txt">llms-full.txt</a></div></div>
       </div>
     </aside>
   </section>

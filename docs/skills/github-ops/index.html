@@ -15,11 +15,7 @@
         <div class="topbar-inner">
           <a class="brand" href="/index.html"><strong>Skills</strong><span>Registry</span></a>
           <nav class="nav">
-            <a href="/index.html">Home</a>
-            <a href="/data/registry.json">registry.json</a>
-            <a href="/data/scenes.json">scenes.json</a>
-            <a href="/llms.txt">llms.txt</a>
-            <a href="https://github.com/EOMZON/skills-registry">repo</a>
+            <a href="/index.html">Home</a><a href="https://github.com/EOMZON/skills-registry">GitHub</a><a href="https://github.com/EOMZON/skills-registry/tree/main/content/skills">All Skills</a><a href="https://github.com/EOMZON/skills-registry/blob/main/content/scenes.json">Scene Map</a>
           </nav>
         </div>
       </header>
@@ -31,30 +27,16 @@
   </section>
   <section class="detail-grid">
     <article class="detail-main prose">
-      <h1>GitHub Ops</h1>
-<p>把 GitHub 日常操作压成一套安全默认的 gh + git workflow，而不是临时拼命令。</p>
-<h2>Use When</h2>
-<ul>
-<li>需要处理仓库、PR、Issue、Release、Actions、Secrets 或权限</li>
-<li>需要在 <code>gh</code>、<code>git</code> 和 <code>gh api</code> 之间选合适的工具层级</li>
-<li>需要在不泄露凭据的前提下做 GitHub 运维</li>
-</ul>
-<h2>Input</h2>
-<ul>
-<li><code>repo_target</code>：目标仓库、组织或本地仓库路径</li>
-<li><code>operation_goal</code>：要完成的具体 GitHub 操作</li>
-</ul>
-<h2>Returns</h2>
-<ul>
-<li>安全默认下的执行路径</li>
-<li>可复制命令或已经完成的 GitHub 操作</li>
-<li>历史、权限和 secrets 相关的风险提示</li>
-</ul>
-<h2>Notes</h2>
-<ul>
-<li>公开版保留操作模型和安全原则</li>
-<li>私有 token 文件位置和个人 wrapper 默认值不在公开版暴露</li>
-</ul>
+      <div class="detail-note">
+    <p class="source-kicker">GitHub First</p>
+    <h2 class="detail-note-title">完整公开说明放在 GitHub，不放在站内长期镜像。</h2>
+    <p class="detail-note-copy">这个页面只保留 discovery 和 contract。真正的公开说明、后续更新和 star 入口都应回到 GitHub source。</p>
+    <div class="source-actions">
+      <a class="mono-link" href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-ops/SKILL.md">Open SKILL.md</a>
+      <a class="mono-link" href="https://github.com/EOMZON/skills-registry/tree/main/content/skills/github-ops">Open Folder</a>
+      <a class="mono-link" href="https://github.com/EOMZON/skills-registry">Open Repo</a>
+    </div>
+  </div>
     </article>
     <aside class="detail-side">
       <div class="side-card">
@@ -87,7 +69,7 @@
       </div>
       <div class="side-card">
         <p class="side-label">Related</p>
-        <div class="side-list"><div><a href="/skills/github-repo-bootstrap/index.html">GitHub Repo Bootstrap</a></div><div><a href="/skills/vercel-ship/index.html">Vercel Ship</a></div></div>
+        <div class="side-list"><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-repo-bootstrap/SKILL.md">GitHub Repo Bootstrap</a></div><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-ship/SKILL.md">Vercel Ship</a></div></div>
       </div>
       <div class="side-card">
         <p class="side-label">Contract</p>
@@ -96,10 +78,6 @@
       <div class="side-card">
         <p class="side-label">Source</p>
         <div class="side-list"><div><a href="https://github.com/EOMZON/skills-registry">Source Repo</a></div><div><a href="https://github.com/EOMZON/skills-registry/tree/main/content/skills/github-ops">Skill Folder</a></div><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-ops/SKILL.md">Public SKILL.md</a></div><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-ops/manifest.json">Public manifest.json</a></div></div>
-      </div>
-      <div class="side-card">
-        <p class="side-label">Machine</p>
-        <div class="side-list"><div><a href="/data/skills/github-ops.json">manifest.json</a></div><div><a href="/data/scenes/automation-shipping.json">scene.json</a></div><div><a href="/data/skills.ndjson">skills.ndjson</a></div><div><a href="/llms-full.txt">llms-full.txt</a></div></div>
       </div>
     </aside>
   </section>

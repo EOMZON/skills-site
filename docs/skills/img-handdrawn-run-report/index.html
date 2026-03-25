@@ -15,11 +15,7 @@
         <div class="topbar-inner">
           <a class="brand" href="/index.html"><strong>Skills</strong><span>Registry</span></a>
           <nav class="nav">
-            <a href="/index.html">Home</a>
-            <a href="/data/registry.json">registry.json</a>
-            <a href="/data/scenes.json">scenes.json</a>
-            <a href="/llms.txt">llms.txt</a>
-            <a href="https://github.com/EOMZON/skills-registry">repo</a>
+            <a href="/index.html">Home</a><a href="https://github.com/EOMZON/skills-registry">GitHub</a><a href="https://github.com/EOMZON/skills-registry/tree/main/content/skills">All Skills</a><a href="https://github.com/EOMZON/skills-registry/blob/main/content/scenes.json">Scene Map</a>
           </nav>
         </div>
       </header>
@@ -31,30 +27,16 @@
   </section>
   <section class="detail-grid">
     <article class="detail-main prose">
-      <h1>Handdrawn Run Report</h1>
-<p>把图像生成的一次运行整理成可打印、可复查、可分享的 HTML 报告。</p>
-<h2>Use When</h2>
-<ul>
-<li>已经有输出图片和对应的 meta JSON</li>
-<li>需要保留 prompt、参数、结果和复现命令</li>
-<li>需要把一次运行沉淀成更适合展示或审计的页面</li>
-</ul>
-<h2>Input</h2>
-<ul>
-<li><code>meta_json</code>：包含 prompt、模型、尺寸和时间的运行元数据</li>
-<li><code>image_files</code>：输出图片文件</li>
-</ul>
-<h2>Returns</h2>
-<ul>
-<li>单文件 HTML 报告</li>
-<li>图片预览、prompt 与参数记录</li>
-<li>复现和审计所需的上下文</li>
-</ul>
-<h2>Notes</h2>
-<ul>
-<li>公开版只保留通用生成报告的流程</li>
-<li>本地项目路径和私有素材位置已抽象成通用输入</li>
-</ul>
+      <div class="detail-note">
+    <p class="source-kicker">GitHub First</p>
+    <h2 class="detail-note-title">完整公开说明放在 GitHub，不放在站内长期镜像。</h2>
+    <p class="detail-note-copy">这个页面只保留 discovery 和 contract。真正的公开说明、后续更新和 star 入口都应回到 GitHub source。</p>
+    <div class="source-actions">
+      <a class="mono-link" href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/img-handdrawn-run-report/SKILL.md">Open SKILL.md</a>
+      <a class="mono-link" href="https://github.com/EOMZON/skills-registry/tree/main/content/skills/img-handdrawn-run-report">Open Folder</a>
+      <a class="mono-link" href="https://github.com/EOMZON/skills-registry">Open Repo</a>
+    </div>
+  </div>
     </article>
     <aside class="detail-side">
       <div class="side-card">
@@ -87,7 +69,7 @@
       </div>
       <div class="side-card">
         <p class="side-label">Related</p>
-        <div class="side-list"><div><a href="/skills/theme-factory/index.html">Theme Factory</a></div><div><a href="/skills/frontend-design/index.html">Frontend Design</a></div></div>
+        <div class="side-list"><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/theme-factory/SKILL.md">Theme Factory</a></div><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/frontend-design/SKILL.md">Frontend Design</a></div></div>
       </div>
       <div class="side-card">
         <p class="side-label">Contract</p>
@@ -96,10 +78,6 @@
       <div class="side-card">
         <p class="side-label">Source</p>
         <div class="side-list"><div><a href="https://github.com/EOMZON/skills-registry">Source Repo</a></div><div><a href="https://github.com/EOMZON/skills-registry/tree/main/content/skills/img-handdrawn-run-report">Skill Folder</a></div><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/img-handdrawn-run-report/SKILL.md">Public SKILL.md</a></div><div><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/img-handdrawn-run-report/manifest.json">Public manifest.json</a></div></div>
-      </div>
-      <div class="side-card">
-        <p class="side-label">Machine</p>
-        <div class="side-list"><div><a href="/data/skills/img-handdrawn-run-report.json">manifest.json</a></div><div><a href="/data/scenes/design-visual.json">scene.json</a></div><div><a href="/data/skills.ndjson">skills.ndjson</a></div><div><a href="/llms-full.txt">llms-full.txt</a></div></div>
       </div>
     </aside>
   </section>

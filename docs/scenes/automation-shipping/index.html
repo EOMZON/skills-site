@@ -15,11 +15,7 @@
         <div class="topbar-inner">
           <a class="brand" href="/index.html"><strong>Skills</strong><span>Registry</span></a>
           <nav class="nav">
-            <a href="/index.html">Home</a>
-            <a href="/data/registry.json">registry.json</a>
-            <a href="/data/scenes.json">scenes.json</a>
-            <a href="/llms.txt">llms.txt</a>
-            <a href="https://github.com/EOMZON/skills-registry">repo</a>
+            <a href="/index.html">Home</a><a href="https://github.com/EOMZON/skills-registry">GitHub</a><a href="https://github.com/EOMZON/skills-registry/tree/main/content/skills">All Skills</a><a href="https://github.com/EOMZON/skills-registry/blob/main/content/scenes.json">Scene Map</a>
           </nav>
         </div>
       </header>
@@ -43,59 +39,59 @@
     </div>
     <div class="scene-guide">
     <div class="guide-line"><span>Core Tasks</span>把本地工程变成可持续发布的仓库 · 安全地处理 GitHub 仓库、PR、Actions 和权限 · 把工程发布成稳定入口</div>
-    <div class="guide-line"><span>Starter</span><a href="/skills/github-repo-bootstrap/index.html">GitHub Repo Bootstrap</a> · <a href="/skills/github-ops/index.html">GitHub Ops</a> · <a href="/skills/vercel-ship/index.html">Vercel Ship</a> · <a href="/skills/vercel-deploy/index.html">Vercel Deploy</a></div>
-    <div class="guide-line"><span>Chain</span><a href="/skills/github-repo-bootstrap/index.html">GitHub Repo Bootstrap</a> → <a href="/skills/github-ops/index.html">GitHub Ops</a> → <a href="/skills/vercel-ship/index.html">Vercel Ship</a></div>
+    <div class="guide-line"><span>Starter</span><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-repo-bootstrap/SKILL.md">GitHub Repo Bootstrap</a> · <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-ops/SKILL.md">GitHub Ops</a> · <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-ship/SKILL.md">Vercel Ship</a> · <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-deploy/SKILL.md">Vercel Deploy</a></div>
+    <div class="guide-line"><span>Chain</span><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-repo-bootstrap/SKILL.md">GitHub Repo Bootstrap</a> → <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-ops/SKILL.md">GitHub Ops</a> → <a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-ship/SKILL.md">Vercel Ship</a></div>
   </div><div class="skill-table">
   <div class="skill-head">
     <div>Skill</div>
     <div>作用</div>
     <div>输入</div>
     <div>产出</div>
-    <div>Invoke</div>
+    <div>GitHub</div>
   </div>
 <div class="skill-row">
   <div>
-    <h3 class="skill-name"><a href="/skills/github-ops/index.html">GitHub Ops</a></h3>
+    <h3 class="skill-name"><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-ops/SKILL.md">GitHub Ops</a></h3>
     <div class="skill-meta">需要处理 GitHub 仓库、PR、Issue、Release 或 Actions</div>
-    <div class="skill-contract">sanitized · stable</div>
+    <div class="skill-contract">sanitized · stable · $github-ops</div>
   </div>
   <div class="skill-copy">用 gh CLI + git 处理 GitHub 日常运维：仓库、PR、Issue、Release、Actions、Secrets 与权限管理。</div>
   <div class="skill-io"><code>repo_target</code> · <code>operation_goal</code></div>
   <div class="skill-io">安全默认下的操作路径 · 可执行命令或实际处理结果</div>
-  <div><span class="skill-invoke">$github-ops</span></div>
+  <div class="skill-call"><a class="mono-link" href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-ops/SKILL.md">Open</a></div>
 </div>
 <div class="skill-row">
   <div>
-    <h3 class="skill-name"><a href="/skills/github-repo-bootstrap/index.html">GitHub Repo Bootstrap</a></h3>
+    <h3 class="skill-name"><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-repo-bootstrap/SKILL.md">GitHub Repo Bootstrap</a></h3>
     <div class="skill-meta">需要把一个本地目录快速变成 GitHub 仓库</div>
-    <div class="skill-contract">sanitized · stable</div>
+    <div class="skill-contract">sanitized · stable · $github-repo-bootstrap</div>
   </div>
   <div class="skill-copy">把一个本地文件夹稳定地变成 GitHub 仓库：创建远端、配置 origin、推送 main，并处理常见 PAT/SSH 问题。</div>
   <div class="skill-io"><code>local_path</code> · <code>owner_repo</code></div>
   <div class="skill-io">已创建的 GitHub 远端仓库 · 已配置的远端和首次推送结果</div>
-  <div><span class="skill-invoke">$github-repo-bootstrap</span></div>
+  <div class="skill-call"><a class="mono-link" href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/github-repo-bootstrap/SKILL.md">Open</a></div>
 </div>
 <div class="skill-row">
   <div>
-    <h3 class="skill-name"><a href="/skills/vercel-deploy/index.html">Vercel Deploy</a></h3>
+    <h3 class="skill-name"><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-deploy/SKILL.md">Vercel Deploy</a></h3>
     <div class="skill-meta">需要把工程发布到 Vercel</div>
-    <div class="skill-contract">public · stable</div>
+    <div class="skill-contract">public · stable · $vercel-deploy</div>
   </div>
   <div class="skill-copy">将现有工程发布到 Vercel，并处理分析与域名配置。</div>
   <div class="skill-io"><code>project_path</code> · <code>domain</code></div>
   <div class="skill-io">部署结果 · 线上访问地址</div>
-  <div><span class="skill-invoke">$vercel-deploy</span></div>
+  <div class="skill-call"><a class="mono-link" href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-deploy/SKILL.md">Open</a></div>
 </div>
 <div class="skill-row">
   <div>
-    <h3 class="skill-name"><a href="/skills/vercel-ship/index.html">Vercel Ship</a></h3>
+    <h3 class="skill-name"><a href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-ship/SKILL.md">Vercel Ship</a></h3>
     <div class="skill-meta">想把本地项目一口气 ship 到 GitHub 与 Vercel</div>
-    <div class="skill-contract">sanitized · stable</div>
+    <div class="skill-contract">sanitized · stable · $vercel-ship</div>
   </div>
   <div class="skill-copy">把 Git 提交、GitHub 推送、Vercel 部署、Analytics 与自定义域名串成一条可重复执行的 ship 流水线。</div>
   <div class="skill-io"><code>project_path</code> · <code>shipping_overrides</code></div>
   <div class="skill-io">已提交并推送的 Git 状态 · Vercel 部署结果与线上地址</div>
-  <div><span class="skill-invoke">$vercel-ship</span></div>
+  <div class="skill-call"><a class="mono-link" href="https://github.com/EOMZON/skills-registry/blob/main/content/skills/vercel-ship/SKILL.md">Open</a></div>
 </div>
 </div>
   </section>
