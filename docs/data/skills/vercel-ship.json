@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "id": "vercel-ship",
+  "title": "Vercel Ship",
+  "summary": "把 Git 提交、GitHub 推送、Vercel 部署、Analytics 与自定义域名串成一条可重复执行的 ship 流水线。",
+  "scene": "automation-shipping",
+  "subscenes": [
+    "deployment-pipeline",
+    "vercel",
+    "domain-setup"
+  ],
+  "keywords": [
+    "vercel",
+    "deploy",
+    "prod",
+    "preview",
+    "domain",
+    "analytics",
+    "shipping",
+    "github"
+  ],
+  "invoke": "$vercel-ship",
+  "use_when": [
+    "想把本地项目一口气 ship 到 GitHub 与 Vercel",
+    "想把 preview/prod、analytics 与域名处理成统一入口",
+    "需要一个稳定的发布流程，而不是手工拼几段命令"
+  ],
+  "avoid_when": [
+    "项目还没准备好发布",
+    "缺少 GitHub 或 Vercel 的鉴权环境"
+  ],
+  "inputs": [
+    {
+      "name": "project_path",
+      "required": true,
+      "description": "待发布项目路径"
+    },
+    {
+      "name": "shipping_overrides",
+      "required": false,
+      "description": "preview/prod、push、域名或 analytics 等覆盖项"
+    }
+  ],
+  "returns": [
+    "已提交并推送的 Git 状态",
+    "Vercel 部署结果与线上地址",
+    "域名、Analytics 与后续验收信息"
+  ],
+  "dependencies": {
+    "bins": [
+      "node",
+      "git",
+      "vercel"
+    ],
+    "services": [
+      "github",
+      "vercel"
+    ],
+    "stateful": true
+  },
+  "related_ids": [
+    "vercel-deploy",
+    "github-repo-bootstrap",
+    "github-ops"
+  ],
+  "stability": "stable",
+  "visibility": "sanitized",
+  "updated_at": "2026-03-25"
+}

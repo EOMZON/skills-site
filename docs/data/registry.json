@@ -1,42 +1,66 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-03-24T05:27:21.966Z",
-  "total_skills": 8,
+  "generated_at": "2026-03-25T03:00:36.407Z",
+  "total_skills": 12,
+  "visibility_counts": {
+    "public": 9,
+    "sanitized": 3
+  },
   "scenes": [
     {
       "id": "research-decision",
       "title": "调研与决策",
-      "count": 1
+      "count": 1,
+      "visibility_counts": {
+        "public": 1
+      }
     },
     {
       "id": "writing-docs",
       "title": "写作与文档",
-      "count": 1
+      "count": 1,
+      "visibility_counts": {
+        "public": 1
+      }
     },
     {
       "id": "design-visual",
       "title": "设计与视觉",
-      "count": 2
+      "count": 3,
+      "visibility_counts": {
+        "public": 3
+      }
     },
     {
       "id": "website-frontend",
       "title": "网站与前端",
-      "count": 2
+      "count": 2,
+      "visibility_counts": {
+        "public": 2
+      }
     },
     {
       "id": "coding-engineering",
       "title": "编程与工程",
-      "count": 1
+      "count": 1,
+      "visibility_counts": {
+        "public": 1
+      }
     },
     {
       "id": "automation-shipping",
       "title": "自动化与交付",
-      "count": 1
+      "count": 4,
+      "visibility_counts": {
+        "sanitized": 3,
+        "public": 1
+      }
     },
     {
       "id": "product-project",
       "title": "项目与产品推进",
-      "count": 0
+      "count": 0,
+      "visibility_counts": {}
     }
   ],
   "skills": [
@@ -100,6 +124,50 @@
       "updated_at": "2026-03-24",
       "manifest_path": "content/skills/frontend-design/manifest.json",
       "skill_md_path": "content/skills/frontend-design/SKILL.md"
+    },
+    {
+      "id": "github-ops",
+      "title": "GitHub Ops",
+      "summary": "用 gh CLI + git 处理 GitHub 日常运维：仓库、PR、Issue、Release、Actions、Secrets 与权限管理。",
+      "scene": "automation-shipping",
+      "keywords": [
+        "github",
+        "gh",
+        "git",
+        "pr",
+        "issue",
+        "release",
+        "actions",
+        "secrets",
+        "permissions"
+      ],
+      "invoke": "$github-ops",
+      "visibility": "sanitized",
+      "stability": "stable",
+      "updated_at": "2026-03-25",
+      "manifest_path": "content/skills/github-ops/manifest.json",
+      "skill_md_path": "content/skills/github-ops/SKILL.md"
+    },
+    {
+      "id": "github-repo-bootstrap",
+      "title": "GitHub Repo Bootstrap",
+      "summary": "把一个本地文件夹稳定地变成 GitHub 仓库：创建远端、配置 origin、推送 main，并处理常见 PAT/SSH 问题。",
+      "scene": "automation-shipping",
+      "keywords": [
+        "github",
+        "repository",
+        "bootstrap",
+        "remote",
+        "ssh",
+        "push",
+        "repo-create"
+      ],
+      "invoke": "$github-repo-bootstrap",
+      "visibility": "sanitized",
+      "stability": "stable",
+      "updated_at": "2026-03-25",
+      "manifest_path": "content/skills/github-repo-bootstrap/manifest.json",
+      "skill_md_path": "content/skills/github-repo-bootstrap/SKILL.md"
     },
     {
       "id": "img-handdrawn-run-report",
@@ -184,6 +252,28 @@
       "skill_md_path": "content/skills/vercel-deploy/SKILL.md"
     },
     {
+      "id": "vercel-ship",
+      "title": "Vercel Ship",
+      "summary": "把 Git 提交、GitHub 推送、Vercel 部署、Analytics 与自定义域名串成一条可重复执行的 ship 流水线。",
+      "scene": "automation-shipping",
+      "keywords": [
+        "vercel",
+        "deploy",
+        "prod",
+        "preview",
+        "domain",
+        "analytics",
+        "shipping",
+        "github"
+      ],
+      "invoke": "$vercel-ship",
+      "visibility": "sanitized",
+      "stability": "stable",
+      "updated_at": "2026-03-25",
+      "manifest_path": "content/skills/vercel-ship/manifest.json",
+      "skill_md_path": "content/skills/vercel-ship/SKILL.md"
+    },
+    {
       "id": "webapp-testing",
       "title": "Webapp Testing",
       "summary": "用 Playwright 验证本地 Web 应用行为，适合交互验收、回归检查、截图取证与 UI 调试。",
@@ -203,6 +293,27 @@
       "updated_at": "2026-03-24",
       "manifest_path": "content/skills/webapp-testing/manifest.json",
       "skill_md_path": "content/skills/webapp-testing/SKILL.md"
+    },
+    {
+      "id": "zon-minimal-editorial",
+      "title": "Zon Minimal Editorial",
+      "summary": "把内容型网站和页面收口为克制、黑白、内容优先的 editorial house style。",
+      "scene": "design-visual",
+      "keywords": [
+        "editorial",
+        "monochrome",
+        "archive",
+        "dossier",
+        "content-first",
+        "website",
+        "house-style"
+      ],
+      "invoke": "$zon-minimal-editorial",
+      "visibility": "public",
+      "stability": "stable",
+      "updated_at": "2026-03-25",
+      "manifest_path": "content/skills/zon-minimal-editorial/manifest.json",
+      "skill_md_path": "content/skills/zon-minimal-editorial/SKILL.md"
     }
   ]
 }

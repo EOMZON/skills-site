@@ -3,7 +3,10 @@
   "id": "design-visual",
   "title": "设计与视觉",
   "summary": "适合风格、视觉表达、版式与图像产出。",
-  "total_skills": 2,
+  "total_skills": 3,
+  "visibility_counts": {
+    "public": 3
+  },
   "status": "live",
   "guide": {
     "core_tasks": [
@@ -12,10 +15,16 @@
       "把视觉方向沉淀成可复用的呈现层"
     ],
     "starter_ids": [
+      "zon-minimal-editorial",
       "theme-factory",
       "img-handdrawn-run-report"
     ],
     "chains": [
+      [
+        "zon-minimal-editorial",
+        "theme-factory",
+        "frontend-design"
+      ],
       [
         "theme-factory",
         "img-handdrawn-run-report",
@@ -63,6 +72,26 @@
       "updated_at": "2026-03-24",
       "detail_path": "/skills/theme-factory/index.html",
       "manifest_path": "/data/skills/theme-factory.json"
+    },
+    {
+      "id": "zon-minimal-editorial",
+      "title": "Zon Minimal Editorial",
+      "summary": "把内容型网站和页面收口为克制、黑白、内容优先的 editorial house style。",
+      "invoke": "$zon-minimal-editorial",
+      "keywords": [
+        "editorial",
+        "monochrome",
+        "archive",
+        "dossier",
+        "content-first",
+        "website",
+        "house-style"
+      ],
+      "visibility": "public",
+      "stability": "stable",
+      "updated_at": "2026-03-25",
+      "detail_path": "/skills/zon-minimal-editorial/index.html",
+      "manifest_path": "/data/skills/zon-minimal-editorial.json"
     }
   ]
 }

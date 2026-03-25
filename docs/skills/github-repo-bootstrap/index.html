@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="把一个本地文件夹稳定地变成 GitHub 仓库：创建远端、配置 origin、推送 main，并处理常见 PAT/SSH 问题。" />
+    <title>GitHub Repo Bootstrap · Skills</title>
+    <link rel="canonical" href="/skills/github-repo-bootstrap/index.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/site.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <div class="topbar-inner">
+          <a class="brand" href="/index.html"><strong>Skills</strong><span>Registry</span></a>
+          <nav class="nav">
+            <a href="/index.html">Home</a>
+            <a href="/data/registry.json">registry.json</a>
+            <a href="/data/scenes.json">scenes.json</a>
+            <a href="/llms.txt">llms.txt</a>
+          </nav>
+        </div>
+      </header>
+      <main class="page">
+  <section class="page-head">
+    <p class="meta-kicker">自动化与交付</p>
+    <h1 class="page-title">GitHub Repo Bootstrap</h1>
+    <p class="page-subtitle">把一个本地文件夹稳定地变成 GitHub 仓库：创建远端、配置 origin、推送 main，并处理常见 PAT/SSH 问题。</p>
+  </section>
+  <section class="detail-grid">
+    <article class="detail-main prose">
+      <h1>GitHub Repo Bootstrap</h1>
+<p>把一个本地文件夹快速而可靠地变成 GitHub 仓库，而不是手工散落地做初始化、建远端和推送。</p>
+<h2>Use When</h2>
+<ul>
+<li>需要给现有本地目录创建 GitHub 仓库</li>
+<li>需要自动配置 <code>origin</code> 并推送 <code>main</code></li>
+<li>需要排查首次推送时的 PAT、SSH 或权限问题</li>
+</ul>
+<h2>Input</h2>
+<ul>
+<li><code>local_path</code>：要初始化或推送的本地目录</li>
+<li><code>owner_repo</code>：可选 owner/repo、仓库命名偏好或可见性要求</li>
+</ul>
+<h2>Returns</h2>
+<ul>
+<li>已创建的 GitHub 远端仓库</li>
+<li>已配置的远端和首次推送结果</li>
+<li>失败时的快速诊断与替代路径</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>公开版只保留通用 bootstrap 流程</li>
+<li>个人 PAT 文件路径和本地环境约定已改成抽象输入</li>
+</ul>
+    </article>
+    <aside class="detail-side">
+      <div class="side-card">
+        <p class="side-label">Invoke</p>
+        <div><span class="skill-invoke">$github-repo-bootstrap</span></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Inputs</p>
+        <div class="side-list"><div><code>local_path</code> 要初始化或推送的本地目录 (required)</div><div><code>owner_repo</code> 可选 owner/repo、仓库命名偏好或可见性要求</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Returns</p>
+        <div class="side-list"><div>已创建的 GitHub 远端仓库</div><div>已配置的远端和首次推送结果</div><div>针对 PAT/SSH 失败的快速诊断</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Use When</p>
+        <div class="side-list"><div>需要把一个本地目录快速变成 GitHub 仓库</div><div>需要自动创建远端并配置 origin</div><div>需要排查 PAT、SSH 或首次推送失败</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Avoid When</p>
+        <div class="side-list"><div>目标仓库已经有远端且协作约束复杂</div><div>不是 GitHub 仓库创建问题</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Keywords</p>
+        <div class="skill-tags">github · repository · bootstrap · remote · ssh · push · repo-create</div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Dependencies</p>
+        <div class="side-list"><div>Scene: 自动化与交付</div><div>Bins: <code>git</code> · <code>python3</code></div><div>Services: github</div><div>Stateful workflow</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Related</p>
+        <div class="side-list"><div><a href="/skills/github-ops/index.html">GitHub Ops</a></div><div><a href="/skills/vercel-ship/index.html">Vercel Ship</a></div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Contract</p>
+        <div class="side-list"><div>Visibility: sanitized</div><div>Stability: stable</div><div>Updated: 2026-03-25</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Machine</p>
+        <div class="side-list"><div><a href="/data/skills/github-repo-bootstrap.json">manifest.json</a></div><div><a href="/data/scenes/automation-shipping.json">scene.json</a></div><div><a href="/data/skills.ndjson">skills.ndjson</a></div><div><a href="/llms-full.txt">llms-full.txt</a></div></div>
+      </div>
+    </aside>
+  </section>
+</main>
+      <footer class="footer">
+        <div>Skills Site · scenario-first registry renderer · source of truth: <code>skills-registry</code></div>
+      </footer>
+    </div>
+  </body>
+</html>

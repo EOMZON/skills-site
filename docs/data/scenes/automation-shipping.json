@@ -3,18 +3,32 @@
   "id": "automation-shipping",
   "title": "自动化与交付",
   "summary": "适合部署、发布、同步、自动化管道与持续交付。",
-  "total_skills": 1,
+  "total_skills": 4,
+  "visibility_counts": {
+    "sanitized": 3,
+    "public": 1
+  },
   "status": "live",
   "guide": {
     "core_tasks": [
+      "把本地工程变成可持续发布的仓库",
+      "安全地处理 GitHub 仓库、PR、Actions 和权限",
       "把工程发布成稳定入口",
       "补域名、分析和上线后的检查",
       "把交付从一次性动作变成长期可复用流程"
     ],
     "starter_ids": [
+      "github-repo-bootstrap",
+      "github-ops",
+      "vercel-ship",
       "vercel-deploy"
     ],
     "chains": [
+      [
+        "github-repo-bootstrap",
+        "github-ops",
+        "vercel-ship"
+      ],
       [
         "frontend-design",
         "webapp-testing",
@@ -23,6 +37,48 @@
     ]
   },
   "skills": [
+    {
+      "id": "github-ops",
+      "title": "GitHub Ops",
+      "summary": "用 gh CLI + git 处理 GitHub 日常运维：仓库、PR、Issue、Release、Actions、Secrets 与权限管理。",
+      "invoke": "$github-ops",
+      "keywords": [
+        "github",
+        "gh",
+        "git",
+        "pr",
+        "issue",
+        "release",
+        "actions",
+        "secrets",
+        "permissions"
+      ],
+      "visibility": "sanitized",
+      "stability": "stable",
+      "updated_at": "2026-03-25",
+      "detail_path": "/skills/github-ops/index.html",
+      "manifest_path": "/data/skills/github-ops.json"
+    },
+    {
+      "id": "github-repo-bootstrap",
+      "title": "GitHub Repo Bootstrap",
+      "summary": "把一个本地文件夹稳定地变成 GitHub 仓库：创建远端、配置 origin、推送 main，并处理常见 PAT/SSH 问题。",
+      "invoke": "$github-repo-bootstrap",
+      "keywords": [
+        "github",
+        "repository",
+        "bootstrap",
+        "remote",
+        "ssh",
+        "push",
+        "repo-create"
+      ],
+      "visibility": "sanitized",
+      "stability": "stable",
+      "updated_at": "2026-03-25",
+      "detail_path": "/skills/github-repo-bootstrap/index.html",
+      "manifest_path": "/data/skills/github-repo-bootstrap.json"
+    },
     {
       "id": "vercel-deploy",
       "title": "Vercel Deploy",
@@ -40,6 +96,27 @@
       "updated_at": "2026-03-24",
       "detail_path": "/skills/vercel-deploy/index.html",
       "manifest_path": "/data/skills/vercel-deploy.json"
+    },
+    {
+      "id": "vercel-ship",
+      "title": "Vercel Ship",
+      "summary": "把 Git 提交、GitHub 推送、Vercel 部署、Analytics 与自定义域名串成一条可重复执行的 ship 流水线。",
+      "invoke": "$vercel-ship",
+      "keywords": [
+        "vercel",
+        "deploy",
+        "prod",
+        "preview",
+        "domain",
+        "analytics",
+        "shipping",
+        "github"
+      ],
+      "visibility": "sanitized",
+      "stability": "stable",
+      "updated_at": "2026-03-25",
+      "detail_path": "/skills/vercel-ship/index.html",
+      "manifest_path": "/data/skills/vercel-ship.json"
     }
   ]
 }

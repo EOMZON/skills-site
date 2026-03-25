@@ -47,10 +47,16 @@
         "把视觉方向沉淀成可复用的呈现层"
       ],
       "starter_ids": [
+        "zon-minimal-editorial",
         "theme-factory",
         "img-handdrawn-run-report"
       ],
       "chains": [
+        [
+          "zon-minimal-editorial",
+          "theme-factory",
+          "frontend-design"
+        ],
         [
           "theme-factory",
           "img-handdrawn-run-report",
@@ -102,14 +108,24 @@
       "id": "automation-shipping",
       "status": "live",
       "core_tasks": [
+        "把本地工程变成可持续发布的仓库",
+        "安全地处理 GitHub 仓库、PR、Actions 和权限",
         "把工程发布成稳定入口",
         "补域名、分析和上线后的检查",
         "把交付从一次性动作变成长期可复用流程"
       ],
       "starter_ids": [
+        "github-repo-bootstrap",
+        "github-ops",
+        "vercel-ship",
         "vercel-deploy"
       ],
       "chains": [
+        [
+          "github-repo-bootstrap",
+          "github-ops",
+          "vercel-ship"
+        ],
         [
           "frontend-design",
           "webapp-testing",

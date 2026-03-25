@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "id": "github-ops",
+  "title": "GitHub Ops",
+  "summary": "用 gh CLI + git 处理 GitHub 日常运维：仓库、PR、Issue、Release、Actions、Secrets 与权限管理。",
+  "scene": "automation-shipping",
+  "subscenes": [
+    "github",
+    "repo-ops",
+    "release-ops"
+  ],
+  "keywords": [
+    "github",
+    "gh",
+    "git",
+    "pr",
+    "issue",
+    "release",
+    "actions",
+    "secrets",
+    "permissions"
+  ],
+  "invoke": "$github-ops",
+  "use_when": [
+    "需要处理 GitHub 仓库、PR、Issue、Release 或 Actions",
+    "需要在 gh CLI、git 和 gh api 之间选择最合适的操作方式",
+    "需要安全地处理 secrets、权限或历史策略"
+  ],
+  "avoid_when": [
+    "目标平台不是 GitHub",
+    "没有任何 repo 权限或登录状态可用"
+  ],
+  "inputs": [
+    {
+      "name": "repo_target",
+      "required": true,
+      "description": "目标仓库、组织或本地 git 仓库路径"
+    },
+    {
+      "name": "operation_goal",
+      "required": true,
+      "description": "要完成的 GitHub 操作，例如开 PR、配 Actions secrets、查 workflow 或改 release"
+    }
+  ],
+  "returns": [
+    "安全默认下的操作路径",
+    "可执行命令或实际处理结果",
+    "风险提示与回滚建议"
+  ],
+  "dependencies": {
+    "bins": [
+      "gh",
+      "git",
+      "node"
+    ],
+    "services": [
+      "github"
+    ],
+    "stateful": true
+  },
+  "related_ids": [
+    "github-repo-bootstrap",
+    "vercel-ship"
+  ],
+  "stability": "stable",
+  "visibility": "sanitized",
+  "updated_at": "2026-03-25"
+}

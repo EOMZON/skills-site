@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="把内容型网站和页面收口为克制、黑白、内容优先的 editorial house style。" />
+    <title>Zon Minimal Editorial · Skills</title>
+    <link rel="canonical" href="/skills/zon-minimal-editorial/index.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/site.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <div class="topbar-inner">
+          <a class="brand" href="/index.html"><strong>Skills</strong><span>Registry</span></a>
+          <nav class="nav">
+            <a href="/index.html">Home</a>
+            <a href="/data/registry.json">registry.json</a>
+            <a href="/data/scenes.json">scenes.json</a>
+            <a href="/llms.txt">llms.txt</a>
+          </nav>
+        </div>
+      </header>
+      <main class="page">
+  <section class="page-head">
+    <p class="meta-kicker">设计与视觉</p>
+    <h1 class="page-title">Zon Minimal Editorial</h1>
+    <p class="page-subtitle">把内容型网站和页面收口为克制、黑白、内容优先的 editorial house style。</p>
+  </section>
+  <section class="detail-grid">
+    <article class="detail-main prose">
+      <h1>Zon Minimal Editorial</h1>
+<p>把内容型页面做成可读、可回看、可归档的出版物式体验，而不是默认落回 SaaS 模板。</p>
+<h2>Use When</h2>
+<ul>
+<li>需要为网站、报告、作品集、博客或档案页建立统一的 editorial house style</li>
+<li>需要黑白克制、内容优先的视觉方向</li>
+<li>需要减少卡片墙和装饰性 UI，让层级、节奏和排版承担主要表达</li>
+</ul>
+<h2>Input</h2>
+<ul>
+<li><code>artifact_type</code>：要处理的页面或产物类型</li>
+<li><code>content_shape</code>：现有结构、页面问题或目标阅读体验</li>
+</ul>
+<h2>Returns</h2>
+<ul>
+<li>适配判断和页面原型方向</li>
+<li>typography / spacing / hierarchy 约束</li>
+<li>可复用的 house style 执行建议</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>公开版保留风格原则和落地规则</li>
+<li>私有模板路径与项目内默认资源已抽象掉</li>
+</ul>
+    </article>
+    <aside class="detail-side">
+      <div class="side-card">
+        <p class="side-label">Invoke</p>
+        <div><span class="skill-invoke">$zon-minimal-editorial</span></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Inputs</p>
+        <div class="side-list"><div><code>artifact_type</code> 要处理的页面或产物类型，例如网站、作品集、报告页、博客或档案页 (required)</div><div><code>content_shape</code> 当前信息结构、已有页面骨架、视觉问题或期望的阅读体验</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Returns</p>
+        <div class="side-list"><div>editorial fit 判断与页面原型方向</div><div>层级、排版和视觉约束</div><div>可复用的 house style 执行建议</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Use When</p>
+        <div class="side-list"><div>要把网站、报告、作品集或档案页做成出版物式阅读体验</div><div>需要统一黑白克制的 house style</div><div>想减少 SaaS 模板感，让结构和排版承担主要视觉工作</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Avoid When</p>
+        <div class="side-list"><div>页面主要任务是高频交易或彩色状态监控</div><div>需要强烈娱乐感、插画感或营销活动页气质</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Keywords</p>
+        <div class="skill-tags">editorial · monochrome · archive · dossier · content-first · website · house-style</div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Dependencies</p>
+        <div class="side-list"><div>Scene: 设计与视觉</div><div>Stateless workflow</div><div>No special runtime</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Related</p>
+        <div class="side-list"><div><a href="/skills/theme-factory/index.html">Theme Factory</a></div><div><a href="/skills/frontend-design/index.html">Frontend Design</a></div><div><a href="/skills/best-minds/index.html">Best Minds</a></div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Contract</p>
+        <div class="side-list"><div>Visibility: public</div><div>Stability: stable</div><div>Updated: 2026-03-25</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Machine</p>
+        <div class="side-list"><div><a href="/data/skills/zon-minimal-editorial.json">manifest.json</a></div><div><a href="/data/scenes/design-visual.json">scene.json</a></div><div><a href="/data/skills.ndjson">skills.ndjson</a></div><div><a href="/llms-full.txt">llms-full.txt</a></div></div>
+      </div>
+    </aside>
+  </section>
+</main>
+      <footer class="footer">
+        <div>Skills Site · scenario-first registry renderer · source of truth: <code>skills-registry</code></div>
+      </footer>
+    </div>
+  </body>
+</html>

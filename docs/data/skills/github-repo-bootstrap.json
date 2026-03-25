@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "id": "github-repo-bootstrap",
+  "title": "GitHub Repo Bootstrap",
+  "summary": "把一个本地文件夹稳定地变成 GitHub 仓库：创建远端、配置 origin、推送 main，并处理常见 PAT/SSH 问题。",
+  "scene": "automation-shipping",
+  "subscenes": [
+    "repo-bootstrap",
+    "remote-setup",
+    "github-push"
+  ],
+  "keywords": [
+    "github",
+    "repository",
+    "bootstrap",
+    "remote",
+    "ssh",
+    "push",
+    "repo-create"
+  ],
+  "invoke": "$github-repo-bootstrap",
+  "use_when": [
+    "需要把一个本地目录快速变成 GitHub 仓库",
+    "需要自动创建远端并配置 origin",
+    "需要排查 PAT、SSH 或首次推送失败"
+  ],
+  "avoid_when": [
+    "目标仓库已经有远端且协作约束复杂",
+    "不是 GitHub 仓库创建问题"
+  ],
+  "inputs": [
+    {
+      "name": "local_path",
+      "required": true,
+      "description": "要初始化或推送的本地目录"
+    },
+    {
+      "name": "owner_repo",
+      "required": false,
+      "description": "可选 owner/repo、仓库命名偏好或可见性要求"
+    }
+  ],
+  "returns": [
+    "已创建的 GitHub 远端仓库",
+    "已配置的远端和首次推送结果",
+    "针对 PAT/SSH 失败的快速诊断"
+  ],
+  "dependencies": {
+    "bins": [
+      "git",
+      "python3"
+    ],
+    "services": [
+      "github"
+    ],
+    "stateful": true
+  },
+  "related_ids": [
+    "github-ops",
+    "vercel-ship"
+  ],
+  "stability": "stable",
+  "visibility": "sanitized",
+  "updated_at": "2026-03-25"
+}

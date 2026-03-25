@@ -4,6 +4,9 @@
   "title": "调研与决策",
   "summary": "适合调研、分析、判断、路线选择与证据组织。",
   "total_skills": 1,
+  "visibility_counts": {
+    "public": 1
+  },
   "status": "live",
   "guide": {
     "core_tasks": [

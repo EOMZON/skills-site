@@ -462,6 +462,14 @@ code {
   font-size: 0.84rem;
 }
 
+.skill-contract {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .skill-scene-link {
   margin-bottom: 8px;
   font-size: 0.82rem;

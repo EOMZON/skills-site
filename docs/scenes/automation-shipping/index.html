@@ -30,20 +30,20 @@
       <span class="status-pill status-live">Live</span>
     </div>
     <p class="page-subtitle">适合部署、发布、同步、自动化管道与持续交付。</p>
-    <div class="page-count">1 public skills</div>
+    <div class="page-count">4 listed skills</div>
   </section>
   <section class="section">
     <div class="section-header">
       <div>
         <p class="section-kicker">Index</p>
-        <h2 class="section-title">1 public skills</h2>
+        <h2 class="section-title">4 listed skills</h2>
       </div>
-      <div class="section-summary">场景页回答三件事: 常见任务是什么、从哪里起手、现在有哪些公开 skill 可以直接用。</div>
+      <div class="section-summary">场景页回答三件事: 常见任务是什么、从哪里起手、现在有哪些已列出 skill 可以继续往下走。</div>
     </div>
     <div class="scene-guide">
-    <div class="guide-line"><span>Core Tasks</span>把工程发布成稳定入口 · 补域名、分析和上线后的检查 · 把交付从一次性动作变成长期可复用流程</div>
-    <div class="guide-line"><span>Starter</span><a href="/skills/vercel-deploy/index.html">Vercel Deploy</a></div>
-    <div class="guide-line"><span>Chain</span><a href="/skills/frontend-design/index.html">Frontend Design</a> → <a href="/skills/webapp-testing/index.html">Webapp Testing</a> → <a href="/skills/vercel-deploy/index.html">Vercel Deploy</a></div>
+    <div class="guide-line"><span>Core Tasks</span>把本地工程变成可持续发布的仓库 · 安全地处理 GitHub 仓库、PR、Actions 和权限 · 把工程发布成稳定入口</div>
+    <div class="guide-line"><span>Starter</span><a href="/skills/github-repo-bootstrap/index.html">GitHub Repo Bootstrap</a> · <a href="/skills/github-ops/index.html">GitHub Ops</a> · <a href="/skills/vercel-ship/index.html">Vercel Ship</a> · <a href="/skills/vercel-deploy/index.html">Vercel Deploy</a></div>
+    <div class="guide-line"><span>Chain</span><a href="/skills/github-repo-bootstrap/index.html">GitHub Repo Bootstrap</a> → <a href="/skills/github-ops/index.html">GitHub Ops</a> → <a href="/skills/vercel-ship/index.html">Vercel Ship</a></div>
   </div><div class="skill-table">
   <div class="skill-head">
     <div>Skill</div>
@@ -54,13 +54,47 @@
   </div>
 <div class="skill-row">
   <div>
+    <h3 class="skill-name"><a href="/skills/github-ops/index.html">GitHub Ops</a></h3>
+    <div class="skill-meta">需要处理 GitHub 仓库、PR、Issue、Release 或 Actions</div>
+    <div class="skill-contract">sanitized · stable</div>
+  </div>
+  <div class="skill-copy">用 gh CLI + git 处理 GitHub 日常运维：仓库、PR、Issue、Release、Actions、Secrets 与权限管理。</div>
+  <div class="skill-io"><code>repo_target</code> · <code>operation_goal</code></div>
+  <div class="skill-io">安全默认下的操作路径 · 可执行命令或实际处理结果</div>
+  <div><span class="skill-invoke">$github-ops</span></div>
+</div>
+<div class="skill-row">
+  <div>
+    <h3 class="skill-name"><a href="/skills/github-repo-bootstrap/index.html">GitHub Repo Bootstrap</a></h3>
+    <div class="skill-meta">需要把一个本地目录快速变成 GitHub 仓库</div>
+    <div class="skill-contract">sanitized · stable</div>
+  </div>
+  <div class="skill-copy">把一个本地文件夹稳定地变成 GitHub 仓库：创建远端、配置 origin、推送 main，并处理常见 PAT/SSH 问题。</div>
+  <div class="skill-io"><code>local_path</code> · <code>owner_repo</code></div>
+  <div class="skill-io">已创建的 GitHub 远端仓库 · 已配置的远端和首次推送结果</div>
+  <div><span class="skill-invoke">$github-repo-bootstrap</span></div>
+</div>
+<div class="skill-row">
+  <div>
     <h3 class="skill-name"><a href="/skills/vercel-deploy/index.html">Vercel Deploy</a></h3>
     <div class="skill-meta">需要把工程发布到 Vercel</div>
+    <div class="skill-contract">public · stable</div>
   </div>
   <div class="skill-copy">将现有工程发布到 Vercel，并处理分析与域名配置。</div>
   <div class="skill-io"><code>project_path</code> · <code>domain</code></div>
   <div class="skill-io">部署结果 · 线上访问地址</div>
   <div><span class="skill-invoke">$vercel-deploy</span></div>
+</div>
+<div class="skill-row">
+  <div>
+    <h3 class="skill-name"><a href="/skills/vercel-ship/index.html">Vercel Ship</a></h3>
+    <div class="skill-meta">想把本地项目一口气 ship 到 GitHub 与 Vercel</div>
+    <div class="skill-contract">sanitized · stable</div>
+  </div>
+  <div class="skill-copy">把 Git 提交、GitHub 推送、Vercel 部署、Analytics 与自定义域名串成一条可重复执行的 ship 流水线。</div>
+  <div class="skill-io"><code>project_path</code> · <code>shipping_overrides</code></div>
+  <div class="skill-io">已提交并推送的 Git 状态 · Vercel 部署结果与线上地址</div>
+  <div><span class="skill-invoke">$vercel-ship</span></div>
 </div>
 </div>
   </section>

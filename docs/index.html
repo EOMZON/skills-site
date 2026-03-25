@@ -27,21 +27,21 @@
     <div>
       <p class="hero-kicker">Scenario-First Skill Registry</p>
       <h1 class="hero-title">先按场景进入，再选 skill。</h1>
-      <p class="hero-copy">首页先回答能做什么、从哪里起手、会拿到什么产出。公开层只保留可复用调用契约，私有作者源继续留在上游，不把展示层做成又一面大卡片墙。</p>
+      <p class="hero-copy">首页先回答能做什么、从哪里起手、会拿到什么产出。公开层只保留可复用调用契约；需要收口运行细节的 workflow 用 sanitized entry 暴露，私有作者源继续留在上游，不把展示层做成又一面大卡片墙。</p>
     </div>
     <div class="hero-notes">
       <div class="hero-note"><strong>Executable systems</strong>不是 prompt 片段。很多 skill 会直接落到报告、页面、脚本、部署或可复查产物。</div>
 <div class="hero-note"><strong>Scenario-first</strong>先按要完成的事情分组，再在 scene 里看可调用的 skill，而不是先按工具名找。</div>
-<div class="hero-note"><strong>Private to public</strong>私有作者源先沉淀，再导出公开 manifest 与脱敏说明，展示层和内容层解耦。</div>
+<div class="hero-note"><strong>Private source -&gt; exposed manifests</strong>私有作者源先沉淀，再导出 exposed manifest；涉及状态和敏感运行细节的 workflow 以 sanitized 方式列出。</div>
 <div class="hero-note"><strong>Agent-readable</strong>人看页面，AI 读 JSON 和 llms.txt。每个 skill 都有稳定的 machine entry point。</div>
     </div>
   </section>
 
   <section class="stats-strip">
-    <div class="stat"><span class="stat-value">8</span><span class="stat-label">Public Skills</span></div>
+    <div class="stat"><span class="stat-value">12</span><span class="stat-label">Listed Skills</span></div>
+    <div class="stat"><span class="stat-value">9</span><span class="stat-label">Public</span></div>
+    <div class="stat"><span class="stat-value">3</span><span class="stat-label">Sanitized</span></div>
     <div class="stat"><span class="stat-value">6</span><span class="stat-label">Live Scenes</span></div>
-    <div class="stat"><span class="stat-value">7</span><span class="stat-label">Defined Scenes</span></div>
-    <div class="stat"><span class="stat-value">7</span><span class="stat-label">Starter Chains</span></div>
   </section>
 
   <section class="section">
@@ -50,14 +50,14 @@
         <p class="section-kicker">Scenes</p>
         <h2 class="section-title">先看你要完成什么</h2>
       </div>
-      <div class="section-summary">每个 scene 都直接暴露当前开放状态、核心任务和起手 skill。未公开完成的 scene 也保留在首页，作为真实路线图而不是被隐藏的空白。</div>
+      <div class="section-summary">每个 scene 都直接暴露当前列出状态、核心任务和起手 skill。尚未列出 skills 的 scene 也保留在首页，作为真实路线图而不是被隐藏的空白。</div>
     </div>
     <div class="scene-directory">
 <article class="scene-entry">
   <div class="scene-head">
     <div class="scene-meta-row">
       <span class="status-pill status-live">Live</span>
-      <span class="count-pill">1 skills</span>
+      <span class="count-pill">1 listed</span>
     </div>
     <h3 class="scene-entry-title"><a href="/scenes/research-decision/index.html">调研与决策</a></h3>
     <p class="scene-entry-summary">适合调研、分析、判断、路线选择与证据组织。</p>
@@ -77,7 +77,7 @@
   <div class="scene-head">
     <div class="scene-meta-row">
       <span class="status-pill status-live">Live</span>
-      <span class="count-pill">1 skills</span>
+      <span class="count-pill">1 listed</span>
     </div>
     <h3 class="scene-entry-title"><a href="/scenes/writing-docs/index.html">写作与文档</a></h3>
     <p class="scene-entry-summary">适合提案、Spec、PRD、长文与结构化写作。</p>
@@ -97,7 +97,7 @@
   <div class="scene-head">
     <div class="scene-meta-row">
       <span class="status-pill status-live">Live</span>
-      <span class="count-pill">2 skills</span>
+      <span class="count-pill">3 listed</span>
     </div>
     <h3 class="scene-entry-title"><a href="/scenes/design-visual/index.html">设计与视觉</a></h3>
     <p class="scene-entry-summary">适合风格、视觉表达、版式与图像产出。</p>
@@ -110,14 +110,14 @@
   </div>
   <div class="scene-starters">
     <p class="scene-label">Start With</p>
-    <div class="scene-links"><a href="/skills/theme-factory/index.html">Theme Factory</a> · <a href="/skills/img-handdrawn-run-report/index.html">Handdrawn Run Report</a></div>
+    <div class="scene-links"><a href="/skills/zon-minimal-editorial/index.html">Zon Minimal Editorial</a> · <a href="/skills/theme-factory/index.html">Theme Factory</a> · <a href="/skills/img-handdrawn-run-report/index.html">Handdrawn Run Report</a></div>
   </div>
 </article>
 <article class="scene-entry">
   <div class="scene-head">
     <div class="scene-meta-row">
       <span class="status-pill status-live">Live</span>
-      <span class="count-pill">2 skills</span>
+      <span class="count-pill">2 listed</span>
     </div>
     <h3 class="scene-entry-title"><a href="/scenes/website-frontend/index.html">网站与前端</a></h3>
     <p class="scene-entry-summary">适合网页、交互界面、前端实现与上线前页面工作。</p>
@@ -137,7 +137,7 @@
   <div class="scene-head">
     <div class="scene-meta-row">
       <span class="status-pill status-live">Live</span>
-      <span class="count-pill">1 skills</span>
+      <span class="count-pill">1 listed</span>
     </div>
     <h3 class="scene-entry-title"><a href="/scenes/coding-engineering/index.html">编程与工程</a></h3>
     <p class="scene-entry-summary">适合代码实现、调试、架构、工程质量与开发工作流。</p>
@@ -157,7 +157,7 @@
   <div class="scene-head">
     <div class="scene-meta-row">
       <span class="status-pill status-live">Live</span>
-      <span class="count-pill">1 skills</span>
+      <span class="count-pill">4 listed</span>
     </div>
     <h3 class="scene-entry-title"><a href="/scenes/automation-shipping/index.html">自动化与交付</a></h3>
     <p class="scene-entry-summary">适合部署、发布、同步、自动化管道与持续交付。</p>
@@ -165,19 +165,19 @@
   <div class="scene-tasks">
     <p class="scene-label">Core Tasks</p>
     <ul class="compact-list">
-      <li>把工程发布成稳定入口</li><li>补域名、分析和上线后的检查</li><li>把交付从一次性动作变成长期可复用流程</li>
+      <li>把本地工程变成可持续发布的仓库</li><li>安全地处理 GitHub 仓库、PR、Actions 和权限</li><li>把工程发布成稳定入口</li>
     </ul>
   </div>
   <div class="scene-starters">
     <p class="scene-label">Start With</p>
-    <div class="scene-links"><a href="/skills/vercel-deploy/index.html">Vercel Deploy</a></div>
+    <div class="scene-links"><a href="/skills/github-repo-bootstrap/index.html">GitHub Repo Bootstrap</a> · <a href="/skills/github-ops/index.html">GitHub Ops</a> · <a href="/skills/vercel-ship/index.html">Vercel Ship</a> · <a href="/skills/vercel-deploy/index.html">Vercel Deploy</a></div>
   </div>
 </article>
 <article class="scene-entry">
   <div class="scene-head">
     <div class="scene-meta-row">
       <span class="status-pill status-coming-next">Coming Next</span>
-      <span class="count-pill">0 skills</span>
+      <span class="count-pill">0 listed</span>
     </div>
     <h3 class="scene-entry-title"><a href="/scenes/product-project/index.html">项目与产品推进</a></h3>
     <p class="scene-entry-summary">适合项目推进、产品规划、Backlog、Roadmap 与流程协同。</p>
@@ -190,7 +190,7 @@
   </div>
   <div class="scene-starters">
     <p class="scene-label">Start With</p>
-    <div class="scene-links"><span class="muted">No public starter yet</span></div>
+    <div class="scene-links"><span class="muted">No listed starter yet</span></div>
   </div>
 </article>
 </div>
@@ -200,9 +200,9 @@
     <div class="section-header">
       <div>
         <p class="section-kicker">Coverage</p>
-        <h2 class="section-title">按场景展开的公开 skills</h2>
+        <h2 class="section-title">按场景展开的已列出 skills</h2>
       </div>
-      <div class="section-summary">这里专注看当前已经 live 的技能索引。每一行同时暴露作用、输入、产出与调用方式，而不是只放一段摘要文案。</div>
+      <div class="section-summary">这里专注看当前已经进入 registry 的技能索引，其中同时包含 fully public 与 sanitized entry。每一行同时暴露作用、输入、产出、可见性与调用方式，而不是只放一段摘要文案。</div>
     </div>
     <div class="scene-blocks">
 <section class="scene-block">
@@ -230,6 +230,7 @@
   <div>
     <h3 class="skill-name"><a href="/skills/best-minds/index.html">Best Minds</a></h3>
     <div class="skill-meta">需要快速理解一个复杂问题</div>
+    <div class="skill-contract">public · core</div>
   </div>
   <div class="skill-copy">世界级专家模拟与研究决策 skill，用于调研、思路梳理和路线规划。</div>
   <div class="skill-io"><code>question</code> · <code>scope</code></div>
@@ -263,6 +264,7 @@
   <div>
     <h3 class="skill-name"><a href="/skills/doc-coauthoring/index.html">Doc Co-Authoring</a></h3>
     <div class="skill-meta">要写结构化文档，但上下文还很散</div>
+    <div class="skill-contract">public · stable</div>
   </div>
   <div class="skill-copy">结构化文档共创 workflow，适合提案、Spec、PRD、决策文档与长文写作。</div>
   <div class="skill-io"><code>doc_goal</code> · <code>source_context</code></div>
@@ -281,8 +283,8 @@
   </div>
   <div class="scene-guide">
     <div class="guide-line"><span>Core Tasks</span>为产物确定一套清晰的视觉主题 · 把图像生成过程整理成可复查的报告 · 把视觉方向沉淀成可复用的呈现层</div>
-    <div class="guide-line"><span>Starter</span><a href="/skills/theme-factory/index.html">Theme Factory</a> · <a href="/skills/img-handdrawn-run-report/index.html">Handdrawn Run Report</a></div>
-    <div class="guide-line"><span>Chain</span><a href="/skills/theme-factory/index.html">Theme Factory</a> → <a href="/skills/img-handdrawn-run-report/index.html">Handdrawn Run Report</a> → <a href="/skills/frontend-design/index.html">Frontend Design</a></div>
+    <div class="guide-line"><span>Starter</span><a href="/skills/zon-minimal-editorial/index.html">Zon Minimal Editorial</a> · <a href="/skills/theme-factory/index.html">Theme Factory</a> · <a href="/skills/img-handdrawn-run-report/index.html">Handdrawn Run Report</a></div>
+    <div class="guide-line"><span>Chain</span><a href="/skills/zon-minimal-editorial/index.html">Zon Minimal Editorial</a> → <a href="/skills/theme-factory/index.html">Theme Factory</a> → <a href="/skills/frontend-design/index.html">Frontend Design</a></div>
   </div>
   <div class="skill-table">
   <div class="skill-head">
@@ -296,6 +298,7 @@
   <div>
     <h3 class="skill-name"><a href="/skills/img-handdrawn-run-report/index.html">Handdrawn Run Report</a></h3>
     <div class="skill-meta">已经有输出图片和 meta JSON</div>
+    <div class="skill-contract">public · stable</div>
   </div>
   <div class="skill-copy">把图片生成结果、Prompt 与参数整理成可打印的 HTML 运行报告，适合归档、复现与展示。</div>
   <div class="skill-io"><code>meta_json</code> · <code>image_files</code></div>
@@ -306,11 +309,23 @@
   <div>
     <h3 class="skill-name"><a href="/skills/theme-factory/index.html">Theme Factory</a></h3>
     <div class="skill-meta">已有文档或页面，需要统一视觉主题</div>
+    <div class="skill-contract">public · stable</div>
   </div>
   <div class="skill-copy">为 HTML、文档、幻灯或报告选择并应用成体系的视觉主题，而不是零散改样式。</div>
   <div class="skill-io"><code>artifact_type</code> · <code>style_goal</code></div>
   <div class="skill-io">主题 shortlist 或自定义方向 · 颜色与字体 tokens</div>
   <div><span class="skill-invoke">$theme-factory</span></div>
+</div>
+<div class="skill-row">
+  <div>
+    <h3 class="skill-name"><a href="/skills/zon-minimal-editorial/index.html">Zon Minimal Editorial</a></h3>
+    <div class="skill-meta">要把网站、报告、作品集或档案页做成出版物式阅读体验</div>
+    <div class="skill-contract">public · stable</div>
+  </div>
+  <div class="skill-copy">把内容型网站和页面收口为克制、黑白、内容优先的 editorial house style。</div>
+  <div class="skill-io"><code>artifact_type</code> · <code>content_shape</code></div>
+  <div class="skill-io">editorial fit 判断与页面原型方向 · 层级、排版和视觉约束</div>
+  <div><span class="skill-invoke">$zon-minimal-editorial</span></div>
 </div>
 </div>
 </section>
@@ -339,6 +354,7 @@
   <div>
     <h3 class="skill-name"><a href="/skills/frontend-design/index.html">Frontend Design</a></h3>
     <div class="skill-meta">需要设计并实现网页或前端界面</div>
+    <div class="skill-contract">public · core</div>
   </div>
   <div class="skill-copy">高质量网页、界面和前端实现 skill，强调风格判断与可上线交付。</div>
   <div class="skill-io"><code>goal</code> · <code>constraints</code></div>
@@ -349,6 +365,7 @@
   <div>
     <h3 class="skill-name"><a href="/skills/webapp-testing/index.html">Webapp Testing</a></h3>
     <div class="skill-meta">需要验证本地网页或前端交互</div>
+    <div class="skill-contract">public · stable</div>
   </div>
   <div class="skill-copy">用 Playwright 验证本地 Web 应用行为，适合交互验收、回归检查、截图取证与 UI 调试。</div>
   <div class="skill-io"><code>app_url_or_path</code> · <code>verification_goal</code></div>
@@ -382,6 +399,7 @@
   <div>
     <h3 class="skill-name"><a href="/skills/mcp-builder/index.html">MCP Builder</a></h3>
     <div class="skill-meta">要把外部 API 或服务接入 LLM 或 agent</div>
+    <div class="skill-contract">public · stable</div>
   </div>
   <div class="skill-copy">构建高质量 MCP server 的工程 guide，覆盖工具设计、协议理解、实现、测试与评估。</div>
   <div class="skill-io"><code>target_service</code> · <code>stack_constraints</code></div>
@@ -399,9 +417,9 @@
     <div class="scene-block-summary">适合部署、发布、同步、自动化管道与持续交付。</div>
   </div>
   <div class="scene-guide">
-    <div class="guide-line"><span>Core Tasks</span>把工程发布成稳定入口 · 补域名、分析和上线后的检查 · 把交付从一次性动作变成长期可复用流程</div>
-    <div class="guide-line"><span>Starter</span><a href="/skills/vercel-deploy/index.html">Vercel Deploy</a></div>
-    <div class="guide-line"><span>Chain</span><a href="/skills/frontend-design/index.html">Frontend Design</a> → <a href="/skills/webapp-testing/index.html">Webapp Testing</a> → <a href="/skills/vercel-deploy/index.html">Vercel Deploy</a></div>
+    <div class="guide-line"><span>Core Tasks</span>把本地工程变成可持续发布的仓库 · 安全地处理 GitHub 仓库、PR、Actions 和权限 · 把工程发布成稳定入口</div>
+    <div class="guide-line"><span>Starter</span><a href="/skills/github-repo-bootstrap/index.html">GitHub Repo Bootstrap</a> · <a href="/skills/github-ops/index.html">GitHub Ops</a> · <a href="/skills/vercel-ship/index.html">Vercel Ship</a> · <a href="/skills/vercel-deploy/index.html">Vercel Deploy</a></div>
+    <div class="guide-line"><span>Chain</span><a href="/skills/github-repo-bootstrap/index.html">GitHub Repo Bootstrap</a> → <a href="/skills/github-ops/index.html">GitHub Ops</a> → <a href="/skills/vercel-ship/index.html">Vercel Ship</a></div>
   </div>
   <div class="skill-table">
   <div class="skill-head">
@@ -413,13 +431,47 @@
   </div>
 <div class="skill-row">
   <div>
+    <h3 class="skill-name"><a href="/skills/github-ops/index.html">GitHub Ops</a></h3>
+    <div class="skill-meta">需要处理 GitHub 仓库、PR、Issue、Release 或 Actions</div>
+    <div class="skill-contract">sanitized · stable</div>
+  </div>
+  <div class="skill-copy">用 gh CLI + git 处理 GitHub 日常运维：仓库、PR、Issue、Release、Actions、Secrets 与权限管理。</div>
+  <div class="skill-io"><code>repo_target</code> · <code>operation_goal</code></div>
+  <div class="skill-io">安全默认下的操作路径 · 可执行命令或实际处理结果</div>
+  <div><span class="skill-invoke">$github-ops</span></div>
+</div>
+<div class="skill-row">
+  <div>
+    <h3 class="skill-name"><a href="/skills/github-repo-bootstrap/index.html">GitHub Repo Bootstrap</a></h3>
+    <div class="skill-meta">需要把一个本地目录快速变成 GitHub 仓库</div>
+    <div class="skill-contract">sanitized · stable</div>
+  </div>
+  <div class="skill-copy">把一个本地文件夹稳定地变成 GitHub 仓库：创建远端、配置 origin、推送 main，并处理常见 PAT/SSH 问题。</div>
+  <div class="skill-io"><code>local_path</code> · <code>owner_repo</code></div>
+  <div class="skill-io">已创建的 GitHub 远端仓库 · 已配置的远端和首次推送结果</div>
+  <div><span class="skill-invoke">$github-repo-bootstrap</span></div>
+</div>
+<div class="skill-row">
+  <div>
     <h3 class="skill-name"><a href="/skills/vercel-deploy/index.html">Vercel Deploy</a></h3>
     <div class="skill-meta">需要把工程发布到 Vercel</div>
+    <div class="skill-contract">public · stable</div>
   </div>
   <div class="skill-copy">将现有工程发布到 Vercel，并处理分析与域名配置。</div>
   <div class="skill-io"><code>project_path</code> · <code>domain</code></div>
   <div class="skill-io">部署结果 · 线上访问地址</div>
   <div><span class="skill-invoke">$vercel-deploy</span></div>
+</div>
+<div class="skill-row">
+  <div>
+    <h3 class="skill-name"><a href="/skills/vercel-ship/index.html">Vercel Ship</a></h3>
+    <div class="skill-meta">想把本地项目一口气 ship 到 GitHub 与 Vercel</div>
+    <div class="skill-contract">sanitized · stable</div>
+  </div>
+  <div class="skill-copy">把 Git 提交、GitHub 推送、Vercel 部署、Analytics 与自定义域名串成一条可重复执行的 ship 流水线。</div>
+  <div class="skill-io"><code>project_path</code> · <code>shipping_overrides</code></div>
+  <div class="skill-io">已提交并推送的 Git 状态 · Vercel 部署结果与线上地址</div>
+  <div><span class="skill-invoke">$vercel-ship</span></div>
 </div>
 </div>
 </section>
@@ -437,7 +489,7 @@
     <div class="endpoint-list">
 <a class="endpoint-card" href="/data/registry.json">
   <div class="endpoint-name">registry.json</div>
-  <div class="endpoint-desc">所有公开 skills 的轻量索引。</div>
+  <div class="endpoint-desc">所有已列出 skills 的轻量索引，含 visibility 与 scene。</div>
 </a>
 <a class="endpoint-card" href="/data/scene-guides.json">
   <div class="endpoint-name">scene-guides.json</div>

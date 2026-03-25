@@ -91,6 +91,14 @@ function previewInputs(inputs, limit = 2) {
     .join(" · ");
 }
 
+function countByVisibility(items) {
+  return items.reduce((counts, item) => {
+    const visibility = item.visibility || "public";
+    counts[visibility] = (counts[visibility] || 0) + 1;
+    return counts;
+  }, {});
+}
+
 function skillSort(a, b, scenesById) {
   const ao = scenesById.get(a.scene)?.order || Number.MAX_SAFE_INTEGER;
   const bo = scenesById.get(b.scene)?.order || Number.MAX_SAFE_INTEGER;
@@ -241,11 +249,11 @@ ${sceneEntries
       .map((item) => `<a href="/skills/${item.id}/index.html">${escapeHtml(item.title)}</a>`)
       .join(" · ");
     const taskItems = (guide?.core_tasks || [scene.summary]).slice(0, 3);
-    return `<article class="scene-entry">
+return `<article class="scene-entry">
   <div class="scene-head">
     <div class="scene-meta-row">
       <span class="status-pill status-${status}">${escapeHtml(sceneStatusLabel[status] || status)}</span>
-      <span class="count-pill">${skills.length} skills</span>
+      <span class="count-pill">${skills.length} listed</span>
     </div>
     <h3 class="scene-entry-title"><a href="/scenes/${scene.id}/index.html">${escapeHtml(scene.title)}</a></h3>
     <p class="scene-entry-summary">${escapeHtml(scene.summary)}</p>
@@ -258,7 +266,7 @@ ${sceneEntries
   </div>
   <div class="scene-starters">
     <p class="scene-label">Start With</p>
-    <div class="scene-links">${starter || '<span class="muted">No public starter yet</span>'}</div>
+    <div class="scene-links">${starter || '<span class="muted">No listed starter yet</span>'}</div>
   </div>
 </article>`;
   })
@@ -281,6 +289,7 @@ ${skills
   <div>
     <h3 class="skill-name"><a href="/skills/${skill.id}/index.html">${escapeHtml(skill.title)}</a></h3>
     <div class="skill-meta">${escapeHtml((skill.use_when && skill.use_when[0]) || skill.sceneTitle || "")}</div>
+    <div class="skill-contract">${escapeHtml(skill.visibility || "public")} · ${escapeHtml(skill.stability || "stable")}</div>
   </div>
   <div class="skill-copy">${escapeHtml(skill.summary)}</div>
   <div class="skill-io">${previewInputs(skill.inputs)}</div>
@@ -394,8 +403,8 @@ function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifest
       body: "先按要完成的事情分组，再在 scene 里看可调用的 skill，而不是先按工具名找。"
     },
     {
-      label: "Private to public",
-      body: "私有作者源先沉淀，再导出公开 manifest 与脱敏说明，展示层和内容层解耦。"
+      label: "Private source -> exposed manifests",
+      body: "私有作者源先沉淀，再导出 exposed manifest；涉及状态和敏感运行细节的 workflow 以 sanitized 方式列出。"
     },
     {
       label: "Agent-readable",
@@ -406,7 +415,7 @@ function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifest
     {
       name: "registry.json",
       href: "/data/registry.json",
-      description: "所有公开 skills 的轻量索引。"
+      description: "所有已列出 skills 的轻量索引，含 visibility 与 scene。"
     },
     {
       name: "scene-guides.json",
@@ -434,7 +443,7 @@ function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifest
     <div>
       <p class="hero-kicker">Scenario-First Skill Registry</p>
       <h1 class="hero-title">先按场景进入，再选 skill。</h1>
-      <p class="hero-copy">首页先回答能做什么、从哪里起手、会拿到什么产出。公开层只保留可复用调用契约，私有作者源继续留在上游，不把展示层做成又一面大卡片墙。</p>
+      <p class="hero-copy">首页先回答能做什么、从哪里起手、会拿到什么产出。公开层只保留可复用调用契约；需要收口运行细节的 workflow 用 sanitized entry 暴露，私有作者源继续留在上游，不把展示层做成又一面大卡片墙。</p>
     </div>
     <div class="hero-notes">
       ${differentiators
@@ -446,10 +455,10 @@ function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifest
   </section>
 
   <section class="stats-strip">
-    <div class="stat"><span class="stat-value">${stats.totalSkills}</span><span class="stat-label">Public Skills</span></div>
+    <div class="stat"><span class="stat-value">${stats.listedSkills}</span><span class="stat-label">Listed Skills</span></div>
+    <div class="stat"><span class="stat-value">${stats.publicSkills}</span><span class="stat-label">Public</span></div>
+    <div class="stat"><span class="stat-value">${stats.sanitizedSkills}</span><span class="stat-label">Sanitized</span></div>
     <div class="stat"><span class="stat-value">${stats.liveScenes}</span><span class="stat-label">Live Scenes</span></div>
-    <div class="stat"><span class="stat-value">${stats.definedScenes}</span><span class="stat-label">Defined Scenes</span></div>
-    <div class="stat"><span class="stat-value">${stats.starterChains}</span><span class="stat-label">Starter Chains</span></div>
   </section>
 
   <section class="section">
@@ -458,7 +467,7 @@ function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifest
         <p class="section-kicker">Scenes</p>
         <h2 class="section-title">先看你要完成什么</h2>
       </div>
-      <div class="section-summary">每个 scene 都直接暴露当前开放状态、核心任务和起手 skill。未公开完成的 scene 也保留在首页，作为真实路线图而不是被隐藏的空白。</div>
+      <div class="section-summary">每个 scene 都直接暴露当前列出状态、核心任务和起手 skill。尚未列出 skills 的 scene 也保留在首页，作为真实路线图而不是被隐藏的空白。</div>
     </div>
     ${renderSceneGrid(sceneEntries)}
   </section>
@@ -467,9 +476,9 @@ function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifest
     <div class="section-header">
       <div>
         <p class="section-kicker">Coverage</p>
-        <h2 class="section-title">按场景展开的公开 skills</h2>
+        <h2 class="section-title">按场景展开的已列出 skills</h2>
       </div>
-      <div class="section-summary">这里专注看当前已经 live 的技能索引。每一行同时暴露作用、输入、产出与调用方式，而不是只放一段摘要文案。</div>
+      <div class="section-summary">这里专注看当前已经进入 registry 的技能索引，其中同时包含 fully public 与 sanitized entry。每一行同时暴露作用、输入、产出、可见性与调用方式，而不是只放一段摘要文案。</div>
     </div>
     ${renderCoverage(activeSceneEntries, manifestsById)}
   </section>
@@ -493,7 +502,7 @@ function buildScenePage(scene, skills, scenesById, guide, manifestsById) {
   const status = guide?.status || (normalized.length ? "live" : "coming-next");
   const body = normalized.length
     ? `${renderGuideBlock(guide, manifestsById)}${renderSkillTable(normalized)}`
-    : `<p class="empty-state">这个 scene 已经预留在 taxonomy 中，但目前还没有公开 skills。</p>`;
+    : `<p class="empty-state">这个 scene 已经预留在 taxonomy 中，但目前还没有 listed skills。</p>`;
 
   return layout({
     title: `${scene.title} · Skills`,
@@ -507,15 +516,15 @@ function buildScenePage(scene, skills, scenesById, guide, manifestsById) {
       <span class="status-pill status-${status}">${escapeHtml(sceneStatusLabel[status] || status)}</span>
     </div>
     <p class="page-subtitle">${escapeHtml(scene.summary)}</p>
-    <div class="page-count">${normalized.length} public skills</div>
+    <div class="page-count">${normalized.length} listed skills</div>
   </section>
   <section class="section">
     <div class="section-header">
       <div>
         <p class="section-kicker">Index</p>
-        <h2 class="section-title">${normalized.length} public skills</h2>
+        <h2 class="section-title">${normalized.length} listed skills</h2>
       </div>
-      <div class="section-summary">场景页回答三件事: 常见任务是什么、从哪里起手、现在有哪些公开 skill 可以直接用。</div>
+      <div class="section-summary">场景页回答三件事: 常见任务是什么、从哪里起手、现在有哪些已列出 skill 可以继续往下走。</div>
     </div>
     ${body}
   </section>
@@ -657,7 +666,7 @@ function buildLlmsTxt(registry, scenesById, sceneGuidesById) {
 
   return `# Skills Registry
 
-Public, scenario-first skill registry.
+Scenario-first skill registry with public and sanitized entries.
 
 ## Canonical machine-readable entry points
 
@@ -672,7 +681,7 @@ Public, scenario-first skill registry.
 
 ${sceneLines}
 
-## Current skills
+## Current listed skills
 
 ${skillLines}
 `;
@@ -730,11 +739,12 @@ function main() {
 
   const manifestsById = new Map(manifests.map((manifest) => [manifest.id, manifest]));
   const activeSceneEntries = collectSceneEntries(scenesDoc, manifests, sceneGuidesById, scenesById);
+  const visibilityCounts = countByVisibility(manifests);
   const stats = {
-    totalSkills: manifests.length,
-    liveScenes: activeSceneEntries.filter((entry) => entry.skills.length > 0).length,
-    definedScenes: scenesDoc.scenes.length,
-    starterChains: (sceneGuides.scenes || []).reduce((sum, guide) => sum + (guide.chains?.length || 0), 0)
+    listedSkills: manifests.length,
+    publicSkills: visibilityCounts.public || 0,
+    sanitizedSkills: visibilityCounts.sanitized || 0,
+    liveScenes: activeSceneEntries.filter((entry) => entry.skills.length > 0).length
   };
 
   writeFile(
@@ -764,18 +774,20 @@ function main() {
   const sceneIndex = {
     schema_version: "1.0.0",
     generated_at: registry.generated_at,
+    visibility_counts: visibilityCounts,
     scenes: scenesDoc.scenes.map((scene) => {
       const sceneSkills = manifests.filter((manifest) => manifest.scene === scene.id);
       const guide = sceneGuidesById.get(scene.id) || null;
       return {
         id: scene.id,
         title: scene.title,
-          summary: scene.summary,
-          count: sceneSkills.length,
-          status: guide?.status || (sceneSkills.length ? "live" : "coming-next"),
-          detail_path: `/scenes/${scene.id}/index.html`,
-          data_path: `/data/scenes/${scene.id}.json`
-        };
+        summary: scene.summary,
+        count: sceneSkills.length,
+        visibility_counts: countByVisibility(sceneSkills),
+        status: guide?.status || (sceneSkills.length ? "live" : "coming-next"),
+        detail_path: `/scenes/${scene.id}/index.html`,
+        data_path: `/data/scenes/${scene.id}.json`
+      };
     })
   };
 
@@ -816,6 +828,7 @@ function main() {
           title: scene.title,
           summary: scene.summary,
           total_skills: sceneSkills.length,
+          visibility_counts: countByVisibility(sceneSkills),
           status: guide?.status || "live",
           guide: guide
             ? {

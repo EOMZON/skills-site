@@ -4,6 +4,9 @@
   "title": "编程与工程",
   "summary": "适合代码实现、调试、架构、工程质量与开发工作流。",
   "total_skills": 1,
+  "visibility_counts": {
+    "public": 1
+  },
   "status": "live",
   "guide": {
     "core_tasks": [

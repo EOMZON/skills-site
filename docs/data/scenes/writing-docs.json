@@ -4,6 +4,9 @@
   "title": "写作与文档",
   "summary": "适合提案、Spec、PRD、长文与结构化写作。",
   "total_skills": 1,
+  "visibility_counts": {
+    "public": 1
+  },
   "status": "live",
   "guide": {
     "core_tasks": [

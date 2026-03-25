@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="用 gh CLI + git 处理 GitHub 日常运维：仓库、PR、Issue、Release、Actions、Secrets 与权限管理。" />
+    <title>GitHub Ops · Skills</title>
+    <link rel="canonical" href="/skills/github-ops/index.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/site.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <div class="topbar-inner">
+          <a class="brand" href="/index.html"><strong>Skills</strong><span>Registry</span></a>
+          <nav class="nav">
+            <a href="/index.html">Home</a>
+            <a href="/data/registry.json">registry.json</a>
+            <a href="/data/scenes.json">scenes.json</a>
+            <a href="/llms.txt">llms.txt</a>
+          </nav>
+        </div>
+      </header>
+      <main class="page">
+  <section class="page-head">
+    <p class="meta-kicker">自动化与交付</p>
+    <h1 class="page-title">GitHub Ops</h1>
+    <p class="page-subtitle">用 gh CLI + git 处理 GitHub 日常运维：仓库、PR、Issue、Release、Actions、Secrets 与权限管理。</p>
+  </section>
+  <section class="detail-grid">
+    <article class="detail-main prose">
+      <h1>GitHub Ops</h1>
+<p>把 GitHub 日常操作压成一套安全默认的 gh + git workflow，而不是临时拼命令。</p>
+<h2>Use When</h2>
+<ul>
+<li>需要处理仓库、PR、Issue、Release、Actions、Secrets 或权限</li>
+<li>需要在 <code>gh</code>、<code>git</code> 和 <code>gh api</code> 之间选合适的工具层级</li>
+<li>需要在不泄露凭据的前提下做 GitHub 运维</li>
+</ul>
+<h2>Input</h2>
+<ul>
+<li><code>repo_target</code>：目标仓库、组织或本地仓库路径</li>
+<li><code>operation_goal</code>：要完成的具体 GitHub 操作</li>
+</ul>
+<h2>Returns</h2>
+<ul>
+<li>安全默认下的执行路径</li>
+<li>可复制命令或已经完成的 GitHub 操作</li>
+<li>历史、权限和 secrets 相关的风险提示</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>公开版保留操作模型和安全原则</li>
+<li>私有 token 文件位置和个人 wrapper 默认值不在公开版暴露</li>
+</ul>
+    </article>
+    <aside class="detail-side">
+      <div class="side-card">
+        <p class="side-label">Invoke</p>
+        <div><span class="skill-invoke">$github-ops</span></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Inputs</p>
+        <div class="side-list"><div><code>repo_target</code> 目标仓库、组织或本地 git 仓库路径 (required)</div><div><code>operation_goal</code> 要完成的 GitHub 操作，例如开 PR、配 Actions secrets、查 workflow 或改 release (required)</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Returns</p>
+        <div class="side-list"><div>安全默认下的操作路径</div><div>可执行命令或实际处理结果</div><div>风险提示与回滚建议</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Use When</p>
+        <div class="side-list"><div>需要处理 GitHub 仓库、PR、Issue、Release 或 Actions</div><div>需要在 gh CLI、git 和 gh api 之间选择最合适的操作方式</div><div>需要安全地处理 secrets、权限或历史策略</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Avoid When</p>
+        <div class="side-list"><div>目标平台不是 GitHub</div><div>没有任何 repo 权限或登录状态可用</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Keywords</p>
+        <div class="skill-tags">github · gh · git · pr · issue · release · actions · secrets · permissions</div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Dependencies</p>
+        <div class="side-list"><div>Scene: 自动化与交付</div><div>Bins: <code>gh</code> · <code>git</code> · <code>node</code></div><div>Services: github</div><div>Stateful workflow</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Related</p>
+        <div class="side-list"><div><a href="/skills/github-repo-bootstrap/index.html">GitHub Repo Bootstrap</a></div><div><a href="/skills/vercel-ship/index.html">Vercel Ship</a></div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Contract</p>
+        <div class="side-list"><div>Visibility: sanitized</div><div>Stability: stable</div><div>Updated: 2026-03-25</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Machine</p>
+        <div class="side-list"><div><a href="/data/skills/github-ops.json">manifest.json</a></div><div><a href="/data/scenes/automation-shipping.json">scene.json</a></div><div><a href="/data/skills.ndjson">skills.ndjson</a></div><div><a href="/llms-full.txt">llms-full.txt</a></div></div>
+      </div>
+    </aside>
+  </section>
+</main>
+      <footer class="footer">
+        <div>Skills Site · scenario-first registry renderer · source of truth: <code>skills-registry</code></div>
+      </footer>
+    </div>
+  </body>
+</html>

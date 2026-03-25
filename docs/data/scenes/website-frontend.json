@@ -4,6 +4,9 @@
   "title": "网站与前端",
   "summary": "适合网页、交互界面、前端实现与上线前页面工作。",
   "total_skills": 2,
+  "visibility_counts": {
+    "public": 2
+  },
   "status": "live",
   "guide": {
     "core_tasks": [

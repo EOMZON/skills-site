@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="把 Git 提交、GitHub 推送、Vercel 部署、Analytics 与自定义域名串成一条可重复执行的 ship 流水线。" />
+    <title>Vercel Ship · Skills</title>
+    <link rel="canonical" href="/skills/vercel-ship/index.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/site.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <div class="topbar-inner">
+          <a class="brand" href="/index.html"><strong>Skills</strong><span>Registry</span></a>
+          <nav class="nav">
+            <a href="/index.html">Home</a>
+            <a href="/data/registry.json">registry.json</a>
+            <a href="/data/scenes.json">scenes.json</a>
+            <a href="/llms.txt">llms.txt</a>
+          </nav>
+        </div>
+      </header>
+      <main class="page">
+  <section class="page-head">
+    <p class="meta-kicker">自动化与交付</p>
+    <h1 class="page-title">Vercel Ship</h1>
+    <p class="page-subtitle">把 Git 提交、GitHub 推送、Vercel 部署、Analytics 与自定义域名串成一条可重复执行的 ship 流水线。</p>
+  </section>
+  <section class="detail-grid">
+    <article class="detail-main prose">
+      <h1>Vercel Ship</h1>
+<p>把“提交、推送、部署、分析、域名”串成一条可以重复执行的 ship 流水线。</p>
+<h2>Use When</h2>
+<ul>
+<li>想把本地项目一口气 ship 到 GitHub 与 Vercel</li>
+<li>想把 preview/prod、analytics 与域名处理成统一入口</li>
+<li>需要一个稳定的发布流程，而不是手工拼几段命令</li>
+</ul>
+<h2>Input</h2>
+<ul>
+<li><code>project_path</code>：待发布项目路径</li>
+<li><code>shipping_overrides</code>：preview/prod、push、域名等覆盖项</li>
+</ul>
+<h2>Returns</h2>
+<ul>
+<li>已提交并推送的 Git 状态</li>
+<li>Vercel 部署结果与线上地址</li>
+<li>域名、Analytics 与后续验收信息</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>公开版保留 ship 的结构与安全前置</li>
+<li>私有 token 文件位置、个人默认域名和本地路径约定已被通用化</li>
+</ul>
+    </article>
+    <aside class="detail-side">
+      <div class="side-card">
+        <p class="side-label">Invoke</p>
+        <div><span class="skill-invoke">$vercel-ship</span></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Inputs</p>
+        <div class="side-list"><div><code>project_path</code> 待发布项目路径 (required)</div><div><code>shipping_overrides</code> preview/prod、push、域名或 analytics 等覆盖项</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Returns</p>
+        <div class="side-list"><div>已提交并推送的 Git 状态</div><div>Vercel 部署结果与线上地址</div><div>域名、Analytics 与后续验收信息</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Use When</p>
+        <div class="side-list"><div>想把本地项目一口气 ship 到 GitHub 与 Vercel</div><div>想把 preview/prod、analytics 与域名处理成统一入口</div><div>需要一个稳定的发布流程，而不是手工拼几段命令</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Avoid When</p>
+        <div class="side-list"><div>项目还没准备好发布</div><div>缺少 GitHub 或 Vercel 的鉴权环境</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Keywords</p>
+        <div class="skill-tags">vercel · deploy · prod · preview · domain · analytics · shipping · github</div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Dependencies</p>
+        <div class="side-list"><div>Scene: 自动化与交付</div><div>Bins: <code>node</code> · <code>git</code> · <code>vercel</code></div><div>Services: github · vercel</div><div>Stateful workflow</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Related</p>
+        <div class="side-list"><div><a href="/skills/vercel-deploy/index.html">Vercel Deploy</a></div><div><a href="/skills/github-repo-bootstrap/index.html">GitHub Repo Bootstrap</a></div><div><a href="/skills/github-ops/index.html">GitHub Ops</a></div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Contract</p>
+        <div class="side-list"><div>Visibility: sanitized</div><div>Stability: stable</div><div>Updated: 2026-03-25</div></div>
+      </div>
+      <div class="side-card">
+        <p class="side-label">Machine</p>
+        <div class="side-list"><div><a href="/data/skills/vercel-ship.json">manifest.json</a></div><div><a href="/data/scenes/automation-shipping.json">scene.json</a></div><div><a href="/data/skills.ndjson">skills.ndjson</a></div><div><a href="/llms-full.txt">llms-full.txt</a></div></div>
+      </div>
+    </aside>
+  </section>
+</main>
+      <footer class="footer">
+        <div>Skills Site · scenario-first registry renderer · source of truth: <code>skills-registry</code></div>
+      </footer>
+    </div>
+  </body>
+</html>
