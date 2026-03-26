@@ -169,6 +169,10 @@ function anchorAttrs(href) {
 }
 
 function preferredSkillHref(skill) {
+  return `/skills/${skill.id}/index.html`;
+}
+
+function sourceSkillHref(skill) {
   return skill.source_skill_md_url || skill.source_tree_url || `/skills/${skill.id}/index.html`;
 }
 
@@ -286,7 +290,7 @@ ${skills
   <div class="skill-copy">${escapeHtml(skill.summary)}</div>
   <div class="skill-io">${previewInputs(skill.inputs)}</div>
   <div class="skill-io">${previewText(skill.returns)}</div>
-  <div class="skill-call">${sourceLink("View on GitHub", preferredSkillHref(skill))}</div>
+  <div class="skill-call">${sourceLink("View on GitHub", sourceSkillHref(skill))}</div>
 </div>`
   )
   .join("\n")}
