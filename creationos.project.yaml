@@ -1,0 +1,25 @@
+schemaVersion: creationos.project/v1
+project:
+  id: skills-site-repo
+  name: Skills Hub
+  lifecycle: maintenance
+  category: productivity
+  visibility: public
+  description: 按真实任务场景发现公开技能、理解调用方式并回查脱敏来源的静态技能目录
+app:
+  enabled: false
+  displayName: Skills Hub
+  buildPath: dist
+  liveUrl: https://skills.zondev.top
+catalog:
+  registration: declared
+  truthOwner: source-repository
+  modules:
+    goal: verified
+    market: verified
+    user: verified
+    pool: partial
+    dev: verified
+    test: verified
+    launch: verified
+    data: partial

@@ -22,10 +22,10 @@ const registryPublicRepoBranch = process.env.SKILLS_REGISTRY_PUBLIC_REPO_BRANCH 
 const siteOrigin = normalizeRepoUrl(process.env.SKILLS_SITE_ORIGIN || "https://skills.zondev.top");
 const authorGithubUrl = process.env.SKILLS_AUTHOR_GITHUB_URL || "https://github.com/EOMZON";
 const sceneStatusLabel = {
-  live: "Live",
-  "coming-next": "Coming Next",
-  "sanitized-later": "Sanitized Later",
-  "private-only": "Private Only"
+  live: "已上线",
+  "coming-next": "即将补充",
+  "sanitized-later": "稍后公开",
+  "private-only": "仅私有"
 };
 
 function readJson(filePath) {
@@ -180,6 +180,34 @@ function sourceLink(label, href) {
   return `<a class="mono-link" ${anchorAttrs(href)}>${escapeHtml(label)}</a>`;
 }
 
+function humanizeVisibility(value) {
+  const labels = {
+    public: "公开",
+    sanitized: "脱敏公开",
+    "sanitized-later": "稍后脱敏公开",
+    "private-only": "私有",
+    private: "私有"
+  };
+  return labels[value] || value || "—";
+}
+
+function humanizeStability(value) {
+  const labels = {
+    stable: "稳定",
+    beta: "测试中",
+    experimental: "实验中",
+    draft: "草稿",
+    deprecated: "已弃用"
+  };
+  return labels[value] || value || "—";
+}
+
+function stripNeedPrefix(text) {
+  return String(text || "")
+    .replace(/^需要/, "")
+    .trim();
+}
+
 function countByVisibility(items) {
   return items.reduce((counts, item) => {
     const visibility = item.visibility || "public";
@@ -198,10 +226,10 @@ function skillSort(a, b, scenesById) {
 function layout({ title, description, body, canonicalPath }) {
   const canonical = `${siteOrigin}/${canonicalPath.replace(/^\/+/, "")}`;
   const navLinks = [
-    { label: "Home", href: "/index.html" },
-    { label: "GitHub Repo", href: registryPublicRepoUrl },
-    { label: "Browse Skills", href: `${registryPublicRepoUrl}/tree/${registryPublicRepoBranch}/content/skills` },
-    { label: "Follow @EOMZON", href: authorGithubUrl }
+    { label: "首页", href: "/index.html" },
+    { label: "GitHub 仓库", href: registryPublicRepoUrl },
+    { label: "技能目录", href: `${registryPublicRepoUrl}/tree/${registryPublicRepoBranch}/content/skills` },
+    { label: "作者主页", href: authorGithubUrl }
   ];
   return `<!doctype html>
 <html lang="zh-CN">
@@ -213,6 +241,10 @@ function layout({ title, description, body, canonicalPath }) {
     <link rel="canonical" href="${escapeHtml(canonical)}" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/site.css" />
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
   </head>
   <body>
     <div class="site-shell">
@@ -226,7 +258,7 @@ function layout({ title, description, body, canonicalPath }) {
       </header>
       ${body}
       <footer class="footer">
-        <div>Skills Site · discovery layer only · full public docs and updates live on <a ${anchorAttrs(registryPublicRepoUrl)}>GitHub</a> · follow <a ${anchorAttrs(authorGithubUrl)}>@EOMZON</a></div>
+        <div>想看完整步骤、最新更新和示例，请到 <a ${anchorAttrs(registryPublicRepoUrl)}>GitHub</a>。</div>
       </footer>
     </div>
   </body>
@@ -249,20 +281,20 @@ return `<article class="scene-entry">
   <div class="scene-head">
     <div class="scene-meta-row">
       <span class="status-pill status-${status}">${escapeHtml(sceneStatusLabel[status] || status)}</span>
-      <span class="count-pill">${skills.length} listed</span>
+      <span class="count-pill">${skills.length} 个技能</span>
     </div>
     <h3 class="scene-entry-title"><a href="/scenes/${scene.id}/index.html">${escapeHtml(scene.title)}</a></h3>
     <p class="scene-entry-summary">${escapeHtml(scene.summary)}</p>
   </div>
   <div class="scene-tasks">
-    <p class="scene-label">Core Tasks</p>
+    <p class="scene-label">你可能要做</p>
     <ul class="compact-list">
       ${taskItems.map((task) => `<li>${escapeHtml(task)}</li>`).join("")}
     </ul>
   </div>
   <div class="scene-starters">
-    <p class="scene-label">Start With</p>
-    <div class="scene-links">${starter || '<span class="muted">No listed starter yet</span>'}</div>
+    <p class="scene-label">建议先看</p>
+    <div class="scene-links">${starter || '<span class="muted">这个场景的入口技能还在补充</span>'}</div>
   </div>
 </article>`;
   })
@@ -285,12 +317,12 @@ ${skills
   <div>
     <h3 class="skill-name"><a ${anchorAttrs(preferredSkillHref(skill))}>${escapeHtml(skill.title)}</a></h3>
     <div class="skill-meta">${escapeHtml((skill.use_when && skill.use_when[0]) || skill.sceneTitle || "")}</div>
-    <div class="skill-contract">${escapeHtml(skill.visibility || "public")} · ${escapeHtml(skill.stability || "stable")} · ${escapeHtml(skill.invoke)}</div>
+    <div class="skill-contract">${escapeHtml(humanizeVisibility(skill.visibility || "public"))} · ${escapeHtml(humanizeStability(skill.stability || "stable"))} · ${escapeHtml(skill.invoke)}</div>
   </div>
   <div class="skill-copy">${escapeHtml(skill.summary)}</div>
   <div class="skill-io">${previewInputs(skill.inputs)}</div>
   <div class="skill-io">${previewText(skill.returns)}</div>
-  <div class="skill-call">${sourceLink("View on GitHub", sourceSkillHref(skill))}</div>
+  <div class="skill-call">${sourceLink("查看 GitHub 说明", sourceSkillHref(skill))}</div>
 </div>`
   )
   .join("\n")}
@@ -330,14 +362,14 @@ function renderGuideBlock(guide, manifestsById) {
   return `<div class="scene-guide">
     ${
       guide.core_tasks?.length
-        ? `<div class="guide-line"><span>Core Tasks</span>${guide.core_tasks
+        ? `<div class="guide-line"><span>关键任务</span>${guide.core_tasks
             .slice(0, 3)
             .map((task) => escapeHtml(task))
             .join(" · ")}</div>`
         : ""
     }
-    ${starter ? `<div class="guide-line"><span>Starter</span>${starter}</div>` : ""}
-    ${chains.length ? `<div class="guide-line"><span>Chain</span>${chains[0]}</div>` : ""}
+    ${starter ? `<div class="guide-line"><span>建议起手</span>${starter}</div>` : ""}
+    ${chains.length ? `<div class="guide-line"><span>推荐顺序</span>${chains[0]}</div>` : ""}
   </div>`;
 }
 
@@ -348,7 +380,7 @@ ${sceneEntries
     ({ scene, skills, guide }) => `<section class="scene-block">
   <div class="scene-block-head">
     <div>
-      <p class="section-kicker">Scene</p>
+      <p class="section-kicker">场景</p>
       <h3 class="scene-block-title"><a href="/scenes/${scene.id}/index.html">${escapeHtml(scene.title)}</a></h3>
     </div>
     <div class="scene-block-summary">${escapeHtml(scene.summary)}</div>
@@ -370,7 +402,7 @@ function renderDetailInputs(inputs) {
   return renderSideList(
     inputs.map(
       (input) =>
-        `<code>${escapeHtml(input.name)}</code> ${escapeHtml(input.description)}${input.required ? " (required)" : ""}`
+        `<code>${escapeHtml(input.name)}</code>：${escapeHtml(input.description)}${input.required ? "（必填）" : "（选填）"}`
     )
   );
 }
@@ -391,59 +423,54 @@ function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifest
   const activeSceneEntries = sceneEntries.filter((entry) => entry.skills.length > 0);
   const differentiators = [
     {
-      label: "Executable systems",
-      body: "不是 prompt 片段。很多 skill 会直接落到报告、页面、脚本、部署或可复查产物。"
+      label: "能直接落地",
+      body: "不是只给你一句 prompt。很多 skill 会直接产出页面、脚本、部署结果或可复查记录。"
     },
     {
-      label: "Scenario-first",
-      body: "先按要完成的事情分组，再在 scene 里看可调用的 skill，而不是先按工具名找。"
+      label: "先按任务找",
+      body: "不知道 skill 名也没关系，先按你要完成的事找入口。"
     },
     {
-      label: "Private source -> public source",
-      body: "私有作者源先沉淀，再导出可公开的 GitHub 版本；敏感运行细节不在公开层硬展开。"
+      label: "先看能不能用",
+      body: "每个 skill 会先告诉你适合什么时候用、要准备什么、会拿到什么。"
     },
     {
-      label: "GitHub-first",
-      body: "站点负责发现与筛选，完整公开说明、更新历史和 star 入口都回到 GitHub。"
+      label: "详细说明在 GitHub",
+      body: "想看完整步骤、更新和示例，直接去 GitHub。"
     }
   ];
   const agentLinks = [
     {
-      name: "Open Repo",
+      name: "打开 GitHub 仓库",
       href: registryPublicRepoUrl,
-      description: "公开仓库总入口。需要完整说明、star 或 follow 时，优先回到这里。"
+      description: "想看完整说明、更新或示例时，从这里进入。"
     },
     {
-      name: "Browse All Skills",
+      name: "浏览全部技能",
       href: `${registryPublicRepoUrl}/tree/${registryPublicRepoBranch}/content/skills`,
-      description: "直接浏览所有公开 skill 文件夹，而不是下载站内镜像。"
+      description: "直接按文件夹浏览所有公开 skill。"
     },
     {
-      name: "Browse Content Source",
-      href: `${registryPublicRepoUrl}/tree/${registryPublicRepoBranch}/content`,
-      description: "查看 skills、scenes 和 guides 的 GitHub 源目录，而不是站内镜像。"
-    },
-    {
-      name: "Follow @EOMZON",
-      href: authorGithubUrl,
-      description: "如果你是顺着某个 skill 过来的，这里是继续 follow 作者的入口。"
+      name: "查看最近更新",
+      href: `${registryPublicRepoUrl}/commits/${registryPublicRepoBranch}`,
+      description: "想确认最近改了什么，直接看这里。"
     }
   ];
 
   return layout({
     title: "Skills Registry",
-    description: "Scenario-first skills discovery layer with GitHub-first source links.",
+    description: "先按任务找到合适的 skill，再去 GitHub 查看完整说明。",
     canonicalPath: "index.html",
     body: `<main class="page">
   <section class="hero">
     <div>
-      <p class="hero-kicker">Scenario-First Skill Registry</p>
-      <h1 class="hero-title">先按场景找，再去 GitHub 取用。</h1>
-      <p class="hero-copy">这个站点只回答三件事: 你要完成什么、先点哪个 skill、值不值得继续深看。完整公开说明、更新历史和后续 star，都应该回到 GitHub 源头。</p>
+      <p class="hero-kicker">按任务找技能</p>
+      <h1 class="hero-title">先找到要做的事，再点最合适的 skill。</h1>
+      <p class="hero-copy">这里先帮你缩小范围：你要完成什么、先看哪个 skill、值不值得继续深看。需要完整步骤和最新更新，再去 GitHub。</p>
       <div class="hero-actions">
-        <a class="hero-link" ${anchorAttrs(registryPublicRepoUrl)}>Open GitHub</a>
-        <a class="hero-link" ${anchorAttrs(`${registryPublicRepoUrl}/tree/${registryPublicRepoBranch}/content/skills`)}>Browse Skills</a>
-        <a class="hero-link" ${anchorAttrs(authorGithubUrl)}>Follow @EOMZON</a>
+        <a class="hero-link" ${anchorAttrs(registryPublicRepoUrl)}>打开 GitHub 仓库</a>
+        <a class="hero-link" ${anchorAttrs(`${registryPublicRepoUrl}/tree/${registryPublicRepoBranch}/content/skills`)}>浏览全部技能</a>
+        <a class="hero-link" ${anchorAttrs(`${registryPublicRepoUrl}/commits/${registryPublicRepoBranch}`)}>查看最近更新</a>
       </div>
     </div>
     <div class="hero-notes">
@@ -456,19 +483,19 @@ function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifest
   </section>
 
   <section class="stats-strip">
-    <div class="stat"><span class="stat-value">${stats.listedSkills}</span><span class="stat-label">Listed Skills</span></div>
-    <div class="stat"><span class="stat-value">${stats.publicSkills}</span><span class="stat-label">Public</span></div>
-    <div class="stat"><span class="stat-value">${stats.sanitizedSkills}</span><span class="stat-label">Sanitized</span></div>
-    <div class="stat"><span class="stat-value">${stats.liveScenes}</span><span class="stat-label">Live Scenes</span></div>
+    <div class="stat"><span class="stat-value">${stats.listedSkills}</span><span class="stat-label">已收录技能</span></div>
+    <div class="stat"><span class="stat-value">${stats.publicSkills}</span><span class="stat-label">公开技能</span></div>
+    <div class="stat"><span class="stat-value">${stats.sanitizedSkills}</span><span class="stat-label">脱敏公开</span></div>
+    <div class="stat"><span class="stat-value">${stats.liveScenes}</span><span class="stat-label">已上线场景</span></div>
   </section>
 
   <section class="section" id="scenes">
     <div class="section-header">
       <div>
-        <p class="section-kicker">Scenes</p>
+        <p class="section-kicker">场景</p>
         <h2 class="section-title">先看你要完成什么</h2>
       </div>
-      <div class="section-summary">每个 scene 只保留最必要的判断信息: 你在解决什么问题、从哪里起手、哪些 skill 值得点进去。skill 点击优先跳 GitHub。</div>
+      <div class="section-summary">每个场景会先告诉你在解决什么、从哪里起手、先看哪些 skill。需要细节时再进 GitHub。</div>
     </div>
     ${renderSceneGrid(sceneEntries)}
   </section>
@@ -476,10 +503,10 @@ function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifest
   <section class="section">
     <div class="section-header">
       <div>
-        <p class="section-kicker">Coverage</p>
-        <h2 class="section-title">按场景展开，然后直接跳 GitHub</h2>
+        <p class="section-kicker">技能总览</p>
+        <h2 class="section-title">挑到合适的，再看完整说明</h2>
       </div>
-      <div class="section-summary">这里保留最必要的判断信息: 这是什么、适合什么时候用、输入输出大概是什么。真正的 skill 说明、更新与获取路径都回到 GitHub。</div>
+      <div class="section-summary">这里先帮你判断每个 skill 是干什么的、适合什么时候用、输入输出大概是什么。确定对路，再点进 GitHub 看步骤。</div>
     </div>
     ${renderCoverage(activeSceneEntries, manifestsById)}
   </section>
@@ -487,10 +514,10 @@ function buildHome({ scenesDoc, manifests, scenesById, sceneGuidesById, manifest
   <section class="section">
     <div class="section-header">
       <div>
-        <p class="section-kicker">GitHub</p>
-        <h2 class="section-title">真正的公开入口在 GitHub</h2>
+        <p class="section-kicker">继续往下看</p>
+        <h2 class="section-title">想继续往下看，就去 GitHub</h2>
       </div>
-      <div class="section-summary">机器镜像仍然存在，但不再占据主导航。对人类访问者来说，主入口应该是 GitHub 仓库、技能目录和作者主页。</div>
+      <div class="section-summary">GitHub 里有完整说明、最新更新和全部技能文件。首页只负责帮你先挑路。</div>
     </div>
     ${renderEndpointList(agentLinks)}
   </section>
@@ -539,33 +566,54 @@ function buildDetailPage(manifest, scenesById, manifestsById) {
   const related = (manifest.related_ids || [])
     .map((id) => manifestsById.get(id))
     .filter(Boolean);
-  const dependencyLines = [`Scene: ${escapeHtml(sceneTitle)}`];
+  const primaryUse = (manifest.use_when || []).find(Boolean) || manifest.summary;
+  const primaryTask = stripNeedPrefix(primaryUse) || "完成这件事";
+  const dependencyLines = [`所属场景：${escapeHtml(sceneTitle)}`];
+  const quickInputs =
+    Array.isArray(manifest.inputs) && manifest.inputs.length
+      ? manifest.inputs
+          .slice(0, 3)
+          .map((input) => `<code>${escapeHtml(input.name)}</code>`)
+          .join("、")
+      : "必要上下文";
+  const quickReturns =
+    Array.isArray(manifest.returns) && manifest.returns.length
+      ? manifest.returns
+          .slice(0, 3)
+          .map((item) => escapeHtml(item))
+          .join("、")
+      : "处理结果";
 
   if (manifest.dependencies?.bins?.length) {
-    dependencyLines.push(`Bins: ${manifest.dependencies.bins.map((bin) => `<code>${escapeHtml(bin)}</code>`).join(" · ")}`);
+    dependencyLines.push(
+      `需要安装：${manifest.dependencies.bins.map((bin) => `<code>${escapeHtml(bin)}</code>`).join(" · ")}`
+    );
   }
   if (manifest.dependencies?.services?.length) {
     dependencyLines.push(
-      `Services: ${manifest.dependencies.services.map((service) => escapeHtml(service)).join(" · ")}`
+      `依赖服务：${manifest.dependencies.services.map((service) => escapeHtml(service)).join(" · ")}`
     );
   }
   if (manifest.dependencies?.stateful) {
-    dependencyLines.push("Stateful workflow");
+    dependencyLines.push("运行时可能会登录或改写配置，建议在正式项目环境里执行");
   } else {
-    dependencyLines.push("Stateless workflow");
+    dependencyLines.push("通常不会依赖之前的登录态，也较少改动现有环境");
   }
   if (!manifest.dependencies?.bins?.length && !manifest.dependencies?.services?.length) {
-    dependencyLines.push("No special runtime");
+    dependencyLines.push("没有额外运行环境要求");
   }
   const detailLead = `<div class="detail-note">
-    <p class="source-kicker">GitHub First</p>
-    <h2 class="detail-note-title">完整公开说明放在 GitHub，不放在站内长期镜像。</h2>
-    <p class="detail-note-copy">这个页面只保留快速判断和调用契约。真正的公开文档、更新历史，以及 star / follow 行为都应该回到 GitHub。</p>
+    <p class="source-kicker">先看能不能用</p>
+    <h2 class="detail-note-title">如果你正要${escapeHtml(primaryTask)}，先看它能不能直接帮上你。</h2>
+    <p class="detail-note-copy">先对照下面看两件事：你要准备什么，做完后会拿到什么。都对得上，就去 GitHub 按步骤做。</p>
+    <div class="scene-guide">
+      <div class="guide-line"><span>先准备</span>${quickInputs}</div>
+      <div class="guide-line"><span>会得到</span>${quickReturns}</div>
+    </div>
     <div class="source-actions">
-      ${manifest.source_skill_md_url ? sourceLink("Read on GitHub", manifest.source_skill_md_url) : ""}
-      ${manifest.source_tree_url ? sourceLink("Browse Folder", manifest.source_tree_url) : ""}
-      ${manifest.source_repo ? sourceLink("Open Repo", manifest.source_repo) : ""}
-      ${sourceLink("Follow @EOMZON", authorGithubUrl)}
+      ${manifest.source_skill_md_url ? sourceLink("查看完整说明", manifest.source_skill_md_url) : ""}
+      ${manifest.source_tree_url ? sourceLink("查看 GitHub 文件", manifest.source_tree_url) : ""}
+      ${manifest.source_repo ? sourceLink("打开 GitHub 仓库", manifest.source_repo) : ""}
     </div>
   </div>`;
 
@@ -585,33 +633,33 @@ function buildDetailPage(manifest, scenesById, manifestsById) {
     </article>
     <aside class="detail-side">
       <div class="side-card">
-        <p class="side-label">Invoke</p>
+        <p class="side-label">调用方式</p>
         <div><span class="skill-invoke">${escapeHtml(manifest.invoke)}</span></div>
       </div>
       <div class="side-card">
-        <p class="side-label">Inputs</p>
+        <p class="side-label">你需要提供</p>
         ${renderDetailInputs(manifest.inputs)}
       </div>
       <div class="side-card">
-        <p class="side-label">Returns</p>
+        <p class="side-label">你会得到</p>
         ${renderSideList((manifest.returns || []).map((item) => escapeHtml(item)))}
       </div>
       <div class="side-card">
-        <p class="side-label">Use When</p>
+        <p class="side-label">适合什么时候用</p>
         ${renderSideList((manifest.use_when || []).map((item) => escapeHtml(item)))}
       </div>
       <div class="side-card">
-        <p class="side-label">Avoid When</p>
+        <p class="side-label">什么时候先别用</p>
         ${renderSideList((manifest.avoid_when || []).map((item) => escapeHtml(item)))}
       </div>
       <div class="side-card">
-        <p class="side-label">Keywords</p>
+        <p class="side-label">关键词</p>
         <div class="skill-tags">${tags.map((tag) => escapeHtml(tag)).join(" · ") || "—"}</div>
       </div>
       ${
         dependencyLines.length
           ? `<div class="side-card">
-        <p class="side-label">Dependencies</p>
+        <p class="side-label">运行前准备</p>
         ${renderSideList(dependencyLines)}
       </div>`
           : ""
@@ -619,7 +667,7 @@ function buildDetailPage(manifest, scenesById, manifestsById) {
       ${
         related.length
           ? `<div class="side-card">
-        <p class="side-label">Related</p>
+        <p class="side-label">搭配使用</p>
         ${renderSideList(
           related.map(
             (item) => `<a ${anchorAttrs(preferredSkillHref(item))}>${escapeHtml(item.title)}</a>`
@@ -629,11 +677,11 @@ function buildDetailPage(manifest, scenesById, manifestsById) {
           : ""
       }
       <div class="side-card">
-        <p class="side-label">Contract</p>
+        <p class="side-label">版本信息</p>
         ${renderSideList([
-          `Visibility: ${escapeHtml(manifest.visibility || "public")}`,
-          `Stability: ${escapeHtml(manifest.stability || "stable")}`,
-          `Updated: ${escapeHtml(manifest.updated_at)}`
+          `可见性：${escapeHtml(humanizeVisibility(manifest.visibility || "public"))}`,
+          `稳定性：${escapeHtml(humanizeStability(manifest.stability || "stable"))}`,
+          `最近更新：${escapeHtml(manifest.updated_at)}`
         ])}
       </div>
     </aside>
@@ -748,12 +796,6 @@ ${uniquePaths
 }
 
 function main() {
-  ensureDir(distRoot);
-  fs.copyFileSync(stylesSrc, path.join(distRoot, "site.css"));
-  if (fs.existsSync(faviconSrc)) {
-    fs.copyFileSync(faviconSrc, path.join(distRoot, "favicon.svg"));
-  }
-
   const scenesDoc = readJson(path.join(registryContentRoot, "scenes.json"));
   const registry = readJson(path.join(registryContentRoot, "registry.json"));
   const publicRegistry = toPublicRegistryDocument(registry);
@@ -781,6 +823,12 @@ function main() {
     sanitizedSkills: visibilityCounts.sanitized || 0,
     liveScenes: activeSceneEntries.filter((entry) => entry.skills.length > 0).length
   };
+
+  ensureDir(distRoot);
+  fs.copyFileSync(stylesSrc, path.join(distRoot, "site.css"));
+  if (fs.existsSync(faviconSrc)) {
+    fs.copyFileSync(faviconSrc, path.join(distRoot, "favicon.svg"));
+  }
 
   writeFile(
     path.join(distRoot, "index.html"),
