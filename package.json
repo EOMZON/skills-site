@@ -4,6 +4,10 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "build": "node scripts/build-site.mjs"
+    "build": "node scripts/build-site.mjs",
+    "smoke:contract": "node scripts/smoke-contract.mjs",
+    "smoke:build-recovery": "node scripts/smoke-build-recovery.mjs",
+    "smoke:registry-resolution": "node scripts/smoke-registry-resolution.mjs",
+    "verify": "npm run build && npm run smoke:contract && npm run smoke:build-recovery && npm run smoke:registry-resolution"
   }
 }

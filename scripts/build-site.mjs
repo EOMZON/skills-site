@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { execSync } from "child_process";
+import { execFileSync } from "child_process";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -63,11 +63,11 @@ function resolveRegistryRoot() {
 
   ensureDir(path.dirname(vendoredRegistryRoot));
   if (!fs.existsSync(vendoredRegistryRoot)) {
-    execSync(`git clone --depth=1 ${remoteRegistryUrl} "${vendoredRegistryRoot}"`, {
+    execFileSync("git", ["clone", "--depth=1", remoteRegistryUrl, vendoredRegistryRoot], {
       stdio: "inherit"
     });
   } else {
-    execSync(`git -C "${vendoredRegistryRoot}" pull --ff-only`, {
+    execFileSync("git", ["-C", vendoredRegistryRoot, "pull", "--ff-only"], {
       stdio: "inherit"
     });
   }
